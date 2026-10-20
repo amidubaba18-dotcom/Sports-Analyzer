@@ -3,3 +3,4 @@ uvicorn[standard]>=0.30
 pydantic>=2.7
 pandas>=2.2
 numpy>=1.26
+nba_api>=1.11,<2
