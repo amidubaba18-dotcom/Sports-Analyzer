@@ -54,7 +54,8 @@ jobs:
           test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/docs)" = "404"
           test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/openapi.json)" = "404"
           test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/nba/published)" = "200"
-          curl -fsS http://127.0.0.1:8001/app/ | grep -q 'Sports Analyzer'
+          curl -fsS http://127.0.0.1:8001/app/ -o /tmp/app.html
+          grep -q 'Sports Analyzer' /tmp/app.html
 
           docker exec sa-ci python -c \
             "import nba_api, pandas, numpy, fastapi; print('runtime dependencies ok')"
