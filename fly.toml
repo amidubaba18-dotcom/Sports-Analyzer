@@ -1,0 +1,48 @@
+# Fly.io configuration for one always-on machine with a persistent volume.
+#
+# Before deploying:
+#   fly launch --no-deploy --copy-config --name <unique-app-name>
+#   fly volumes create sports_data --region lhr --size 1
+#   fly secrets set ADMIN_TOKEN=... FOOTBALL_DATA_TOKEN=...
+#   fly deploy
+#
+# Never scale this app above one machine: the schedulers run inside the web
+# process and SQLite is a single-writer database.
+app = "sports-analyzer-amidubaba18"
+primary_region = "lhr"
+kill_signal = "SIGTERM"
+kill_timeout = "30s"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  APP_ENV = "production"
+  PORT = "8001"
+  SPORTS_ANALYZER_DB = "/data/sports_analyzer.db"
+  SPORTS_ANALYZER_SCHEDULER = "1"
+  ALLOWED_ORIGINS = ""
+
+[http_service]
+  internal_port = 8001
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  [[http_service.checks]]
+    grace_period = "30s"
+    interval = "30s"
+    method = "GET"
+    path = "/health"
+    timeout = "5s"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "512mb"
+
+[[mounts]]
+  source = "sports_data"
+  destination = "/data"

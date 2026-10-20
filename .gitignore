@@ -1,0 +1,30 @@
+# Secrets and local-only configuration
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Runtime database sidecars and logs
+data/*.db-wal
+data/*.db-shm
+data/*.sqlite-journal
+*.log
+logs/
+backups/
+
+# Local OS/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Empty shell artifact accidentally left in the project root
+2026-01-15

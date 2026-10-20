@@ -1,0 +1,35 @@
+{
+  "exported_at": "2026-10-20T15:41:58+00:00",
+  "database": "sports_analyzer.db",
+  "matches": 4542,
+  "leagues": [
+    "Bundesliga",
+    "Eredivisie",
+    "La Liga",
+    "Ligue 1",
+    "Premier League",
+    "Serie A"
+  ],
+  "tables": {
+    "manual_stats": 0,
+    "published_matches": 127,
+    "team_profiles": 0,
+    "team_aliases": 6,
+    "fixture_settings": 1,
+    "nba_teams": 30,
+    "nba_games": 3690,
+    "nba_team_games": 7380,
+    "nba_fixtures": 1200,
+    "nba_published": 107,
+    "nba_settings": 4,
+    "nba_players": 518,
+    "nba_rosters": 518,
+    "nba_player_stats": 1723,
+    "nba_injuries": 540,
+    "nba_sync_log": 12,
+    "season_fixtures": 2058,
+    "prediction_stats": 35,
+    "board_picks": 2427,
+    "board_markets": 3853
+  }
+}

@@ -1,0 +1,519 @@
+﻿player_id,full_name,first_name,last_name,slug,position,height,weight,birth_date,age,experience,school,updated_at
+2544,LeBron James,,,lebron-james,F,6-9,250,"DEC 30, 1984",41,23,St. Vincent-St. Mary HS (OH),2026-10-20 11:53:15
+201142,Kevin Durant,,,kevin-durant,F,6-11,234,"SEP 29, 1988",38,19,Texas,2026-10-20 11:53:00
+201143,Al Horford,,,al-horford,C,6-8,260,"JUN 03, 1986",40,19,Florida,2026-10-20 11:52:59
+201144,Mike Conley,,,mike-conley,G,6-0,182,"OCT 11, 1987",39,19,Ohio State,2026-10-20 11:52:52
+201572,Brook Lopez,,,brook-lopez,C,7-1,282,"APR 01, 1988",38,18,Stanford,2026-10-20 11:53:02
+201599,DeAndre Jordan,,,deandre-jordan,C,6-11,280,"JUL 21, 1988",38,18,Texas A&M,2026-10-20 11:52:54
+201935,James Harden,,,james-harden,G,6-4,220,"AUG 26, 1989",37,17,Arizona State,2026-10-20 11:52:53
+201939,Stephen Curry,,,stephen-curry,G,6-2,205,"MAR 14, 1988",38,17,Davidson,2026-10-20 11:52:59
+201942,DeMar DeRozan,,,demar-derozan,G-F,6-6,220,"AUG 07, 1989",37,17,Southern California,2026-10-20 11:52:58
+201950,Jrue Holiday,,,jrue-holiday,G,6-4,220,"JUN 12, 1990",36,17,UCLA,2026-10-20 11:53:18
+202331,Paul George,,,paul-george,F,6-8,230,"MAY 02, 1990",36,16,Fresno State,2026-10-20 11:52:52
+202681,Kyrie Irving,,,kyrie-irving,G,6-2,195,"MAR 23, 1992",34,14,Duke,2026-10-20 11:52:56
+202691,Klay Thompson,,,klay-thompson,G-F,6-5,200,"FEB 08, 1990",36,15,Washington State,2026-10-20 11:53:04
+202695,Kawhi Leonard,,,kawhi-leonard,F,6-7,225,"JUN 29, 1991",35,15,San Diego State,2026-10-20 11:53:22
+202696,Nikola Vučević,,,nikola-vučević,C,6-11,265,"OCT 24, 1990",35,15,Southern California,2026-10-20 11:53:13
+202699,Tobias Harris,,,tobias-harris,F,6-8,226,"JUL 15, 1992",34,15,Tennessee,2026-10-20 11:53:20
+202710,Jimmy Butler III,,,jimmy-butler-iii,F,6-6,230,"SEP 14, 1989",37,15,Marquette,2026-10-20 11:52:59
+203076,Anthony Davis,,,anthony-davis,F-C,6-10,253,"MAR 11, 1993",33,14,Kentucky,2026-10-20 11:53:25
+203078,Bradley Beal,,,bradley-beal,G,6-4,207,"JUN 28, 1993",33,14,Florida,2026-10-20 11:53:02
+203081,Damian Lillard,,,damian-lillard,G,6-2,200,"JUL 15, 1990",36,13,Weber State,2026-10-20 11:53:18
+203083,Andre Drummond,,,andre-drummond,C,6-10,279,"AUG 10, 1993",33,14,Connecticut,2026-10-20 11:53:09
+203084,Harrison Barnes,,,harrison-barnes,F,6-7,225,"MAY 30, 1992",34,14,North Carolina,2026-10-20 11:53:20
+203110,Draymond Green,,,draymond-green,F-C,6-6,240,"MAR 04, 1990",36,14,Michigan State,2026-10-20 11:52:59
+203114,Khris Middleton,,,khris-middleton,F,6-7,222,"AUG 12, 1991",35,14,Texas A&M,2026-10-20 11:53:25
+203468,CJ McCollum,,,cj-mccollum,G,6-2,190,"SEP 19, 1991",35,13,Lehigh,2026-10-20 07:12:27
+203471,Dennis Schröder,,,dennis-schröder,G,6-1,175,"SEP 15, 1993",33,13,Braunschweig,2026-10-20 11:53:27
+203484,Kentavious Caldwell-Pope,,,kentavious-caldwell-pope,G,6-5,204,"FEB 18, 1993",33,13,Georgia,2026-10-20 11:53:15
+203497,Rudy Gobert,,,rudy-gobert,C,7-1,258,"JUN 26, 1992",34,13,Cholet,2026-10-20 11:53:06
+203500,Steven Adams,,,steven-adams,C,6-11,279,"JUL 20, 1993",33,13,Pittsburgh,2026-10-20 11:53:00
+203501,Tim Hardaway Jr.,,,tim-hardaway-jr,G,6-5,205,"MAR 16, 1992",34,13,Michigan,2026-10-20 11:53:04
+203507,Giannis Antetokounmpo,,,giannis-antetokounmpo,F,6-11,250,"DEC 06, 1994",31,13,Filathlitikos,2026-10-20 11:53:04
+203897,Zach LaVine,,,zach-lavine,G,6-5,200,"MAR 10, 1995",31,12,UCLA,2026-10-20 11:53:19
+203903,Jordan Clarkson,,,jordan-clarkson,G,6-5,194,"JUN 07, 1992",34,12,Missouri,2026-10-20 11:53:09
+203924,Jerami Grant,,,jerami-grant,F,6-7,213,"MAR 12, 1994",32,12,Syracuse,2026-10-20 11:53:24
+203932,Aaron Gordon,,,aaron-gordon,F,6-8,235,"SEP 16, 1995",31,12,Arizona,2026-10-20 11:52:58
+203935,Marcus Smart,,,marcus-smart,G,6-3,220,"MAR 06, 1994",32,12,Oklahoma State,2026-10-20 11:53:00
+203937,Kyle Anderson,,,kyle-anderson,F-G,6-8,230,"SEP 20, 1993",33,12,UCLA,2026-10-20 11:53:22
+203944,Julius Randle,,,julius-randle,F-C,6-9,256,"NOV 29, 1994",31,12,Kentucky,2026-10-20 11:53:08
+203952,Andrew Wiggins,,,andrew-wiggins,F,6-6,210,"FEB 23, 1995",31,12,Kansas,2026-10-20 11:53:04
+203954,Joel Embiid,,,joel-embiid,C-F,7-0,270,"MAR 16, 1994",32,10,Kansas,2026-10-20 11:53:15
+203991,Clint Capela,,,clint-capela,C,6-10,256,"MAY 18, 1994",32,12,Elan Chalon,2026-10-20 11:53:00
+203992,Bogdan Bogdanović,,,bogdan-bogdanović,G,6-5,231,"AUG 18, 1992",34,9,Fenerbahce,2026-10-20 11:53:00
+203994,Jusuf Nurkić,,,jusuf-nurkić,C,7-0,290,"AUG 23, 1994",32,12,Cedevita,2026-10-20 11:53:23
+203999,Nikola Jokić,,,nikola-jokić,C,6-11,284,"FEB 19, 1995",31,11,Mega Basket,2026-10-20 11:52:58
+204001,Kristaps Porziņģis,,,kristaps-porziņģis,F-C,7-2,240,"AUG 02, 1995",31,11,Cajasol Sevilla,2026-10-20 11:52:59
+204456,T.J. McConnell,,,tj-mcconnell,G,6-1,190,"MAR 25, 1992",34,11,Arizona,2026-10-20 11:53:14
+1626145,Tyus Jones,,,tyus-jones,G,6-1,196,"MAY 10, 1996",30,11,Duke,2026-10-20 11:52:58
+1626157,Karl-Anthony Towns,,,karl-anthony-towns,C-F,7-0,248,"NOV 15, 1995",30,11,Kentucky,2026-10-20 11:53:09
+1626162,Kelly Oubre Jr.,,,kelly-oubre-jr,F-G,6-7,210,"DEC 09, 1995",30,11,Kansas,2026-10-20 11:53:14
+1626164,Devin Booker,,,devin-booker,G,6-5,206,"OCT 30, 1996",29,11,Kentucky,2026-10-20 11:53:16
+1626167,Myles Turner,,,myles-turner,C-F,6-11,250,"MAR 24, 1996",30,11,Texas,2026-10-20 11:53:05
+1626168,Trey Lyles,,,trey-lyles,F,6-9,234,"NOV 05, 1995",30,10,Kentucky,2026-10-20 11:53:06
+1626171,Bobby Portis Jr.,,,bobby-portis-jr,F,6-10,250,"FEB 10, 1995",31,11,Arkansas,2026-10-20 11:53:04
+1626172,Kevon Looney,,,kevon-looney,F,6-9,222,"FEB 06, 1996",30,11,UCLA,2026-10-20 11:53:03
+1626181,Norman Powell,,,norman-powell,G,6-4,215,"MAY 25, 1993",33,11,UCLA,2026-10-20 11:52:55
+1626204,Larry Nance Jr.,,,larry-nance-jr,F-C,6-8,245,"JAN 01, 1993",33,11,Wyoming,2026-10-20 11:53:14
+1626209,Mario Hezonja,,,mario-hezonja,F-G,6-8,255,"FEB 25, 1995",31,5,FC Barcelona,2026-10-20 11:52:53
+1626220,Royce O'Neale,,,royce-oneale,F,6-6,226,"JUN 05, 1993",33,9,Baylor,2026-10-20 11:53:27
+1627732,Ben Simmons,,,ben-simmons,G-F,6-9,245,"JUL 20, 1996",30,8,Louisiana State,2026-10-20 11:53:19
+1627734,Domantas Sabonis,,,domantas-sabonis,F-C,6-10,240,"MAY 03, 1996",30,10,Gonzaga,2026-10-20 11:53:19
+1627739,Kris Dunn,,,kris-dunn,G,6-3,205,"MAR 18, 1994",32,10,Providence,2026-10-20 11:53:02
+1627741,Buddy Hield,,,buddy-hield,G,6-5,220,"DEC 17, 1992",33,10,Oklahoma,2026-10-20 11:52:55
+1627742,Brandon Ingram,,,brandon-ingram,F,6-8,190,"SEP 02, 1997",29,10,Duke,2026-10-20 11:53:02
+1627747,Caris LeVert,,,caris-levert,G,6-7,205,"AUG 25, 1994",32,10,Michigan,2026-10-20 11:53:05
+1627749,Dejounte Murray,,,dejounte-murray,G,6-4,188,"SEP 19, 1996",30,10,Washington,2026-10-20 11:52:54
+1627750,Jamal Murray,,,jamal-murray,G,6-4,215,"FEB 23, 1997",29,10,Kentucky,2026-10-20 11:52:58
+1627751,Jakob Poeltl,,,jakob-poeltl,C,7-0,253,"OCT 15, 1995",31,10,Utah,2026-10-20 11:53:22
+1627752,Taurean Prince,,,taurean-prince,F,6-6,218,"MAR 22, 1994",32,10,Baylor,2026-10-20 11:53:26
+1627759,Jaylen Brown,,,jaylen-brown,G-F,6-6,223,"OCT 24, 1996",29,10,California,2026-10-20 11:53:15
+1627777,Georges Niang,,,georges-niang,F,6-7,245,"JUN 17, 1993",33,9,Iowa State,2026-10-20 11:52:59
+1627780,Gary Payton II,,,gary-payton-ii,G,6-2,192,"DEC 01, 1992",33,10,Oregon State,2026-10-20 11:52:59
+1627783,Pascal Siakam,,,pascal-siakam,F,6-9,245,"APR 02, 1994",32,10,New Mexico State,2026-10-20 11:53:14
+1627826,Ivica Zubac,,,ivica-zubac,C,7-0,240,"MAR 18, 1997",29,10,Mega Basket,2026-10-20 11:53:14
+1627827,Dorian Finney-Smith,,,dorian-finney-smith,F,6-7,220,"MAY 04, 1993",33,10,Florida,2026-10-20 07:12:27
+1627832,Fred VanVleet,,,fred-vanvleet,G,6-0,213,"FEB 25, 1994",32,9,Wichita State,2026-10-20 11:53:00
+1627884,Derrick Jones Jr.,,,derrick-jones-jr,F,6-6,210,"FEB 15, 1997",29,10,UNLV,2026-10-20 11:53:02
+1627936,Alex Caruso,,,alex-caruso,G,6-5,186,"FEB 28, 1994",32,9,Texas A&M,2026-10-20 11:53:21
+1628368,De'Aaron Fox,,,deaaron-fox,G,6-3,185,"DEC 20, 1997",28,9,Kentucky,2026-10-20 11:53:20
+1628369,Jayson Tatum,,,jayson-tatum,F-G,6-8,229,"MAR 03, 1998",28,9,Duke,2026-10-20 11:52:52
+1628370,Malik Monk,,,malik-monk,G,6-3,200,"FEB 04, 1998",28,9,Kentucky,2026-10-20 11:53:19
+1628371,Jonathan Isaac,,,jonathan-isaac,F,6-10,240,"OCT 03, 1997",29,9,Florida State,2026-10-20 11:53:13
+1628374,Lauri Markkanen,,,lauri-markkanen,F-C,7-1,240,"MAY 22, 1997",29,9,Arizona,2026-10-20 11:53:23
+1628378,Donovan Mitchell,,,donovan-mitchell,G,6-2,228,"SEP 07, 1996",30,9,Louisville,2026-10-20 11:52:53
+1628379,Luke Kennard,,,luke-kennard,G,6-5,206,"JUN 24, 1996",30,9,Duke,2026-10-20 11:53:16
+1628380,Zach Collins,,,zach-collins,F-C,6-9,240,"NOV 19, 1997",28,9,Gonzaga,2026-10-20 11:52:55
+1628381,John Collins,,,john-collins,F-C,6-9,226,"SEP 23, 1997",29,9,Wake Forest,2026-10-20 11:53:26
+1628384,OG Anunoby,,,og-anunoby,F-G,6-7,240,"JUL 17, 1997",29,9,Indiana,2026-10-20 11:53:09
+1628386,Jarrett Allen,,,jarrett-allen,C,6-9,250,"APR 21, 1998",28,9,Texas,2026-10-20 11:52:53
+1628389,Bam Adebayo,,,bam-adebayo,C-F,6-9,260,"JUL 18, 1997",29,9,Kentucky,2026-10-20 11:53:04
+1628392,Isaiah Hartenstein,,,isaiah-hartenstein,C-F,7-0,250,"MAY 05, 1998",28,8,Zalgiris,2026-10-20 11:53:21
+1628396,Tony Bradley,,,tony-bradley,C-F,6-10,248,"JAN 08, 1998",28,8,North Carolina,2026-10-20 11:53:23
+1628398,Kyle Kuzma,,,kyle-kuzma,F,6-8,221,"JUL 24, 1995",31,9,Utah,2026-10-20 11:53:05
+1628401,Derrick White,,,derrick-white,G,6-4,200,"JUL 02, 1994",32,9,Colorado,2026-10-20 11:52:52
+1628404,Josh Hart,,,josh-hart,G,6-5,215,"MAR 06, 1995",31,9,Villanova,2026-10-20 11:53:09
+1628415,Dillon Brooks,,,dillon-brooks,G-F,6-7,225,"JAN 22, 1996",30,9,Oregon,2026-10-20 11:53:16
+1628418,Thomas Bryant,,,thomas-bryant,C-F,6-9,260,"JUL 31, 1997",29,9,Indiana,2026-10-20 11:52:53
+1628436,Luke Kornet,,,luke-kornet,C-F,7-1,250,"JUL 15, 1995",31,9,Vanderbilt,2026-10-20 11:53:20
+1628960,Grayson Allen,,,grayson-allen,G,6-4,198,"OCT 08, 1995",31,8,Duke,2026-10-20 11:53:27
+1628963,Marvin Bagley III,,,marvin-bagley-iii,F,6-10,235,"MAR 14, 1999",27,8,Duke,2026-10-20 11:52:58
+1628964,Mo Bamba,,,mo-bamba,C,7-0,231,"MAY 12, 1998",28,8,Texas,2026-10-20 11:53:23
+1628969,Mikal Bridges,,,mikal-bridges,G-F,6-6,209,"AUG 30, 1996",30,8,Villanova,2026-10-20 11:53:09
+1628970,Miles Bridges,,,miles-bridges,F,6-7,225,"MAR 21, 1998",28,7,Michigan State,2026-10-20 11:53:16
+1628973,Jalen Brunson,,,jalen-brunson,G,6-2,190,"AUG 31, 1996",30,8,Villanova,2026-10-20 11:53:09
+1628975,Jevon Carter,,,jevon-carter,G,6-1,190,"SEP 14, 1995",31,8,West Virginia,2026-10-20 11:53:13
+1628976,Wendell Carter Jr.,,,wendell-carter-jr,C-F,6-10,262,"APR 16, 1999",27,8,Duke,2026-10-20 11:53:13
+1628978,Donte DiVincenzo,,,donte-divincenzo,G,6-4,203,"JAN 31, 1997",29,8,Villanova,2026-10-20 11:53:06
+1628983,Shai Gilgeous-Alexander,,,shai-gilgeous-alexander,G,6-6,195,"JUL 12, 1998",28,8,Kentucky,2026-10-20 11:53:21
+1628989,Kevin Huerter,,,kevin-huerter,G-F,6-6,190,"AUG 27, 1998",28,8,Maryland,2026-10-20 11:53:26
+1628991,Jaren Jackson Jr.,,,jaren-jackson-jr,F-C,6-10,242,"SEP 15, 1999",27,8,Michigan State,2026-10-20 11:53:23
+1628997,Caleb Martin,,,caleb-martin,F,6-5,205,"SEP 28, 1995",31,7,Nevada,2026-10-20 11:52:56
+1629001,De'Anthony Melton,,,deanthony-melton,G,6-2,199,"MAY 28, 1998",28,8,Southern California,2026-10-20 11:52:59
+1629004,Svi Mykhailiuk,,,svi-mykhailiuk,G-F,6-6,205,"JUN 10, 1997",29,8,Kansas,2026-10-20 11:53:23
+1629006,Josh Okogie,,,josh-okogie,G,6-4,213,"SEP 01, 1998",28,8,Georgia Tech,2026-10-20 11:53:23
+1629008,Michael Porter Jr.,,,michael-porter-jr,F,6-10,232,"JUN 29, 1998",28,7,Missouri,2026-10-20 11:53:08
+1629011,Mitchell Robinson,,,mitchell-robinson,C-F,7-0,245,"APR 01, 1998",28,8,Western Kentucky,2026-10-20 11:52:52
+1629012,Collin Sexton,,,collin-sexton,G,6-1,190,"JAN 04, 1999",27,8,Alabama,2026-10-20 11:53:03
+1629013,Landry Shamet,,,landry-shamet,G,6-5,190,"MAR 13, 1997",29,8,Wichita State,2026-10-20 11:53:09
+1629014,Anfernee Simons,,,anfernee-simons,G,6-4,200,"JUN 08, 1999",27,8,Edgewater HS (FL),2026-10-20 11:53:15
+1629018,Gary Trent Jr.,,,gary-trent-jr,G,6-4,204,"JAN 18, 1999",27,8,Duke,2026-10-20 11:53:05
+1629020,Jarred Vanderbilt,,,jarred-vanderbilt,F,6-8,214,"APR 03, 1999",27,8,Kentucky,2026-10-20 11:53:03
+1629021,Moritz Wagner,,,moritz-wagner,F-C,6-11,255,"APR 26, 1997",29,8,Michigan,2026-10-20 11:53:08
+1629023,P.J. Washington,,,pj-washington,F,6-6,230,"AUG 23, 1998",28,7,Kentucky,2026-10-20 11:52:56
+1629026,Kenrich Williams,,,kenrich-williams,G-F,6-7,210,"DEC 02, 1994",31,8,TCU,2026-10-20 11:53:21
+1629027,Trae Young,,,trae-young,G,6-1,164,"SEP 19, 1998",28,8,Oklahoma,2026-10-20 11:53:25
+1629028,Deandre Ayton,,,deandre-ayton,C,7-0,252,"JUL 23, 1998",28,8,Arizona,2026-10-20 11:53:25
+1629029,Luka Dončić,,,luka-dončić,F-G,6-8,230,"FEB 28, 1999",27,8,Real Madrid,2026-10-20 11:53:03
+1629048,Goga Bitadze,,,goga-bitadze,C-F,6-11,235,"JUL 20, 1999",27,7,Mega Basket,2026-10-20 11:53:13
+1629057,Robert Williams III,,,robert-williams-iii,C-F,6-9,249,"OCT 17, 1997",29,8,Texas A&M,2026-10-20 11:53:18
+1629060,Rui Hachimura,,,rui-hachimura,F,6-8,230,"FEB 08, 1998",28,7,Gonzaga,2026-10-20 11:53:02
+1629111,Jock Landale,,,jock-landale,C,6-11,255,"OCT 25, 1995",30,5,St. Mary's,2026-10-20 07:12:27
+1629130,Duncan Robinson,,,duncan-robinson,F,6-7,215,"APR 22, 1994",32,8,Michigan,2026-10-20 11:53:26
+1629162,Jordan McLaughlin,,,jordan-mclaughlin,G,5-11,185,"APR 09, 1996",30,7,Southern California,2026-10-20 11:53:20
+1629605,Tacko Fall,,,tacko-fall,C,7-6,311,"DEC 10, 1995",30,3,Central Florida,2026-10-20 11:53:15
+1629611,Terance Mann,,,terance-mann,G-F,6-5,220,"OCT 18, 1996",30,7,Florida State,2026-10-20 11:53:08
+1629614,Andrew Nembhard,,,andrew-nembhard,G-F,6-4,191,"JAN 16, 2000",26,4,Gonzaga,2026-10-20 11:53:14
+1629618,Jalen Pickett,,,jalen-pickett,G,6-2,202,"OCT 22, 1999",26,3,Penn State,2026-10-20 11:53:02
+1629622,Max Strus,,,max-strus,G-F,6-5,215,"MAR 28, 1996",30,7,DePaul,2026-10-20 11:53:02
+1629627,Zion Williamson,,,zion-williamson,F,6-6,277,"JUL 06, 2000",26,7,Duke,2026-10-20 11:52:54
+1629628,RJ Barrett,,,rj-barrett,F-G,6-6,214,"JUN 14, 2000",26,7,Duke,2026-10-20 11:53:22
+1629630,Ja Morant,,,ja-morant,G,6-2,174,"AUG 10, 1999",27,7,Murray State,2026-10-20 11:53:18
+1629631,De'Andre Hunter,,,deandre-hunter,F-G,6-7,221,"DEC 02, 1997",28,7,Virginia,2026-10-20 11:53:19
+1629632,Coby White,,,coby-white,G,6-5,210,"FEB 16, 2000",26,7,North Carolina,2026-10-20 11:53:27
+1629636,Darius Garland,,,darius-garland,G,6-1,192,"JAN 26, 2000",26,7,Vanderbilt,2026-10-20 11:53:02
+1629637,Jaxson Hayes,,,jaxson-hayes,C-F,7-0,220,"MAY 23, 2000",26,7,Texas,2026-10-20 11:53:23
+1629638,Nickeil Alexander-Walker,,,nickeil-alexander-walker,G,6-5,205,"SEP 02, 1998",28,7,Virginia Tech,2026-10-20 07:12:27
+1629639,Tyler Herro,,,tyler-herro,G,6-5,195,"JAN 20, 2000",26,7,Kentucky,2026-10-20 11:53:05
+1629640,Keldon Johnson,,,keldon-johnson,F-G,6-5,220,"OCT 11, 1999",27,7,Kentucky,2026-10-20 11:53:20
+1629646,Charles Bassey,,,charles-bassey,F-C,6-9,244,"OCT 28, 2000",25,5,Western Kentucky,2026-10-20 11:52:59
+1629651,Nic Claxton,,,nic-claxton,C,6-11,215,"APR 17, 1999",27,7,Georgia,2026-10-20 11:52:55
+1629652,Luguentz Dort,,,luguentz-dort,G,6-4,220,"APR 19, 1999",27,7,Arizona State,2026-10-20 07:12:27
+1629655,Daniel Gafford,,,daniel-gafford,F-C,6-10,265,"OCT 01, 1998",28,7,Arkansas,2026-10-20 11:52:56
+1629656,Quentin Grimes,,,quentin-grimes,G,6-4,207,"MAY 08, 2000",26,5,Houston,2026-10-20 11:53:03
+1629660,Ty Jerome,,,ty-jerome,G-F,6-5,195,"JUL 08, 1997",29,7,Virginia,2026-10-20 11:53:24
+1629661,Cameron Johnson,,,cameron-johnson,F,6-8,210,"MAR 03, 1996",30,7,North Carolina,2026-10-20 11:52:58
+1629673,Jordan Poole,,,jordan-poole,G,6-4,200,"JUN 19, 1999",27,7,Michigan,2026-10-20 11:52:54
+1629674,Neemias Queta,,,neemias-queta,C,7-0,270,"JUL 13, 1999",27,5,Utah State,2026-10-20 11:52:52
+1629675,Naz Reid,,,naz-reid,C-F,6-9,264,"AUG 26, 1999",27,7,Louisiana State,2026-10-20 11:53:27
+1629680,Matisse Thybulle,,,matisse-thybulle,G-F,6-5,202,"MAR 04, 1997",29,7,Washington,2026-10-20 11:53:03
+1629684,Grant Williams,,,grant-williams,F,6-7,236,"NOV 30, 1998",27,7,Tennessee,2026-10-20 11:53:27
+1629731,Dean Wade,,,dean-wade,F-C,6-9,228,"NOV 20, 1996",29,7,Kansas State,2026-10-20 11:53:15
+1629750,Javonte Green,,,javonte-green,G,6-5,205,"JUL 23, 1993",33,7,Radford,2026-10-20 11:53:26
+1630162,Anthony Edwards,,,anthony-edwards,G,6-4,225,"AUG 05, 2001",25,6,Georgia,2026-10-20 11:53:06
+1630163,LaMelo Ball,,,lamelo-ball,G,6-7,180,"AUG 22, 2001",25,6,Illawarra,2026-10-20 11:53:06
+1630164,James Wiseman,,,james-wiseman,C,7-0,240,"MAR 31, 2001",25,6,Memphis,2026-10-20 11:53:09
+1630166,Deni Avdija,,,deni-avdija,F,6-8,228,"JAN 03, 2001",25,6,Maccabi Tel Aviv,2026-10-20 11:53:18
+1630167,Obi Toppin,,,obi-toppin,F,6-9,220,"MAR 04, 1998",28,6,Dayton,2026-10-20 11:53:14
+1630168,Onyeka Okongwu,,,onyeka-okongwu,F-C,6-10,240,"DEC 11, 2000",25,6,Southern California,2026-10-20 07:12:27
+1630169,Tyrese Haliburton,,,tyrese-haliburton,G,6-5,185,"FEB 29, 2000",26,5,Iowa State,2026-10-20 11:53:14
+1630170,Devin Vassell,,,devin-vassell,G-F,6-5,200,"AUG 23, 2000",26,6,Florida State,2026-10-20 11:53:20
+1630171,Isaac Okoro,,,isaac-okoro,F-G,6-6,225,"JAN 26, 2001",25,6,Auburn,2026-10-20 11:52:55
+1630172,Patrick Williams,,,patrick-williams,F,6-7,235,"AUG 26, 2001",25,6,Florida State,2026-10-20 11:52:55
+1630173,Precious Achiuwa,,,precious-achiuwa,F,6-8,243,"SEP 19, 1999",27,6,Memphis,2026-10-20 11:53:19
+1630174,Aaron Nesmith,,,aaron-nesmith,G-F,6-5,215,"OCT 16, 1999",27,6,Vanderbilt,2026-10-20 11:53:14
+1630178,Tyrese Maxey,,,tyrese-maxey,G,6-2,200,"NOV 04, 2000",25,6,Kentucky,2026-10-20 11:53:15
+1630180,Saddiq Bey,,,saddiq-bey,F,6-8,240,"APR 09, 1999",27,6,Villanova,2026-10-20 11:52:54
+1630182,Josh Green,,,josh-green,G,6-6,200,"NOV 16, 2000",25,6,Arizona,2026-10-20 11:53:23
+1630183,Jaden McDaniels,,,jaden-mcdaniels,F,6-9,185,"SEP 29, 2000",26,6,Washington,2026-10-20 11:53:06
+1630188,Jalen Smith,,,jalen-smith,F-C,6-9,244,"MAR 16, 2000",26,6,Maryland,2026-10-20 11:52:55
+1630191,Isaiah Stewart,,,isaiah-stewart,F-C,6-8,250,"MAY 22, 2001",25,6,Washington,2026-10-20 11:53:24
+1630192,Zeke Nnaji,,,zeke-nnaji,F-C,6-10,240,"JAN 09, 2001",25,6,Arizona,2026-10-20 11:52:58
+1630193,Immanuel Quickley,,,immanuel-quickley,G,6-3,190,"JUN 17, 1999",27,6,Kentucky,2026-10-20 11:53:22
+1630194,Paul Reed,,,paul-reed,F,6-9,210,"JUN 14, 1999",27,6,DePaul,2026-10-20 11:53:26
+1630198,Isaiah Joe,,,isaiah-joe,G,6-4,165,"JUL 02, 1999",27,6,Arkansas,2026-10-20 11:53:26
+1630200,Tre Jones,,,tre-jones,G,6-1,190,"JAN 08, 2000",26,6,Duke,2026-10-20 11:52:55
+1630202,Payton Pritchard,,,payton-pritchard,G,6-1,212,"JAN 28, 1998",28,6,Oregon,2026-10-20 11:52:52
+1630208,Nick Richards,,,nick-richards,C,6-11,255,"NOV 29, 1997",28,6,Kentucky,2026-10-20 11:53:04
+1630217,Desmond Bane,,,desmond-bane,G,6-6,215,"JUN 25, 1998",28,6,TCU,2026-10-20 11:53:13
+1630224,Jalen Green,,,jalen-green,G,6-4,186,"FEB 09, 2002",24,5,NBA G League Ignite,2026-10-20 11:53:16
+1630228,Jonathan Kuminga,,,jonathan-kuminga,F,6-7,225,"OCT 06, 2002",24,5,NBA G League Ignite,2026-10-20 11:53:06
+1630230,Naji Marshall,,,naji-marshall,F,6-6,220,"JAN 24, 1998",28,6,Xavier,2026-10-20 11:52:56
+1630241,Sam Merrill,,,sam-merrill,G,6-4,195,"MAY 15, 1996",30,6,Utah State,2026-10-20 11:52:53
+1630245,Ayo Dosunmu,,,ayo-dosunmu,G,6-4,201,"JAN 17, 2000",26,5,Illinois,2026-10-20 11:53:06
+1630249,Vít Krejčí,,,vít-krejčí,G,6-8,195,"JUN 19, 2000",26,5,Zaragoza,2026-10-20 11:53:18
+1630256,Jae'Sean Tate,,,jaesean-tate,F,6-4,239,"OCT 28, 1995",30,6,Ohio State,2026-10-20 11:53:00
+1630264,Anthony Gill,,,anthony-gill,F,6-8,230,"OCT 17, 1992",34,6,Virginia,2026-10-20 11:53:25
+1630311,Pat Spencer,,,pat-spencer,G,6-2,205,"JUL 04, 1996",30,3,Northwestern,2026-10-20 11:53:16
+1630314,Brandon Williams,,,brandon-williams,G,6-1,185,"NOV 22, 1999",26,4,Arizona,2026-10-20 11:52:59
+1630529,Herbert Jones,,,herbert-jones,F,6-7,210,"OCT 06, 1998",28,5,Alabama,2026-10-20 11:52:54
+1630530,Trey Murphy III,,,trey-murphy-iii,F,6-9,220,"JUN 18, 2000",26,5,Virginia,2026-10-20 11:52:54
+1630532,Franz Wagner,,,franz-wagner,F,6-10,230,"AUG 27, 2001",25,5,Michigan,2026-10-20 11:53:13
+1630533,Ziaire Williams,,,ziaire-williams,F,6-9,185,"SEP 12, 2001",25,5,Stanford,2026-10-20 11:53:03
+1630538,Bones Hyland,,,bones-hyland,G,6-2,169,"SEP 14, 2000",26,5,Virginia Commonwealth,2026-10-20 11:53:06
+1630540,Miles McBride,,,miles-mcbride,G,6-2,195,"SEP 08, 2000",26,5,West Virginia,2026-10-20 11:53:09
+1630541,Moses Moody,,,moses-moody,G,6-5,217,"MAY 31, 2002",24,5,Arkansas,2026-10-20 11:52:59
+1630543,Isaiah Jackson,,,isaiah-jackson,F,6-8,205,"JAN 10, 2002",24,5,Kentucky,2026-10-20 11:53:02
+1630544,Tre Mann,,,tre-mann,G,6-4,178,"FEB 03, 2001",25,5,Florida,2026-10-20 11:53:25
+1630545,Terrence Shannon Jr,,,terrence-shannon-jr,G-F,6-6,215,"JUL 30, 2000",26,2,Illinois,2026-10-20 11:53:06
+1630549,Day'Ron Sharpe,,,dayron-sharpe,C,6-10,265,"NOV 06, 2001",24,5,North Carolina,2026-10-20 11:53:08
+1630551,Justin Champagnie,,,justin-champagnie,G-F,6-6,206,"JUN 29, 2001",25,5,Pittsburgh,2026-10-20 11:53:25
+1630552,Jalen Johnson,,,jalen-johnson,F,6-8,219,"DEC 18, 2001",24,5,Duke,2026-10-20 07:12:27
+1630557,Corey Kispert,,,corey-kispert,F,6-6,224,"MAR 03, 1999",27,5,Gonzaga,2026-10-20 07:12:27
+1630558,Davion Mitchell,,,davion-mitchell,G,6-0,200,"SEP 05, 1998",28,5,Baylor,2026-10-20 11:53:04
+1630559,Austin Reaves,,,austin-reaves,G,6-5,197,"MAY 29, 1998",28,5,Oklahoma,2026-10-20 11:53:03
+1630567,Scottie Barnes,,,scottie-barnes,F-G,6-8,237,"AUG 01, 2001",25,5,Florida State,2026-10-20 11:53:22
+1630568,Luka Garza,,,luka-garza,C,6-10,252,"DEC 27, 1998",27,5,Iowa,2026-10-20 11:52:52
+1630570,Trendon Watford,,,trendon-watford,G-F,6-9,244,"NOV 09, 2000",25,5,Louisiana State,2026-10-20 11:52:54
+1630572,Sandro Mamukelashvili,,,sandro-mamukelashvili,F-C,6-10,240,"MAY 23, 1999",27,5,Seton Hall,2026-10-20 11:53:03
+1630573,Sam Hauser,,,sam-hauser,F,6-7,217,"DEC 08, 1997",28,5,Virginia,2026-10-20 11:52:52
+1630574,Ariel Hukporti,,,ariel-hukporti,C,7-0,246,"APR 12, 2002",24,2,Riesen Ludwigsburg,2026-10-20 11:53:15
+1630577,Julian Champagnie,,,julian-champagnie,F,6-7,217,"JUN 29, 2001",25,4,St. John's,2026-10-20 11:53:20
+1630578,Alperen Sengun,,,alperen-sengun,C,6-11,271,"JUL 25, 2002",24,5,Besiktas,2026-10-20 11:53:00
+1630579,Jericho Sims,,,jericho-sims,C,6-10,250,"OCT 20, 1998",28,5,Texas,2026-10-20 11:53:05
+1630581,Josh Giddey,,,josh-giddey,G,6-8,214,"OCT 10, 2002",24,5,NBA Global Academy,2026-10-20 11:52:55
+1630583,Santi Aldama,,,santi-aldama,F-C,7-0,215,"JAN 10, 2001",25,5,Loyola-Maryland,2026-10-20 11:52:56
+1630590,Scotty Pippen Jr.,,,scotty-pippen-jr,G,6-1,170,"NOV 10, 2000",25,4,Vanderbilt,2026-10-20 11:53:24
+1630591,Jalen Suggs,,,jalen-suggs,G,6-5,207,"JUN 03, 2001",25,5,Gonzaga,2026-10-20 11:53:13
+1630592,Jalen Wilson,,,jalen-wilson,F,6-6,220,"NOV 04, 2000",25,3,Kansas,2026-10-20 07:12:27
+1630595,Cade Cunningham,,,cade-cunningham,G,6-6,220,"SEP 25, 2001",25,5,Oklahoma State,2026-10-20 11:53:26
+1630596,Evan Mobley,,,evan-mobley,C,6-11,230,"JUN 18, 2001",25,5,Southern California,2026-10-20 11:52:53
+1630598,Aaron Wiggins,,,aaron-wiggins,G,6-5,190,"JAN 02, 1999",27,5,Maryland,2026-10-20 07:12:27
+1630611,Gui Santos,,,gui-santos,F,6-7,225,"JUN 22, 2002",24,3,Minas,2026-10-20 11:52:59
+1630619,Moussa Cisse,,,moussa-cisse,C,6-11,220,"SEP 10, 2002",24,1,Memphis,2026-10-20 11:52:56
+1630631,Jose Alvarado,,,jose-alvarado,G,6-0,179,"APR 12, 1998",28,5,Georgia Tech,2026-10-20 11:53:09
+1630643,Jay Huff,,,jay-huff,C,7-1,240,"AUG 25, 1997",29,5,Virginia,2026-10-20 11:53:14
+1630658,Colin Castleton,,,colin-castleton,C,6-11,250,"MAY 25, 2000",26,3,Florida,2026-10-20 11:53:13
+1630692,Jordan Goodwin,,,jordan-goodwin,G,6-3,215,"OCT 23, 1998",27,5,St. Louis,2026-10-20 11:53:16
+1630695,Micah Potter,,,micah-potter,C,6-9,248,"APR 06, 1998",28,5,Wisconsin,2026-10-20 11:53:18
+1630696,Dru Smith,,,dru-smith,G,6-2,200,"DEC 30, 1997",28,4,Missouri,2026-10-20 11:53:04
+1630700,Dyson Daniels,,,dyson-daniels,G,6-7,199,"MAR 17, 2003",23,4,NBA G League Ignite,2026-10-20 07:12:27
+1630702,Jaden Hardy,,,jaden-hardy,G,6-4,198,"JUL 05, 2002",24,4,NBA G League Ignite,2026-10-20 11:53:03
+1630703,Scoot Henderson,,,scoot-henderson,G,6-3,207,"FEB 03, 2004",22,3,NBA G League Ignite,2026-10-20 11:53:18
+1631094,Paolo Banchero,,,paolo-banchero,F,6-10,250,"NOV 12, 2002",23,4,Duke,2026-10-20 11:53:13
+1631095,Jabari Smith Jr.,,,jabari-smith-jr,F,6-11,231,"MAY 13, 2003",23,4,Auburn,2026-10-20 11:53:00
+1631096,Chet Holmgren,,,chet-holmgren,C-F,7-1,208,"MAY 01, 2002",24,3,Gonzaga,2026-10-20 11:53:21
+1631097,Bennedict Mathurin,,,bennedict-mathurin,G-F,6-5,222,"JUN 19, 2002",24,4,Arizona,2026-10-20 11:52:54
+1631099,Keegan Murray,,,keegan-murray,F,6-8,225,"AUG 19, 2000",26,4,Iowa,2026-10-20 11:53:19
+1631101,Shaedon Sharpe,,,shaedon-sharpe,G,6-5,210,"MAY 30, 2003",23,4,Kentucky,2026-10-20 11:53:18
+1631105,Jalen Duren,,,jalen-duren,C,6-10,250,"NOV 18, 2003",22,4,Memphis,2026-10-20 11:53:26
+1631106,Tari Eason,,,tari-eason,F,6-8,229,"MAY 10, 2001",25,4,Louisiana State,2026-10-20 11:53:00
+1631107,Nikola Jović,,,nikola-jović,F,6-10,245,"JUN 09, 2003",23,4,Mega Basket,2026-10-20 11:53:04
+1631108,Max Christie,,,max-christie,G,6-5,190,"FEB 10, 2003",23,4,Michigan State,2026-10-20 11:52:56
+1631109,Mark Williams,,,mark-williams,C,7-1,240,"DEC 16, 2001",24,4,Duke,2026-10-20 11:53:16
+1631114,Jalen Williams,,,jalen-williams,G-F,6-5,211,"APR 14, 2001",25,4,Santa Clara,2026-10-20 11:53:21
+1631117,Walker Kessler,,,walker-kessler,C,7-1,245,"JUL 26, 2001",25,4,Auburn,2026-10-20 11:53:03
+1631119,Jaylin Williams,,,jaylin-williams,F,6-9,240,"JUN 29, 2002",24,4,Arkansas,2026-10-20 11:53:21
+1631121,Bryce McGowens,,,bryce-mcgowens,G,6-6,202,"NOV 08, 2002",23,4,Nebraska,2026-10-20 11:52:54
+1631123,Jamaree Bouyea,,,jamaree-bouyea,G,6-2,180,"JUN 27, 1999",27,4,San Francisco,2026-10-20 11:53:16
+1631124,Julian Strawther,,,julian-strawther,G,6-6,205,"APR 18, 2002",24,3,Gonzaga,2026-10-20 11:52:58
+1631126,Caleb Love,,,caleb-love,G,6-3,212,"SEP 27, 2001",25,1,Arizona,2026-10-20 11:53:15
+1631127,Harrison Ingram,,,harrison-ingram,F,6-5,230,"NOV 27, 2002",23,2,North Carolina,2026-10-20 11:53:23
+1631128,Christian Braun,,,christian-braun,G,6-6,220,"APR 17, 2001",25,4,Kansas,2026-10-20 11:52:58
+1631131,Oscar Tshiebwe,,,oscar-tshiebwe,F-C,6-8,270,"NOV 27, 1999",26,3,Kentucky,2026-10-20 11:53:00
+1631133,Jabari Walker,,,jabari-walker,F,6-7,237,"JUL 30, 2002",24,4,Colorado,2026-10-20 11:53:15
+1631157,Ryan Rollins,,,ryan-rollins,G,6-3,180,"JUL 03, 2002",24,4,Toledo,2026-10-20 11:53:05
+1631159,Leonard Miller,,,leonard-miller,F,6-10,220,"NOV 26, 2003",22,3,NBA G League Ignite,2026-10-20 11:52:55
+1631165,Keon Ellis,,,keon-ellis,G,6-4,180,"JAN 08, 2000",26,4,Alabama,2026-10-20 11:53:08
+1631166,Drew Timme,,,drew-timme,F,6-9,235,"SEP 09, 2000",26,2,Gonzaga,2026-10-20 11:53:16
+1631169,Josh Minott,,,josh-minott,F,6-9,215,"NOV 25, 2002",23,4,Memphis,2026-10-20 11:53:08
+1631170,Jaime Jaquez Jr.,,,jaime-jaquez-jr,G,6-7,225,"FEB 18, 2001",25,3,UCLA,2026-10-20 11:53:05
+1631172,Ousmane Dieng,,,ousmane-dieng,F,6-9,185,"MAY 21, 2003",23,4,New Zealand Breakers,2026-10-20 11:53:05
+1631199,Ron Harper Jr.,,,ron-harper-jr,G-F,6-5,231,"APR 12, 2000",26,4,Rutgers,2026-10-20 11:52:52
+1631200,Kris Murray,,,kris-murray,F,6-8,218,"AUG 19, 2000",26,3,Iowa,2026-10-20 11:53:24
+1631204,Marcus Sasser,,,marcus-sasser,G,6-2,195,"SEP 21, 2000",26,3,Houston,2026-10-20 11:52:56
+1631212,Peyton Watson,,,peyton-watson,G,6-7,215,"SEP 11, 2002",24,4,UCLA,2026-10-20 11:52:53
+1631215,Khalifa Diop,,,khalifa-diop,C,6-10,231,"JAN 15, 2002",24,R,CB Gran Canaria,2026-10-20 11:52:53
+1631217,Moussa Diabaté,,,moussa-diabaté,F,6-10,210,"JAN 21, 2002",24,4,Michigan,2026-10-20 11:53:27
+1631218,Trayce Jackson-Davis,,,trayce-jackson-davis,F,6-9,245,"FEB 22, 2000",26,3,Indiana,2026-10-20 11:53:22
+1631221,Collin Gillespie,,,collin-gillespie,G,6-1,195,"JUN 25, 1999",27,3,Villanova,2026-10-20 11:53:16
+1631222,Jake LaRavia,,,jake-laravia,F,6-8,235,"NOV 03, 2001",24,4,Wake Forest,2026-10-20 11:53:03
+1631230,Dominick Barlow,,,dominick-barlow,F,6-9,224,"MAY 26, 2003",23,4,Overtime Elite,2026-10-20 11:53:15
+1631243,Mouhamed Gueye,,,mouhamed-gueye,F,6-11,210,"NOV 09, 2002",23,3,Washington State,2026-10-20 07:12:27
+1631245,Quenton Jackson,,,quenton-jackson,G,6-4,173,"SEP 15, 1998",28,4,Texas A&M,2026-10-20 11:53:14
+1631248,Baylor Scheierman,,,baylor-scheierman,G,6-6,213,"SEP 26, 2000",26,2,Creighton,2026-10-20 11:52:52
+1631255,Karlo Matković,,,karlo-matković,F-C,6-11,255,"MAR 30, 2001",25,2,Mega Basket,2026-10-20 11:52:54
+1631260,AJ Green,,,aj-green,G,6-4,190,"SEP 27, 1999",27,4,Northern Iowa,2026-10-20 11:53:05
+1631288,Jamal Cain,,,jamal-cain,F,6-7,207,"MAR 20, 1999",27,4,Oakland,2026-10-20 11:53:13
+1631321,Sidy Cissoko,,,sidy-cissoko,G,6-6,220,"APR 02, 2004",22,3,NBA G League Ignite,2026-10-20 11:53:18
+1631323,Simone Fontecchio,,,simone-fontecchio,F,6-7,220,"DEC 09, 1995",30,4,Baskonia,2026-10-20 11:53:04
+1631342,Daeqwon Plowden,,,daeqwon-plowden,G-F,6-4,216,"AUG 29, 1998",28,2,Bowling Green,2026-10-20 11:53:19
+1631457,Alex Morales,,,alex-morales,G,6-6,195,"NOV 21, 1997",28,1,Wagner,2026-10-20 11:53:13
+1641705,Victor Wembanyama,,,victor-wembanyama,F-C,7-4,235,"JAN 04, 2004",22,3,Metropolitans 92,2026-10-20 11:53:20
+1641706,Brandon Miller,,,brandon-miller,F,6-7,200,"NOV 22, 2002",23,3,Alabama,2026-10-20 11:53:27
+1641707,Taylor Hendricks,,,taylor-hendricks,F,6-9,215,"NOV 22, 2003",22,3,Central Florida,2026-10-20 11:53:24
+1641708,Amen Thompson,,,amen-thompson,G-F,6-7,227,"JAN 30, 2003",23,3,Overtime Elite,2026-10-20 11:53:00
+1641709,Ausar Thompson,,,ausar-thompson,G-F,6-7,205,"JAN 30, 2003",23,3,Overtime Elite,2026-10-20 11:53:26
+1641710,Anthony Black,,,anthony-black,G,6-7,212,"JAN 20, 2004",22,3,Arkansas,2026-10-20 11:53:13
+1641711,Gradey Dick,,,gradey-dick,G-F,6-7,200,"NOV 20, 2003",22,3,Kansas,2026-10-20 11:53:02
+1641712,Rayan Rupert,,,rayan-rupert,G-F,6-7,205,"MAY 31, 2004",22,3,New Zealand Breakers,2026-10-20 11:53:15
+1641713,GG Jackson,,,gg-jackson,F,6-9,210,"DEC 17, 2004",21,3,South Carolina,2026-10-20 11:53:24
+1641715,Cam Whitmore,,,cam-whitmore,F,6-6,230,"JUL 08, 2004",22,3,Villanova,2026-10-20 11:52:58
+1641716,Jarace Walker,,,jarace-walker,F,6-7,235,"SEP 04, 2003",23,3,Houston,2026-10-20 11:53:14
+1641717,Cason Wallace,,,cason-wallace,G,6-3,195,"NOV 07, 2003",22,3,Kentucky,2026-10-20 11:53:21
+1641718,Keyonte George,,,keyonte-george,G,6-5,185,"NOV 08, 2003",22,3,Baylor,2026-10-20 11:53:23
+1641722,Jordan Hawkins,,,jordan-hawkins,G,6-4,190,"APR 29, 2002",24,3,Connecticut,2026-10-20 11:52:55
+1641724,Jett Howard,,,jett-howard,G,6-8,215,"SEP 14, 2003",23,3,Michigan,2026-10-20 11:52:56
+1641725,Trey Alexander,,,trey-alexander,G,6-5,185,"MAY 02, 2003",23,2,Creighton,2026-10-20 11:53:23
+1641726,Dereck Lively II,,,dereck-lively-ii,C,7-1,230,"FEB 12, 2004",22,3,Duke,2026-10-20 11:52:56
+1641729,Brice Sensabaugh,,,brice-sensabaugh,F,6-6,225,"OCT 30, 2003",22,3,Ohio State,2026-10-20 11:53:23
+1641730,Noah Clowney,,,noah-clowney,F-C,6-10,240,"JUL 14, 2004",22,3,Alabama,2026-10-20 11:53:08
+1641731,Bilal Coulibaly,,,bilal-coulibaly,G,6-7,195,"JUL 26, 2004",22,3,Metropolitans 92,2026-10-20 11:53:25
+1641736,Reece Beekman,,,reece-beekman,G,6-1,190,"OCT 08, 2001",25,1,Virginia,2026-10-20 11:53:25
+1641737,Adem Bona,,,adem-bona,F,6-10,235,"MAR 28, 2003",23,2,UCLA,2026-10-20 11:53:15
+1641738,Kobe Brown,,,kobe-brown,F,6-7,250,"JAN 01, 2000",26,3,Missouri,2026-10-20 11:53:14
+1641739,Toumani Camara,,,toumani-camara,F,6-7,230,"MAY 08, 2000",26,3,Dayton,2026-10-20 11:53:18
+1641740,Jaylen Clark,,,jaylen-clark,G,6-5,205,"OCT 13, 2001",25,2,UCLA,2026-10-20 11:53:06
+1641744,Zach Edey,,,zach-edey,C,7-4,305,"MAY 14, 2002",24,2,Purdue,2026-10-20 11:53:24
+1641747,DaRon Holmes II,,,daron-holmes-ii,F,6-9,225,"AUG 15, 2002",24,1,Dayton,2026-10-20 11:52:58
+1641750,Ryan Kalkbrenner,,,ryan-kalkbrenner,C,7-1,256,"JAN 17, 2002",24,1,Creighton,2026-10-20 11:53:27
+1641751,Arthur Kaluma,,,arthur-kaluma,F,6-7,225,"MAR 01, 2002",24,R,Texas,2026-10-20 11:53:03
+1641755,Kevin McCullar Jr.,,,kevin-mccullar-jr,G,6-6,210,"MAR 15, 2001",25,2,Kansas,2026-10-20 11:53:09
+1641757,Jordan Miller,,,jordan-miller,G,6-5,194,"JAN 23, 2000",26,3,Miami,2026-10-20 11:53:02
+1641759,Dillon Mitchell,,,dillon-mitchell,F,6-6,200,"OCT 03, 2003",23,R,St. John's,2026-10-20 11:52:52
+1641761,Grant Nelson,,,grant-nelson,F,6-10,240,"MAR 18, 2002",24,1,Alabama,2026-10-20 11:53:08
+1641763,Julian Phillips,,,julian-phillips,F,6-7,205,"NOV 05, 2003",22,3,Tennessee,2026-10-20 11:53:00
+1641764,Brandin Podziemski,,,brandin-podziemski,G,6-4,208,"FEB 25, 2003",23,3,Santa Clara,2026-10-20 11:52:59
+1641765,Olivier-Maxence Prosper,,,olivier-maxence-prosper,F,6-7,230,"JUL 03, 2002",24,3,Marquette,2026-10-20 11:53:24
+1641767,Ben Sheppard,,,ben-sheppard,G,6-6,190,"JUL 16, 2001",25,3,Belmont,2026-10-20 11:53:14
+1641771,Jalen Slawson,,,jalen-slawson,F,6-7,215,"OCT 22, 1999",26,2,Furman,2026-10-20 11:53:14
+1641772,Nae'Qwan Tomlin,,,naeqwan-tomlin,F,6-8,210,"DEC 19, 2000",25,2,Memphis,2026-10-20 11:52:53
+1641774,Tristan Vukcevic,,,tristan-vukcevic,F,7-0,220,"MAR 11, 2003",23,3,Real Madrid,2026-10-20 11:53:25
+1641775,Jordan Walsh,,,jordan-walsh,G,6-6,210,"MAR 03, 2004",22,3,Arkansas,2026-10-20 11:52:52
+1641778,Leaky Black,,,leaky-black,F,6-7,209,"JUN 14, 1999",27,2,North Carolina,2026-10-20 11:53:19
+1641783,Tristan da Silva,,,tristan-da-silva,F,6-8,217,"MAY 15, 2001",25,2,Colorado,2026-10-20 11:53:13
+1641790,PJ Hall,,,pj-hall,C,6-9,245,"FEB 21, 2002",24,2,Clemson,2026-10-20 11:53:27
+1641796,Pelle Larsson,,,pelle-larsson,G,6-5,215,"FEB 23, 2001",25,2,Arizona,2026-10-20 11:53:04
+1641824,Matas Buzelis,,,matas-buzelis,F,6-9,196,"OCT 13, 2004",22,2,NBA G League Ignite,2026-10-20 11:52:55
+1641842,Ronald Holland II,,,ronald-holland-ii,F,6-8,206,"JUL 07, 2005",21,2,NBA G League Ignite,2026-10-20 11:53:26
+1641844,Tarik Biberovic,,,tarik-biberovic,F,6-6,218,"JAN 28, 2001",25,R,                                   ,2026-10-20 11:52:56
+1641854,Craig Porter Jr.,,,craig-porter-jr,G,6-1,194,"FEB 26, 2000",26,3,Wichita State,2026-10-20 11:52:53
+1641869,Malachi Smith,,,malachi-smith,G,6-4,205,"DEC 06, 1999",26,1,Gonzaga,2026-10-20 11:53:22
+1641871,Duop Reath,,,duop-reath,C,6-10,245,"JUN 26, 1996",30,3,Louisiana State,2026-10-20 11:53:16
+1641989,Elijah Harkless,,,elijah-harkless,G,6-3,195,"FEB 03, 2000",26,2,UNLV,2026-10-20 11:53:26
+1642066,Myron Gardner,,,myron-gardner,F,6-5,225,"MAY 21, 2001",25,1,Arkansas-Little Rock,2026-10-20 11:53:04
+1642258,Zaccharie Risacher,,,zaccharie-risacher,F,6-8,200,"APR 08, 2005",21,2,JL Bourg-en-Bresse,2026-10-20 11:52:56
+1642259,Alex Sarr,,,alex-sarr,C,7-0,205,"APR 26, 2005",21,2,Washington Wizards,2026-10-20 11:53:25
+1642260,Nikola Topić,,,nikola-topić,G,6-6,200,"AUG 10, 2005",21,1,Crvena zvezda,2026-10-20 11:53:21
+1642262,Cody Williams,,,cody-williams,F,6-7,190,"NOV 20, 2004",21,2,Colorado,2026-10-20 11:53:06
+1642263,Reed Sheppard,,,reed-sheppard,G,6-2,189,"JUN 24, 2004",22,2,Kentucky,2026-10-20 11:53:00
+1642264,Stephon Castle,,,stephon-castle,G,6-6,215,"NOV 01, 2004",21,2,Connecticut,2026-10-20 11:53:20
+1642266,Ja'Kobe Walter,,,jakobe-walter,G,6-5,180,"SEP 04, 2004",22,2,Baylor,2026-10-20 11:53:22
+1642267,Bub Carrington,,,bub-carrington,G,6-4,190,"JUL 21, 2005",21,2,Pittsburgh,2026-10-20 11:53:25
+1642268,Isaiah Collier,,,isaiah-collier,G,6-4,210,"OCT 08, 2004",22,2,Southern California,2026-10-20 11:53:23
+1642269,Devin Carter,,,devin-carter,G,6-2,199,"MAR 18, 2002",24,2,Providence,2026-10-20 11:52:52
+1642270,Donovan Clingan,,,donovan-clingan,C,7-2,280,"FEB 23, 2004",22,2,Connecticut,2026-10-20 11:53:18
+1642271,Kyle Filipowski,,,kyle-filipowski,C,6-11,250,"NOV 07, 2003",22,2,Duke,2026-10-20 11:53:23
+1642272,Jared McCain,,,jared-mccain,G,6-2,195,"FEB 20, 2004",22,2,Duke,2026-10-20 11:53:21
+1642273,Kyshawn George,,,kyshawn-george,F,6-8,200,"DEC 12, 2003",22,2,Miami,2026-10-20 11:53:25
+1642274,Yves Missi,,,yves-missi,C,6-11,236,"MAY 14, 2004",22,2,Baylor,2026-10-20 11:52:54
+1642275,Tidjane Salaün,,,tidjane-salaün,F,6-10,207,"AUG 10, 2005",21,2,Cholet,2026-10-20 11:53:27
+1642276,Kel'el Ware,,,kelel-ware,C,7-0,230,"APR 20, 2004",22,2,Indiana,2026-10-20 11:53:05
+1642277,Johnny Furphy,,,johnny-furphy,G,6-8,200,"DEC 08, 2004",21,2,Kansas,2026-10-20 11:53:14
+1642278,Tyler Kolek,,,tyler-kolek,G,6-2,195,"MAR 27, 2001",25,2,Marquette,2026-10-20 11:53:09
+1642281,Jaylon Tyson,,,jaylon-tyson,G-F,6-6,224,"DEC 02, 2002",23,2,California,2026-10-20 11:52:53
+1642284,Alex Karaban,,,alex-karaban,F,6-7,220,"NOV 11, 2002",23,R,Connecticut,2026-10-20 11:53:19
+1642285,Cam Spencer,,,cam-spencer,G,6-3,205,"APR 06, 2000",26,2,Connecticut,2026-10-20 11:53:24
+1642345,Oso Ighodaro,,,oso-ighodaro,F,6-11,235,"JUL 14, 2002",24,2,Marquette,2026-10-20 11:53:16
+1642346,Ryan Dunn,,,ryan-dunn,F,6-7,216,"JAN 07, 2003",23,2,Virginia,2026-10-20 11:53:16
+1642347,Jamal Shead,,,jamal-shead,G,6-1,200,"JUL 24, 2002",24,2,Houston,2026-10-20 11:53:22
+1642348,Justin Edwards,,,justin-edwards,F,6-7,217,"DEC 16, 2003",22,2,Kentucky,2026-10-20 11:53:15
+1642349,Ajay Mitchell,,,ajay-mitchell,G,6-4,190,"JUN 25, 2002",24,2,California-Santa Barbara,2026-10-20 11:53:21
+1642350,Trevon Brazile,,,trevon-brazile,F,6-10,220,"JAN 07, 2003",23,R,Arkansas,2026-10-20 11:52:58
+1642352,Keshad Johnson,,,keshad-johnson,F,6-6,230,"JUN 23, 2001",25,2,Arizona,2026-10-20 11:53:04
+1642353,Cam Christie,,,cam-christie,G,6-5,190,"JUL 24, 2005",21,2,Minnesota,2026-10-20 11:53:02
+1642355,Bronny James,,,bronny-james,G,6-2,210,"OCT 06, 2004",22,2,Southern California,2026-10-20 11:53:03
+1642357,David Jones Garcia,,,david-jones-garcia,G,6-4,210,"NOV 24, 2001",24,1,Memphis,2026-10-20 11:53:20
+1642358,AJ Johnson,,,aj-johnson,G,6-6,175,"DEC 01, 2004",21,2,Illawarra,2026-10-20 11:52:54
+1642359,Pacôme Dadiet,,,pacôme-dadiet,F,6-9,210,"JUL 27, 2005",21,2,Ratiopharm Ulm,2026-10-20 11:53:09
+1642363,Nique Clifford,,,nique-clifford,G,6-5,210,"FEB 09, 2002",24,1,Colorado State,2026-10-20 11:53:19
+1642364,Jamir Watkins,,,jamir-watkins,F,6-5,210,"JUL 06, 2001",25,1,Florida State,2026-10-20 11:53:25
+1642366,Quinten Post,,,quinten-post,C,7-0,238,"MAR 21, 2000",26,2,Boston College,2026-10-20 11:53:24
+1642367,Jonathan Mogbo,,,jonathan-mogbo,F,6-7,225,"OCT 29, 2001",24,2,San Francisco,2026-10-20 11:53:19
+1642369,Michael Ajayi,,,michael-ajayi,G,6-7,235,"JUN 23, 2003",23,R,Butler,2026-10-20 11:53:27
+1642377,Jaylen Wells,,,jaylen-wells,F,6-7,,"AUG 26, 2003",23,2,Washington State,2026-10-20 11:53:24
+1642382,Branden Carlson,,,branden-carlson,C,7-0,220,"JUN 14, 1999",27,2,Utah,2026-10-20 11:53:18
+1642384,Isaiah Crawford,,,isaiah-crawford,F,6-6,225,"NOV 01, 2001",24,2,Louisiana Tech,2026-10-20 11:53:00
+1642389,Zyon Pullin,,,zyon-pullin,G,6-4,206,"MAR 03, 2001",25,2,Florida,2026-10-20 11:53:06
+1642391,Ugonna Onyenso,,,ugonna-onyenso,C,6-11,225,"SEP 25, 2004",22,R,Virginia,2026-10-20 11:53:26
+1642394,Baba Miller,,,baba-miller,F,6-11,204,"FEB 07, 2004",22,R,Cincinnati,2026-10-20 11:53:02
+1642396,Blake Hinson,,,blake-hinson,F,6-8,230,"DEC 26, 1999",26,1,Pittsburgh,2026-10-20 11:53:23
+1642400,Tristan Enaruna,,,tristan-enaruna,F,6-7,220,"JUN 26, 2001",25,1,Cleveland State,2026-10-20 11:52:53
+1642403,Isaac Jones,,,isaac-jones,F,6-8,245,"JUL 11, 2000",26,2,Washington State,2026-10-20 11:53:26
+1642404,Chaz Lanier,,,chaz-lanier,G,6-4,206,"DEC 19, 2001",24,1,Tennessee,2026-10-20 11:53:26
+1642419,Jamison Battle,,,jamison-battle,F,6-7,220,"MAY 10, 2001",25,2,Ohio State,2026-10-20 11:53:22
+1642434,Riley Minix,,,riley-minix,F,6-7,230,"SEP 22, 2000",26,2,Morehead State,2026-10-20 11:52:53
+1642449,Tolu Smith,,,tolu-smith,F,6-11,,"JUL 26, 2000",26,2,Mississippi State,2026-10-20 11:53:26
+1642450,Daniss Jenkins,,,daniss-jenkins,G,6-4,165,"AUG 17, 2001",25,2,St. John's,2026-10-20 11:53:26
+1642461,Spencer Jones,,,spencer-jones,F,6-7,225,"JUN 14, 2001",25,2,Stanford,2026-10-20 11:52:58
+1642484,RayJ Dennis,,,rayj-dennis,G,6-1,180,"MAR 30, 2001",25,2,Baylor,2026-10-20 07:12:27
+1642502,Malevy Leons,,,malevy-leons,F,6-9,206,"SEP 23, 1999",27,2,Bradley,2026-10-20 11:52:59
+1642504,Cormac Ryan,,,cormac-ryan,G,6-5,205,"OCT 26, 1998",27,1,North Carolina,2026-10-20 11:53:05
+1642843,Cooper Flagg,,,cooper-flagg,F,6-10,205,"DEC 21, 2006",19,1,Duke,2026-10-20 11:52:56
+1642844,Dylan Harper,,,dylan-harper,G,6-5,215,"MAR 02, 2006",20,1,Rutgers,2026-10-20 11:53:20
+1642845,VJ Edgecombe,,,vj-edgecombe,G,6-5,190,"JUL 30, 2005",21,1,Baylor,2026-10-20 11:53:15
+1642846,Ace Bailey,,,ace-bailey,F,6-9,200,"AUG 13, 2006",20,1,Rutgers,2026-10-20 11:53:23
+1642847,Jeremiah Fears,,,jeremiah-fears,G,6-3,188,"OCT 14, 2006",20,1,Oklahoma,2026-10-20 11:52:54
+1642848,Tre Johnson,,,tre-johnson,G,6-5,190,"MAR 07, 2006",20,1,Texas,2026-10-20 11:53:25
+1642849,Nolan Traore,,,nolan-traore,G,6-4,190,"MAY 28, 2006",20,1,Saint-Quentin,2026-10-20 11:53:08
+1642850,Thomas Sorber,,,thomas-sorber,C,6-9,250,"DEC 25, 2005",20,R,Georgetown,2026-10-20 11:53:21
+1642851,Kon Knueppel,,,kon-knueppel,G-F,6-6,215,"AUG 03, 2005",21,1,Duke,2026-10-20 11:53:27
+1642852,Derik Queen,,,derik-queen,C,6-11,225,"DEC 27, 2004",21,1,Maryland,2026-10-20 11:52:54
+1642853,Rasheer Fleming,,,rasheer-fleming,F,6-9,240,"JUL 10, 2004",22,1,St. Joseph's (PA),2026-10-20 11:53:16
+1642854,Asa Newell,,,asa-newell,F,6-9,220,"OCT 05, 2005",21,1,Georgia,2026-10-20 07:12:27
+1642855,Noa Essengue,,,noa-essengue,F,6-9,194,"DEC 18, 2006",19,1,Ratiopharm Ulm (Germany),2026-10-20 11:52:55
+1642856,Egor Dëmin,,,egor-dëmin,G,6-9,212,"MAR 03, 2006",20,1,Brigham Young,2026-10-20 11:53:08
+1642857,Kasparas Jakučionis,,,kasparas-jakučionis,G,6-5,200,"MAY 29, 2006",20,1,Illinois-Urbana-Champaign,2026-10-20 11:53:05
+1642859,Jase Richardson,,,jase-richardson,G,6-2,185,"OCT 16, 2005",21,1,Michigan State,2026-10-20 11:53:13
+1642860,Will Riley,,,will-riley,F,6-9,180,"FEB 10, 2006",20,1,Illinois-Urbana-Champaign,2026-10-20 11:53:25
+1642862,Liam McNeeley,,,liam-mcneeley,F,6-8,210,"OCT 10, 2005",21,1,Connecticut,2026-10-20 11:53:27
+1642863,Khaman Maluach,,,khaman-maluach,C,7-1,250,"SEP 14, 2006",20,1,Duke,2026-10-20 11:53:16
+1642864,Hugo González,,,hugo-gonzález,G,6-6,200,"FEB 05, 2006",20,1,Spain,2026-10-20 11:52:52
+1642865,Yaxel Lendeborg,,,yaxel-lendeborg,F,6-9,247,"SEP 30, 2002",24,R,Michigan,2026-10-20 11:52:59
+1642866,Joan Beringer,,,joan-beringer,F,7-0,230,"NOV 11, 2006",19,1,Cedevita Olimpija (Slovenia),2026-10-20 11:53:06
+1642867,Collin Murray-Boyles,,,collin-murray-boyles,F,6-7,245,"JUN 10, 2005",21,1,South Carolina,2026-10-20 11:53:22
+1642868,Carter Bryant,,,carter-bryant,F,6-6,220,"NOV 26, 2005",20,1,Arizona,2026-10-20 11:53:20
+1642869,Noah Penda,,,noah-penda,G-F,6-7,242,"JAN 07, 2005",21,1,Le Mans Sarthe,2026-10-20 11:53:13
+1642873,Amari Williams,,,amari-williams,F-C,6-11,269,"JAN 28, 2002",24,1,Kentucky,2026-10-20 11:52:52
+1642874,Danny Wolf,,,danny-wolf,F,6-11,256,"MAY 05, 2004",22,1,Michigan,2026-10-20 11:53:08
+1642875,Maxime Raynaud,,,maxime-raynaud,C,7-1,268,"APR 07, 2003",23,1,Stanford,2026-10-20 11:53:19
+1642876,Adou Thiero,,,adou-thiero,G,6-7,220,"MAY 08, 2004",22,1,Arkansas,2026-10-20 11:53:03
+1642878,Tyrese Proctor,,,tyrese-proctor,G,6-4,185,"APR 01, 2004",22,1,Duke,2026-10-20 11:52:53
+1642879,Ben Saraf,,,ben-saraf,G,6-5,212,"APR 14, 2006",20,1,Ratiopharm Ulm,2026-10-20 11:53:08
+1642880,Kam Jones,,,kam-jones,G,6-4,200,"FEB 25, 2002",24,1,Marquette,2026-10-20 11:53:05
+1642881,Bogoljub Marković,,,bogoljub-marković,F,6-10,210,"JUL 12, 2005",21,R,Serbia,2026-10-20 11:53:05
+1642882,Julian Reese,,,julian-reese,F,6-11,230,"JUN 30, 2003",23,1,Maryland,2026-10-20 11:52:54
+1642883,Sion James,,,sion-james,G,6-5,220,"DEC 04, 2002",23,1,Duke,2026-10-20 11:53:27
+1642884,Vladislav Goldin,,,vladislav-goldin,C,7-0,255,"MAY 12, 2001",25,1,Michigan,2026-10-20 11:53:04
+1642885,Mohamed Diawara,,,mohamed-diawara,F,6-9,225,"APR 29, 2005",21,1,Paris Basketball,2026-10-20 11:53:09
+1642889,Labaron Philon,,,labaron-philon,G,6-3,177,"NOV 24, 2005",20,R,Alabama,2026-10-20 11:53:15
+1642892,Bennett Stirtz,,,bennett-stirtz,G,6-3,180,"OCT 03, 2003",23,R,Iowa,2026-10-20 11:53:21
+1642905,Yang Hansen,,,hansen-yang,C,7-1,270,"JUN 26, 2005",21,1,Zibo,2026-10-20 11:53:18
+1642907,Cedric Coward,,,cedric-coward,G,6-6,206,"SEP 11, 2003",23,1,Washington State,2026-10-20 11:53:24
+1642910,John Tonje,,,john-tonje,G,6-4,218,"APR 23, 2001",25,1,Wisconsin,2026-10-20 11:53:18
+1642911,Rocco Zikarsky,,,rocco-zikarsky,C,7-3,227,"JUL 11, 2006",20,1,Brisbane Bullets (Australia),2026-10-20 11:53:06
+1642912,Isaiah Evans,,,isaiah-evans,F,6-6,175,"DEC 06, 2005",20,R,Duke,2026-10-20 11:53:06
+1642914,Javon Small,,,javon-small,G,6-1,190,"DEC 19, 2002",23,1,West Virginia,2026-10-20 11:53:24
+1642918,Alijah Martin,,,alijah-martin,G,6-2,210,"DEC 26, 2001",24,1,Florida,2026-10-20 11:53:22
+1642920,Kobe Sanders,,,kobe-sanders,G,6-8,207,"MAY 30, 2002",24,1,Nevada,2026-10-20 11:53:02
+1642923,Otega Oweh,,,otega-oweh,G,6-4,215,"JUN 21, 2003",23,R,Kentucky,2026-10-20 11:53:21
+1642927,Nate Bittle,,,nate-bittle,C,7-0,215,"JUN 03, 2003",23,R,Oregon,2026-10-20 11:53:22
+1642928,Dylan Cardwell,,,dylan-cardwell,C,6-10,255,"DEC 16, 2001",24,1,Auburn,2026-10-20 11:53:19
+1642933,Keshon Gilbert,,,keshon-gilbert,G,6-3,200,"JUN 30, 2003",23,1,Iowa State,2026-10-20 07:12:27
+1642942,Jahmai Mashack,,,jahmai-mashack,G,6-4,203,"NOV 10, 2002",23,1,Tennessee,2026-10-20 11:53:24
+1642948,Ryan Nembhard,,,ryan-nembhard,G,5-11,180,"MAR 10, 2003",23,1,Gonzaga,2026-10-20 11:52:58
+1642949,Yanic Konan Niederhäuser,,,yanic-konan-niederhäuser,C,6-11,242,"MAR 14, 2003",23,1,Penn State,2026-10-20 11:53:02
+1642954,Will Richard,,,will-richard,G,6-3,207,"DEC 24, 2002",23,1,Florida,2026-10-20 11:52:59
+1642959,Chris Youngblood,,,chris-youngblood,G,6-4,,"FEB 09, 2002",24,1,Alabama,2026-10-20 11:53:18
+1642962,Drake Powell,,,drake-powell,G-F,6-6,212,"SEP 08, 2005",21,1,North Carolina,2026-10-20 11:53:08
+1642964,Brooks Barnhizer,,,brooks-barnhizer,G,6-5,230,"MAR 02, 2002",24,1,Northwestern,2026-10-20 11:53:21
+1643018,LJ Cryer,,,lj-cryer,G,6-0,197,"OCT 09, 2001",25,1,Houston,2026-10-20 11:52:59
+1643022,Jaden Akins,,,jaden-akins,G,6-2,195,"FEB 25, 2003",23,R,Michigan State,2026-10-20 11:53:09
+1643024,Chris Mañon,,,chris-mañon,G,6-4,209,"DEC 09, 2001",24,1,Vanderbilt,2026-10-20 11:53:03
+1643052,Chaney Johnson,,,chaney-johnson,G-F,6-7,235,"JUN 20, 2002",24,1,Auburn,2026-10-20 11:53:08
+1643257,Jayson Kent,,,jayson-kent,F,6-8,215,"FEB 03, 2002",24,1,Texas,2026-10-20 11:53:18
+1643407,AJ Dybantsa,,,aj-dybantsa,F,6-9,210,"JAN 29, 2007",19,R,Brigham Young,2026-10-20 11:53:25
+1643408,Darryn Peterson,,,darryn-peterson,G,6-6,205,"JAN 17, 2007",19,R,Kansas,2026-10-20 11:53:23
+1643409,Cameron Boozer,,,cameron-boozer,F,6-8,250,"JUL 18, 2007",19,R,Duke,2026-10-20 11:53:24
+1643410,Caleb Wilson,,,caleb-wilson,F,6-10,215,"JUL 18, 2006",20,R,North Carolina,2026-10-20 11:52:55
+1643411,Darius Acuff Jr.,,,darius-acuff-jr,G,6-2,190,"NOV 16, 2006",19,R,Arkansas,2026-10-20 11:53:19
+1643412,Kingston Flemings,,,kingston-flemings,G,6-3,190,"JAN 03, 2007",19,R,Houston,2026-10-20 07:12:27
+1643413,Keaton Wagler,,,keaton-wagler,G,6-6,175,"FEB 03, 2007",19,R,Illinois,2026-10-20 11:53:02
+1643414,Mikel Brown Jr.,,,mikel-brown-jr,G,6-4,190,"APR 03, 2006",20,R,Louisville,2026-10-20 11:53:08
+1643415,Brayden Burries,,,brayden-burries,G,6-4,205,"SEP 18, 2005",21,R,Arizona,2026-10-20 11:53:05
+1643416,Chris Cenac Jr.,,,chris-cenac-jr,F,6-11,240,"FEB 01, 2007",19,R,Houston,2026-10-20 11:52:52
+1643417,Nate Ament,,,nate-ament,F,6-10,207,"DEC 10, 2006",19,R,Tennessee,2026-10-20 11:53:05
+1643418,Cameron Carr,,,cameron-carr,G,6-5,175,"NOV 21, 2004",21,R,Baylor,2026-10-20 11:53:03
+1643419,Hannes Steinbach,,,hannes-steinbach,F,6-10,248,"MAY 01, 2006",20,R,Washington,2026-10-20 11:53:27
+1643509,Meleek Thomas,,,meleek-thomas,G,6-3,190,"AUG 06, 2006",20,R,Arkansas,2026-10-20 11:52:53
+1643510,Karim Lopez,,,karim-lopez,F,6-8,210,"APR 12, 2007",19,R,,2026-10-20 11:53:24
+1643512,Allen Graves,,,allen-graves,F,6-8,225,"JUL 28, 2006",20,R,Santa Clara,2026-10-20 11:53:22
+1643515,Christian Anderson,,,christian-anderson,G,6-1,165,"APR 02, 2006",20,R,Texas Tech,2026-10-20 11:53:27
+1643516,Morez Johnson Jr.,,,morez-johnson-jr,F,6-10,250,"JAN 25, 2006",20,R,Michigan,2026-10-20 11:52:56
+1643517,Dailyn Swain,,,dailyn-swain,F,6-6,220,"JUL 15, 2005",21,R,Texas,2026-10-20 11:52:55
+1643519,Jayden Quaintance,,,jayden-quaintance,F,6-9,255,"JUL 11, 2007",19,R,Kentucky,2026-10-20 11:53:20
+1643520,Koa Peat,,,koa-peat,F,6-8,235,"JAN 20, 2007",19,R,Arizona,2026-10-20 11:53:16
+1643530,Aday Mara,,,aday-mara,C,7-3,255,"APR 07, 2005",21,R,Michigan,2026-10-20 11:53:21
+1643536,Ebuka Okorie,,,ebuka-okorie,G,6-2,185,"APR 10, 2007",19,R,Stanford,2026-10-20 11:53:26
+1643538,Joshua Jefferson,,,joshua-jefferson,F,6-8,250,"NOV 21, 2003",22,R,Iowa State,2026-10-20 11:53:08
+1643539,Henri Veesaar,,,henri-veesaar,C,6-11,225,"MAR 28, 2004",22,R,North Carolina,2026-10-20 07:12:27
+1643542,Tarris Reed Jr.,,,tarris-reed-jr,C,6-10,265,"AUG 05, 2003",23,R,Connecticut,2026-10-20 11:53:20
+1643544,Zuby Ejiofor,,,zuby-ejiofor,F,6-8,240,"APR 20, 2004",22,R,St. John's,2026-10-20 07:12:27
+1643547,Sergio de Larrea,,,sergio-de-larrea,G,6-6,175,"DEC 04, 2005",20,R,"Valencia, Spain",2026-10-20 11:52:56
+1643548,Tyler Bilodeau,,,tyler-bilodeau,F,6-8,230,"APR 17, 2004",22,R,UCLA,2026-10-20 11:53:08
+1643551,Ja'Kobi Gillespie,,,jakobi-gillespie,G,6-0,186,"MAR 10, 2004",22,R,Tennessee,2026-10-20 11:53:20
+1643552,Braden Smith,,,braden-smith,G,5-11,170,"JUL 25, 2003",23,R,Purdue,2026-10-20 11:53:14
+1643553,Ryan Conwell,,,ryan-conwell,G,6-2,215,"JUN 15, 2004",22,R,Louisville,2026-10-20 11:53:04
+1643555,Jaron Pierre Jr.,,,jaron-pierre-jr,G,6-6,206,"JUL 12, 2002",24,R,Southern Methodist,2026-10-20 11:52:54
+1643558,Jaden Bradley,,,jaden-bradley,G,6-3,200,"SEP 14, 2003",23,R,Arizona,2026-10-20 11:53:22
+1643567,Emanuel Sharp,,,emanuel-sharp,G,6-3,212,"MAR 07, 2004",22,R,Houston,2026-10-20 11:53:19
+1643568,Nick Martinelli,,,nick-martinelli,F,6-7,220,"APR 20, 2004",22,R,Northwestern,2026-10-20 11:53:02
+1643570,Bruce Thornton,,,bruce-thornton,G,6-0,229,"SEP 14, 2003",23,R,Ohio State,2026-10-20 11:53:00
+1643573,Kylan Boswell,,,kylan-boswell,G,6-1,200,"APR 18, 2005",21,R,Illinois,2026-10-20 11:53:27
+1643576,Maliq Brown,,,maliq-brown,F,6-8,225,"NOV 16, 2003",22,R,Duke,2026-10-20 11:53:20
+1643588,Tobi Lawal,,,tobi-lawal,F,6-7,215,"MAY 01, 2003",23,R,Virginia Tech,2026-10-20 11:52:56
+1643589,Tyler Nickel,,,tyler-nickel,F,6-7,220,"SEP 05, 2003",23,R,Vanderbilt,2026-10-20 11:53:09
+1643590,Felix Okpara,,,felix-okpara,C,6-11,235,"APR 20, 2004",22,R,Tennessee,2026-10-20 11:53:25
+1643591,Tobe Awaka,,,tobe-awaka,F,6-8,250,"JAN 30, 2004",22,R,Arizona,2026-10-20 11:52:55
+1643593,Izaiyah Nelson,,,izaiyah-nelson,F,6-10,218,"OCT 01, 2003",23,R,South Florida,2026-10-20 11:53:13
+1643595,Quadir Copeland,,,quadir-copeland,G,6-5,214,"SEP 01, 2003",23,R,North Carolina State,2026-10-20 11:53:00
+1643621,Tre Donaldson,,,tre-donaldson,G,6-1,200,"DEC 11, 2003",22,R,Miami,2026-10-20 11:53:04
+1643624,Bryce Hopkins,,,bryce-hopkins,F,6-7,225,"SEP 07, 2002",24,R,St. John's,2026-10-20 11:52:58
+1643633,Graham Ike,,,graham-ike,F-C,6-10,257,"AUG 03, 2002",24,R,Gonzaga,2026-10-20 11:52:59
+1643637,Jaylin Sellers,,,jaylin-sellers,,6-4,,"JUN 03, 2003",23,R,Providence,2026-10-20 11:52:55
+1643640,"Ernest Udeh, Jr.",,,"ernest-udeh,-jr",C,6-9,266,"JAN 08, 2004",22,R,Miami,2026-10-20 11:52:53
+1643717,Josh Dix,,,josh-dix,,6-5,,"JUN 29, 2004",22,R,Creighton,2026-10-20 11:53:21
+1643721,Carson Cooper,,,carson-cooper,F,6-10,,"APR 09, 2004",22,R,Michigan State,2026-10-20 11:53:24
+1643738,Malik Dia,,,malik-dia,F,6-9,256,"FEB 04, 2004",22,R,Mississippi,2026-10-20 11:52:54
+1643758,AK Okereke,,,ak-okereke,F,6-7,244,"JUL 02, 2003",23,R,Vanderbilt,2026-10-20 11:53:03
+1643813,Alpha Diallo,,,alpha-diallo,G,6-7,210,"JUN 29, 1997",29,R,Providence,2026-10-20 11:52:58

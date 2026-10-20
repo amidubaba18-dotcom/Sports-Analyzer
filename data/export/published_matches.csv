@@ -1,0 +1,128 @@
+﻿id,league,season,date,kickoff,home_team,away_team,markets,status,sort_order,created_at,updated_at
+1,Premier League,2026/2027,2026-10-18,19:30,Arsenal,Chelsea,"[""Shots Over 25.5""]",published,0,2026-10-18 11:05:27,2026-10-18 11:05:27
+2,La Liga,2026/2027,2026-10-18,19:30,Real Madrid,Sevilla,,published,1,2026-10-18 11:37:38,2026-10-18 11:37:38
+3,La Liga,2026-27,2026-10-21,18:00,Levante,Ath Bilbao,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+4,Eredivisie,2026-27,2026-10-23,18:00,Go Ahead Eagles,Telstar,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+5,Bundesliga,2026-27,2026-10-23,18:30,Stuttgart,M'gladbach,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+6,Serie A,2026-27,2026-10-23,18:45,Torino,Monza,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+7,Ligue 1,2026-27,2026-10-23,18:45,Brest,Nice,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+8,Premier League,2026-27,2026-10-23,19:00,Ipswich,Nott'm Forest,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+9,La Liga,2026-27,2026-10-23,19:00,Alaves,Malaga,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+10,Premier League,2026-27,2026-10-24,11:30,Aston Villa,Man City,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+11,La Liga,2026-27,2026-10-24,12:00,Vallecano,Elche,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+12,Serie A,2026-27,2026-10-24,13:00,Cagliari,Bologna,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+13,Serie A,2026-27,2026-10-24,13:00,Como,Sassuolo,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+14,Bundesliga,2026-27,2026-10-24,13:30,Mainz,Werder Bremen,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+15,Bundesliga,2026-27,2026-10-24,13:30,FC Koln,Schalke 04,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+16,Bundesliga,2026-27,2026-10-24,13:30,RB Leipzig,Elversberg,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+17,Bundesliga,2026-27,2026-10-24,13:30,Paderborn,Hamburg,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+18,Bundesliga,2026-27,2026-10-24,13:30,Augsburg,Union Berlin,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+19,Premier League,2026-27,2026-10-24,14:00,Arsenal,Everton,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+20,Premier League,2026-27,2026-10-24,14:00,Coventry,Fulham,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+21,Eredivisie,2026-27,2026-10-24,14:30,Utrecht,Zwolle,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+22,Ligue 1,2026-27,2026-10-24,15:15,Toulouse,Troyes,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+23,Serie A,2026-27,2026-10-24,16:00,Napoli,Roma,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+24,Premier League,2026-27,2026-10-24,16:30,Chelsea,Tottenham,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+25,Bundesliga,2026-27,2026-10-24,16:30,Dortmund,Ein Frankfurt,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+26,La Liga,2026-27,2026-10-24,16:30,Valencia,Villarreal,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+27,Eredivisie,2026-27,2026-10-24,16:45,Willem II,Cambuur,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+28,Serie A,2026-27,2026-10-24,18:45,Lazio,Parma,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+29,Ligue 1,2026-27,2026-10-24,18:45,Lens,Paris FC,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+30,Eredivisie,2026-27,2026-10-24,19:00,Den Haag,Heerenveen,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+31,Serie A,2026-27,2026-10-25,11:30,Inter,Fiorentina,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+32,La Liga,2026-27,2026-10-25,13:00,Ath Bilbao,Getafe,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+33,Premier League,2026-27,2026-10-25,14:00,Liverpool,Brighton,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+34,Premier League,2026-27,2026-10-25,14:00,Crystal Palace,Newcastle,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+35,Premier League,2026-27,2026-10-25,14:00,Man United,Bournemouth,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+36,Premier League,2026-27,2026-10-25,14:00,Hull,Brentford,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+37,Serie A,2026-27,2026-10-25,14:00,Atalanta,Frosinone,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+38,Serie A,2026-27,2026-10-25,14:00,Genoa,Venezia,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+39,Ligue 1,2026-27,2026-10-25,14:00,Monaco,Lille,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+40,Bundesliga,2026-27,2026-10-25,14:30,Hoffenheim,Leverkusen,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+41,La Liga,2026-27,2026-10-25,15:15,Celta,Betis,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+42,Eredivisie,2026-27,2026-10-25,15:45,Sparta Rotterdam,Ajax,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+43,Ligue 1,2026-27,2026-10-25,16:15,Marseille,Le Havre,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+44,Ligue 1,2026-27,2026-10-25,16:15,Rennes,Strasbourg,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+45,Ligue 1,2026-27,2026-10-25,16:15,Angers,Lorient,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+46,Ligue 1,2026-27,2026-10-25,16:15,Auxerre,Le Mans,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+47,Premier League,2026-27,2026-10-25,16:30,Sunderland,Leeds,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+48,Bundesliga,2026-27,2026-10-25,16:30,Freiburg,Bayern Munich,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+49,Serie A,2026-27,2026-10-25,17:00,Lecce,Juventus,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+50,La Liga,2026-27,2026-10-25,17:30,Sociedad,Levante,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+51,Serie A,2026-27,2026-10-25,19:45,Udinese,Milan,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+52,Ligue 1,2026-27,2026-10-25,19:45,Paris SG,Lyon,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+53,La Liga,2026-27,2026-10-25,20:00,Barcelona,Real Madrid,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+54,La Liga,2026-27,2026-10-26,20:00,Sevilla,Osasuna,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+55,Serie A,2026-27,2026-10-27,17:30,Sassuolo,Lazio,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+56,Serie A,2026-27,2026-10-27,19:45,Roma,Cagliari,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+57,Serie A,2026-27,2026-10-27,19:45,Torino,Como,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+58,Serie A,2026-27,2026-10-28,17:30,Milan,Bologna,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+59,Serie A,2026-27,2026-10-28,17:30,Venezia,Inter,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+60,Serie A,2026-27,2026-10-28,17:30,Parma,Udinese,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+61,Serie A,2026-27,2026-10-28,19:45,Genoa,Juventus,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+62,Serie A,2026-27,2026-10-28,19:45,Monza,Napoli,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+63,Serie A,2026-27,2026-10-29,17:30,Frosinone,Lecce,,published,0,2026-10-20 03:56:41,2026-10-20 03:56:41
+64,Serie A,2026-27,2026-10-29,19:45,Fiorentina,Atalanta,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+65,Ligue 1,2026-27,2026-10-30,18:00,Le Havre,Paris SG,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+66,Bundesliga,2026-27,2026-10-30,19:30,Elversberg,Mainz,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+67,Ligue 1,2026-27,2026-10-30,20:05,Lille,Lens,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+68,Premier League,2026-27,2026-10-31,12:30,Chelsea,Man United,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+69,La Liga,2026-27,2026-10-31,13:00,Levante,Ath Madrid,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+70,Serie A,2026-27,2026-10-31,14:00,Bologna,Monza,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+71,Bundesliga,2026-27,2026-10-31,14:30,M'gladbach,Paderborn,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+72,Bundesliga,2026-27,2026-10-31,14:30,Schalke 04,RB Leipzig,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+73,Bundesliga,2026-27,2026-10-31,14:30,Augsburg,Freiburg,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+74,Bundesliga,2026-27,2026-10-31,14:30,Werder Bremen,Hoffenheim,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+75,Bundesliga,2026-27,2026-10-31,14:30,Leverkusen,Stuttgart,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+76,Premier League,2026-27,2026-10-31,15:00,Man City,Brighton,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+77,Premier League,2026-27,2026-10-31,15:00,Bournemouth,Leeds,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+78,Premier League,2026-27,2026-10-31,15:00,Coventry,Sunderland,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+79,Premier League,2026-27,2026-10-31,15:00,Hull,Ipswich,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+80,Premier League,2026-27,2026-10-31,15:00,Brentford,Nott'm Forest,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+81,La Liga,2026-27,2026-10-31,15:15,Vallecano,Celta,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+82,Ligue 1,2026-27,2026-10-31,16:15,Nice,Rennes,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+83,Serie A,2026-27,2026-10-31,17:00,Udinese,Roma,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+84,Premier League,2026-27,2026-10-31,17:30,Tottenham,Crystal Palace,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+85,Bundesliga,2026-27,2026-10-31,17:30,Bayern Munich,Dortmund,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+86,La Liga,2026-27,2026-10-31,17:30,Betis,Malaga,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+87,Serie A,2026-27,2026-10-31,19:45,Milan,Inter,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+88,Ligue 1,2026-27,2026-10-31,19:45,Lyon,Angers,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+89,Ligue 1,2026-27,2026-10-31,19:45,Lorient,Brest,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+90,Ligue 1,2026-27,2026-10-31,19:45,Troyes,Le Mans,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+91,Premier League,2026-27,2026-10-31,20:00,Aston Villa,Fulham,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+92,La Liga,2026-27,2026-10-31,20:00,Barcelona,Alaves,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+93,Eredivisie,2026-27,2026-10-31,20:00,Cambuur,Go Ahead Eagles,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+94,Eredivisie,2026-27,2026-11-01,11:15,Zwolle,Den Haag,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+95,Serie A,2026-27,2026-11-01,11:30,Como,Venezia,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+96,La Liga,2026-27,2026-11-01,13:00,Getafe,Sevilla,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+97,Eredivisie,2026-27,2026-11-01,13:30,Telstar,Utrecht,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+98,Eredivisie,2026-27,2026-11-01,13:30,Excelsior,Twente,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+99,Serie A,2026-27,2026-11-01,14:00,Frosinone,Torino,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+100,Serie A,2026-27,2026-11-01,14:00,Lazio,Cagliari,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+101,Ligue 1,2026-27,2026-11-01,14:00,Strasbourg,Auxerre,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+102,Bundesliga,2026-27,2026-11-01,14:30,Union Berlin,FC Koln,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+103,La Liga,2026-27,2026-11-01,15:15,Santander,Real Madrid,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+104,Eredivisie,2026-27,2026-11-01,15:45,Groningen,Sparta Rotterdam,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+105,Ligue 1,2026-27,2026-11-01,16:15,Paris FC,Monaco,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+106,Premier League,2026-27,2026-11-01,16:30,Liverpool,Arsenal,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+107,Bundesliga,2026-27,2026-11-01,16:30,Ein Frankfurt,Hamburg,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+108,Serie A,2026-27,2026-11-01,17:00,Lecce,Genoa,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+109,La Liga,2026-27,2026-11-01,17:30,Elche,Valencia,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+110,Serie A,2026-27,2026-11-01,19:45,Juventus,Napoli,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+111,Ligue 1,2026-27,2026-11-01,19:45,Marseille,Toulouse,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+112,La Liga,2026-27,2026-11-01,20:00,Ath Bilbao,Sociedad,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+113,Serie A,2026-27,2026-11-02,17:30,Sassuolo,Fiorentina,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+114,Serie A,2026-27,2026-11-02,19:45,Atalanta,Parma,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+115,Premier League,2026-27,2026-11-02,20:00,Newcastle,Everton,,published,0,2026-10-20 03:56:42,2026-10-20 03:56:42
+116,La Liga,2026-27,2026-10-24,14:15,Santander,Espanol,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+117,La Liga,2026-27,2026-10-30,20:00,Villarreal,Espanol,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+118,La Liga,2026-27,2026-10-24,19:00,Ath Madrid,La Coruna,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+119,La Liga,2026-27,2026-11-02,20:00,La Coruna,Osasuna,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+120,Eredivisie,2026-27,2026-10-25,11:15,For Sittard,Excelsior,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+121,Eredivisie,2026-27,2026-10-31,15:30,Feyenoord,For Sittard,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+122,Eredivisie,2026-27,2026-10-25,13:30,Nijmegen,Groningen,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+123,Eredivisie,2026-27,2026-10-31,17:45,Heerenveen,Nijmegen,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+124,Eredivisie,2026-27,2026-10-25,13:30,PSV Eindhoven,Feyenoord,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+125,Eredivisie,2026-27,2026-10-31,17:45,PSV Eindhoven,Willem II,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+126,Eredivisie,2026-27,2026-10-25,19:00,AZ Alkmaar,Twente,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01
+127,Eredivisie,2026-27,2026-10-31,20:00,Ajax,AZ Alkmaar,,published,0,2026-10-20 03:59:01,2026-10-20 03:59:01

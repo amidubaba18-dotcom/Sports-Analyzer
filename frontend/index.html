@@ -1,0 +1,4904 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0D1210">
+  <title>Sports Analyzer</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0D1210;
+      --surface: #161D1A;
+      --surface2: #1E2621;
+      --text: #EDEFEA;
+      --dim: #8FA398;
+      --line: #263129;
+      --accent: #D4B13A;
+      --supported: #4FAE7C;
+      --notsupported: #C96A52;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1,
+    h2,
+    h3,
+    .num {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .frame {
+      width: 100%;
+      max-width: 460px;
+      min-height: 100vh;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* ---------- shell ---------- */
+    .bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+    }
+
+    .appname {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+
+    .bar-date {
+      color: var(--dim);
+      font-size: 13px;
+      background: none;
+      border: 0;
+      padding: 0 4px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .bar-date:hover {
+      color: var(--text);
+    }
+
+    .daynav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .dayarrow {
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .dayarrow:hover {
+      background: var(--surface2);
+    }
+
+    .datestrip {
+      padding-top: 2px;
+      padding-bottom: 8px;
+    }
+
+    /* Says out loud when the dashboard is not showing today. Sits between the
+       date bar and the league chips so it cannot be mistaken for a fixture. */
+    #dashNote {
+      margin-top: 0;
+      padding: 2px 18px 9px;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .back {
+      font-size: 20px;
+      color: var(--dim);
+      background: none;
+      border: 0;
+      padding: 4px 8px 4px 0;
+      cursor: pointer;
+      font-family: inherit;
+      line-height: 1;
+    }
+
+    .back:hover {
+      color: var(--text);
+    }
+
+    .fixture-title {
+      font-size: 16px;
+      font-weight: 600;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: var(--dim);
+      padding: 0 18px 12px;
+    }
+
+    /* ---------- chips ---------- */
+    .chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 0 18px 12px;
+      scrollbar-width: none;
+    }
+
+    .chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chip {
+      flex: none;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      background: var(--surface);
+      color: var(--dim);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+
+    .chip.on {
+      background: var(--accent);
+      color: #1A1405;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .chip.sm {
+      padding: 5px 11px;
+      font-size: 12px;
+    }
+
+    /* ---------- match list ---------- */
+    .section-label {
+      padding: 14px 18px 6px;
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    /* A day inside the season browser: quieter than a section label, because
+       the month is already on screen. */
+    .season-dayhead {
+      padding: 16px 18px 4px;
+      font-size: 12px;
+      color: var(--dim);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .season-dayhead.today {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .match {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border-top: 1px solid var(--line);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      transition: background .12s;
+    }
+
+    .match:hover {
+      background: var(--surface);
+    }
+
+    .teams {
+      font-size: 15px;
+      line-height: 1.5;
+      min-width: 0;
+    }
+
+    .teams .vs {
+      color: var(--dim);
+      font-size: 12px;
+    }
+
+    .time {
+      font-size: 13px;
+      color: var(--dim);
+      font-family: 'Space Grotesk', sans-serif;
+      flex: none;
+    }
+
+    /* ---------- tabs ---------- */
+    .tabs {
+      display: flex;
+      gap: 22px;
+      padding: 4px 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tab {
+      padding: 10px 0;
+      font-size: 13px;
+      color: var(--dim);
+      background: none;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      margin-bottom: -1px;
+    }
+
+    .tab.on {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .panel {
+      padding: 16px 18px 48px;
+    }
+
+    /* ---------- market ---------- */
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      gap: 12px;
+    }
+
+    .stat-name {
+      font-size: 12px;
+      letter-spacing: .3px;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+
+    .line-val {
+      font-size: 12px;
+      color: var(--dim);
+      font-family: 'Space Grotesk', sans-serif;
+      flex: none;
+    }
+
+    .weighted {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 6px 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .weighted .num {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .verdict {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-weight: 600;
+      letter-spacing: .2px;
+    }
+
+    .verdict.sup {
+      background: rgba(79, 174, 124, .15);
+      color: var(--supported);
+    }
+
+    .verdict.not {
+      background: rgba(201, 106, 82, .15);
+      color: var(--notsupported);
+    }
+
+    .verdict.na {
+      background: var(--surface2);
+      color: var(--dim);
+    }
+
+    .evidence {
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 20px;
+    }
+
+    .warn {
+      font-size: 12px;
+      color: var(--accent);
+      background: rgba(212, 177, 58, .1);
+      border: 1px solid rgba(212, 177, 58, .3);
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 16px;
+    }
+
+    /* Measured historical frequency. Deliberately styled as a fact box, not a
+       confidence meter - it says what HAS happened, never what will. */
+    .history {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+
+    .history-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .history-top span:first-child {
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: .3px;
+      text-transform: uppercase;
+    }
+
+    .history-pct {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      flex: none;
+    }
+
+    .history-sub {
+      font-size: 11px;
+      color: var(--dim);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    .source {
+      margin-bottom: 14px;
+    }
+
+    .source-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+      gap: 12px;
+    }
+
+    .source-top span:first-child {
+      color: var(--text);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .source-top span:last-child {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--dim);
+      flex: none;
+    }
+
+    .track {
+      height: 7px;
+      background: var(--surface2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width .35s ease;
+    }
+
+    .fill.not {
+      background: var(--notsupported);
+    }
+
+    .weight-tag {
+      font-size: 10px;
+      color: var(--dim);
+      margin-top: 4px;
+    }
+
+    .note {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.6;
+      padding: 14px;
+      background: var(--surface);
+      border-radius: 6px;
+      border: 1px solid var(--line);
+    }
+
+    /* ---------- line editor ---------- */
+    .line-editor {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .line-editor label {
+      font-size: 12px;
+      color: var(--dim);
+      flex: none;
+    }
+
+    /* ---------- forms / inputs ---------- */
+    input,
+    select {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: .5rem .6rem;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: inherit;
+      width: 100%;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .line-editor input {
+      width: 90px;
+      flex: none;
+      text-align: center;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .btn {
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: .5rem .9rem;
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      border-color: var(--dim);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #1A1405;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn.danger {
+      color: var(--notsupported);
+    }
+
+    .btn.sm {
+      padding: .35rem .6rem;
+      font-size: 12px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      color: var(--dim);
+      margin-bottom: 4px;
+    }
+
+    .row2 {
+      display: flex;
+      gap: 10px;
+    }
+
+    .row2>* {
+      flex: 1;
+    }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mstat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mstat:last-child {
+      border-bottom: 0;
+    }
+
+    .mstat span:last-child {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--dim);
+    }
+
+    /* helper text under a stat block, and a small inline label */
+    .note {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.55;
+      margin-top: 10px;
+    }
+
+    .note code {
+      font-size: 11px;
+      color: var(--text);
+      background: var(--surface2);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    .tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--dim);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 1px 6px;
+      margin-left: 6px;
+      vertical-align: 1px;
+    }
+
+    .tag.trim {
+      border-color: #6b4a2a;
+      color: #d9a441;
+    }
+
+    /* a note that is telling you something went wrong, so it reads as one */
+    .note.warn {
+      color: #e0a458;
+    }
+
+    /* Team profiles: up to eight narrow numeric columns beside a team name.
+       Horizontal scroll rather than squashing, because a number you cannot read
+       is worse than a sideways drag. */
+    .tscroll {
+      overflow-x: auto;
+      margin-top: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ptable {
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .ptable th {
+      font-weight: 500;
+      color: var(--dim);
+      text-align: left;
+      white-space: nowrap;
+      padding: 4px 6px;
+      border-bottom: 1px solid var(--line);
+      font-size: 11px;
+    }
+
+    .ptable td {
+      padding: 2px 3px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ptable .pteam {
+      white-space: nowrap;
+      padding-right: 10px;
+      color: var(--text);
+    }
+
+    .ptable tr.pset .pteam {
+      color: var(--accent);
+    }
+
+    .ptable input.pcell {
+      width: 62px;
+      padding: 5px 6px;
+      background: var(--surface2);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--text);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .ptable input.pcell:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .note summary {
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    pre.log {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--dim);
+      background: var(--surface2);
+      border-radius: 4px;
+      padding: 8px 10px;
+      margin: 6px 0 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* ---------- states ---------- */
+    .state {
+      padding: 44px 24px;
+      text-align: center;
+      color: var(--dim);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .state strong {
+      display: block;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .sk {
+      padding: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .sk-line {
+      height: 12px;
+      background: var(--surface2);
+      border-radius: 3px;
+      margin-bottom: 10px;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .45;
+      }
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 6px 4px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: var(--dim);
+      font-weight: 500;
+    }
+
+    td.n,
+    th.n {
+      text-align: right;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: var(--surface2);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      z-index: 50;
+      max-width: 90vw;
+    }
+
+    .toast.err {
+      border-color: var(--notsupported);
+      color: var(--notsupported);
+    }
+
+    /* ---------- fixtures (admin) ---------- */
+    .fx-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .fx-status {
+      font-size: 12px;
+      color: var(--dim);
+      line-height: 1.45;
+    }
+
+    .fx-status.fx-warn {
+      color: var(--accent);
+    }
+
+    .fx-status a {
+      color: var(--accent);
+    }
+
+    .fx-day {
+      margin: 18px 0 4px;
+    }
+
+    .fx-row {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .fx-row:last-child {
+      border-bottom: none;
+    }
+
+    .fx-body {
+      min-width: 0;
+    }
+
+    .fx-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      font-size: 10px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .fx-teams {
+      font-size: 14px;
+      margin: 3px 0 2px;
+    }
+
+    .fx-ev {
+      font-size: 11px;
+      color: var(--dim);
+    }
+
+    .fx-badge {
+      font-size: 9px;
+      letter-spacing: .5px;
+      padding: 1px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--dim);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .fx-badge.pub {
+      color: var(--supported);
+      border-color: var(--supported);
+    }
+
+    .fx-badge.hold {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .fx-badge.nohist {
+      color: var(--notsupported);
+      border-color: var(--notsupported);
+    }
+
+    .fx-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 4px;
+    }
+
+    .fx-league {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      font-size: 13px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .fx-league:last-child {
+      border-bottom: none;
+    }
+
+    .fx-map {
+      margin-top: 8px;
+      padding: 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+
+    .fx-map .field {
+      margin: 6px 0;
+    }
+
+    .fx-empty {
+      color: var(--dim);
+      font-size: 13px;
+      padding: 12px 0;
+    }
+
+    input[type=checkbox] {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ---------- sport switch + NBA ---------- */
+    .sportbar {
+      display: flex;
+      gap: 6px;
+      padding: 12px 16px 0;
+    }
+
+    .sportbar .sport {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--dim);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .sportbar .sport.on {
+      background: var(--accent);
+      color: #0b0f14;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nba-hero {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 0 2px;
+    }
+
+    .nba-hero .big {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .nba-hero .unit {
+      color: var(--dim);
+      font-size: 13px;
+    }
+
+    .nba-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    .nba-metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px;
+    }
+
+    .nba-metric .k {
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .nba-metric .v {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      margin-top: 3px;
+    }
+
+    .nba-market {
+      border-top: 1px solid var(--line);
+      padding: 10px 0;
+    }
+
+    .nba-market-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .nba-market-top .lbl {
+      font-size: 13px;
+      color: var(--dim);
+    }
+
+    .nba-market-top .val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+    }
+
+    .nba-tag {
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      color: var(--dim);
+    }
+
+    .nba-lines {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 6px 0 4px;
+    }
+
+    .nba-lines label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-bottom: 3px;
+    }
+
+    .nba-lines input {
+      width: 100%;
+      padding: 7px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: var(--surface2);
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .nba-stat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .nba-stat-table th,
+    .nba-stat-table td {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--line);
+      text-align: right;
+    }
+
+    .nba-stat-table th:first-child,
+    .nba-stat-table td:first-child {
+      text-align: left;
+      color: var(--dim);
+      font-weight: 400;
+    }
+
+    .nba-stat-table th {
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--dim);
+      font-weight: 500;
+    }
+
+    /* Five sync columns need room: without fixed widths the error text
+       squeezes the headers into one unreadable line. */
+    .jobs-table {
+      table-layout: fixed;
+    }
+
+    .jobs-table th,
+    .jobs-table td {
+      padding: 6px 5px;
+      vertical-align: top;
+    }
+
+    .jobs-table th:nth-child(1) { width: 15%; }
+    .jobs-table th:nth-child(2) { width: 15%; }
+    .jobs-table th:nth-child(3) { width: 23%; }
+    .jobs-table th:nth-child(4) { width: 9%; }
+    .jobs-table th:nth-child(5) { width: 38%; }
+
+    .jobs-table td:nth-child(5) {
+      color: var(--dim);
+      font-size: 11px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    /* ---------- prediction board ---------- */
+    /* A quiet gold link, not a betting banner: one line, one arrow, no odds. */
+    .boardlink {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: calc(100% - 36px);
+      margin: 0 18px 14px;
+      padding: 11px 13px;
+      border: 1px solid rgba(212, 177, 58, .26);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(212, 177, 58, .10), rgba(212, 177, 58, .02));
+      color: var(--text);
+      font-family: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+
+    .boardlink:hover {
+      border-color: rgba(212, 177, 58, .5);
+      background: linear-gradient(135deg, rgba(212, 177, 58, .15), rgba(212, 177, 58, .04));
+    }
+
+    .boardlink-main {
+      font-size: 13.5px;
+      font-weight: 600;
+      flex: none;
+    }
+
+    .boardlink-sub {
+      flex: 1;
+      font-size: 11px;
+      color: var(--dim);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .boardlink-arrow {
+      color: var(--accent);
+      font-size: 17px;
+      line-height: 1;
+      flex: none;
+    }
+
+    .board-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 4px 18px 12px;
+    }
+
+    .board-kicker {
+      font-size: 10.5px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .board-title {
+      margin: 3px 0 0;
+      font-size: 23px;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+    }
+
+    .board-sub {
+      max-width: 300px;
+      margin-top: 4px;
+      color: var(--dim);
+      font-size: 10.5px;
+      line-height: 1.45;
+    }
+
+    .bf-date {
+      flex: 0 1 150px;
+    }
+
+    /* Fixture-first card: one game, one statistic, three lines. */
+    .match-card {
+      margin: 0 18px 12px;
+      padding: 12px 13px 11px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color .15s;
+    }
+
+    .match-card:hover {
+      border-color: #3B4C40;
+    }
+
+    .mc-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .mc-kicker {
+      color: var(--dim);
+      font-size: 9px;
+      letter-spacing: .08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .mc-game {
+      margin-top: 2px;
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -.01em;
+    }
+
+    .mc-market {
+      margin-top: 2px;
+      color: var(--accent);
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+
+    .mc-flag {
+      flex: none;
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--dim);
+      font-size: 8.5px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .mc-flag.qualified {
+      border-color: rgba(79, 174, 124, .35);
+      color: #7BD3A6;
+    }
+
+    .mc-rows {
+      margin-top: 8px;
+    }
+
+    .mc-row {
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .mc-row:first-child {
+      border-top: 0;
+      padding-top: 2px;
+    }
+
+    .mc-row.combined {
+      margin: 0 -8px;
+      padding: 9px 8px;
+      border-radius: 8px;
+      background: var(--surface2);
+    }
+
+    .mc-row.selected {
+      position: relative;
+      margin: 0 -8px;
+      padding: 9px 8px;
+      border-radius: 8px;
+      background: rgba(212, 177, 58, .06);
+      box-shadow: inset 2px 0 0 rgba(212, 177, 58, .55);
+    }
+
+    .mc-row.selected.combined {
+      background: rgba(212, 177, 58, .1);
+    }
+
+    .mc-pick {
+      margin-left: 6px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(212, 177, 58, .14);
+      color: var(--accent);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .mc-why {
+      display: flex;
+      gap: 7px;
+      align-items: baseline;
+      margin-top: 8px;
+      padding: 7px 8px;
+      border-left: 2px solid rgba(212, 177, 58, .45);
+      background: rgba(212, 177, 58, .045);
+      border-radius: 0 6px 6px 0;
+      color: var(--dim);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .mc-why b {
+      flex: none;
+      color: var(--accent);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .mc-row-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .mc-team {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .mc-venue {
+      margin-right: 4px;
+      color: #6F8378;
+      font-size: 8.5px;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .mc-status {
+      flex: none;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .mc-status.hit {
+      background: rgba(79, 174, 124, .14);
+      color: #7BD3A6;
+    }
+
+    .mc-status.miss {
+      background: rgba(201, 106, 82, .14);
+      color: #E39A86;
+    }
+
+    .mc-status.push,
+    .mc-status.void,
+    .mc-status.pending {
+      background: var(--surface);
+      color: var(--dim);
+    }
+
+    .mc-statline {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .mc-label {
+      display: block;
+      color: #6F8378;
+      font-size: 8.5px;
+      letter-spacing: .05em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .mc-value {
+      display: block;
+      margin-top: 1px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.3;
+    }
+
+    .mc-value .unit {
+      margin-left: 2px;
+      color: var(--dim);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 8.5px;
+    }
+
+    .mc-value .prob {
+      margin-left: 4px;
+      color: var(--dim);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 8.5px;
+    }
+
+    .mc-value .prob.qualified {
+      color: #7BD3A6;
+    }
+
+    .mc-source {
+      display: block;
+      margin-top: 1px;
+      color: #6F8378;
+      font-size: 8px;
+      line-height: 1.3;
+    }
+
+    .mc-note {
+      margin-top: 8px;
+      color: #6F8378;
+      font-size: 9.5px;
+      line-height: 1.45;
+    }
+
+    .mc-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 9.5px;
+      line-height: 1.4;
+    }
+
+    .mc-foot .mc-record {
+      color: var(--text);
+    }
+
+    .mc-open {
+      flex: none;
+      color: var(--accent);
+      font-size: 10px;
+    }
+
+    @media (max-width: 380px) {
+      .mc-statline {
+        grid-template-columns: 1.2fr .9fr .9fr;
+        gap: 5px;
+      }
+    }
+
+    .board-summary {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      margin: 0 18px 12px;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .board-summary .big {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21px;
+      line-height: 1;
+      flex: none;
+    }
+
+    .board-summary .cap {
+      font-size: 11px;
+      color: var(--dim);
+      line-height: 1.5;
+    }
+
+    .board-record {
+      margin-left: auto;
+      flex: none;
+      text-align: right;
+      font-size: 10.5px;
+      color: var(--dim);
+      line-height: 1.45;
+    }
+
+    .board-record b {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .board-filters {
+      margin: 0 18px 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .bf-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .bf-row + .bf-row {
+      margin-top: 9px;
+    }
+
+    .bf-row-wrap {
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+    }
+
+    .bf-field {
+      display: flex;
+      flex: 1 1 145px;
+      min-width: 128px;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .bf-field.bf-narrow {
+      flex: 1 1 108px;
+      min-width: 100px;
+    }
+
+    .bf-field > span,
+    .bf-label {
+      font-size: 9.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .bf-field select,
+    .bf-field input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface2);
+      color: var(--text);
+      font: inherit;
+      font-size: 12px;
+    }
+
+    .bf-field select:focus,
+    .bf-field input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .bf-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .bf-chips {
+      padding: 0 !important;
+      gap: 5px;
+    }
+
+    .bf-chips .chip {
+      padding: 4px 8px;
+      font-size: 10.5px;
+    }
+
+    .bf-chips .chip:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    .bf-clear {
+      margin-left: auto;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--dim);
+      font: inherit;
+      font-size: 10.5px;
+      cursor: pointer;
+    }
+
+    .bf-clear:hover {
+      color: var(--text);
+      border-color: #3B4C40;
+    }
+
+    .bf-note {
+      margin-top: 8px;
+      font-size: 10.5px;
+      line-height: 1.45;
+      color: var(--dim);
+    }
+
+    .pick-scope {
+      color: #6F8378;
+    }
+
+    .pick-result {
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .pick-result.win {
+      background: rgba(79, 174, 124, .13);
+      color: #7BD3A6;
+    }
+
+    .pick-result.loss {
+      background: rgba(201, 106, 82, .13);
+      color: #E39A86;
+    }
+
+    .pick-result.push,
+    .pick-result.void {
+      background: var(--surface2);
+      color: var(--dim);
+    }
+
+    @media (max-width: 560px) {
+      .bf-row {
+        flex-wrap: wrap;
+      }
+
+      .bf-field.bf-narrow {
+        flex: 1 1 40%;
+      }
+
+      .bf-group {
+        flex-wrap: wrap;
+      }
+    }
+
+    .pick {
+      position: relative;
+      margin: 0 18px 11px;
+      padding: 12px 13px 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      cursor: pointer;
+      transition: border-color .15s, transform .12s;
+    }
+
+    .pick:hover {
+      border-color: #3B4C40;
+    }
+
+    .pick:active {
+      transform: scale(.995);
+    }
+
+    .pick-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+
+    .pick-rank {
+      width: 21px;
+      flex: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11.5px;
+      color: #6F8378;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pick-sport {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 9.5px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .pick-tag {
+      flex: none;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    .pick-tag.over {
+      background: rgba(79, 174, 124, .13);
+      color: #7BD3A6;
+    }
+
+    .pick-tag.under {
+      background: rgba(201, 106, 82, .13);
+      color: #E39A86;
+    }
+
+    .pick-game {
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -.01em;
+    }
+
+    .pick-market {
+      margin-top: 1px;
+      font-size: 11.5px;
+      color: var(--dim);
+    }
+
+    .pick-source {
+      color: #6F8378;
+    }
+
+    .pick-meter {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 9px 0 7px;
+    }
+
+    .pick-bar {
+      flex: 1;
+      height: 5px;
+      border-radius: 3px;
+      background: var(--surface2);
+      overflow: hidden;
+    }
+
+    .pick-bar i {
+      display: block;
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #7C6A22, var(--accent));
+    }
+
+    .demo-banner {
+      margin: 0 auto 10px;
+      padding: 9px 12px;
+      border: 1px solid rgba(201, 106, 82, .45);
+      border-radius: 8px;
+      background: rgba(201, 106, 82, .1);
+      color: #E5A18C;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .demo-banner b {
+      color: #F0B6A4;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .pick-pct {
+      min-width: 50px;
+      text-align: right;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .pick-pct span {
+      margin-left: 1px;
+      font-size: 10.5px;
+      color: var(--dim);
+    }
+
+    .pick-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 10.5px;
+      color: var(--dim);
+    }
+
+    .pick-foot b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .pick-note {
+      margin-top: 5px;
+      font-size: 10px;
+      color: #6F8378;
+      line-height: 1.45;
+    }
+
+    .pick-note .warn {
+      color: #C9A227;
+    }
+
+    /* Its own line: inline, it wraps mid-phrase and makes the card taller. */
+    .pick-warn {
+      margin-top: 3px;
+      font-size: 10px;
+      line-height: 1.4;
+      color: #C9A227;
+    }
+
+    .board-foot {
+      padding: 6px 18px 42px;
+      font-size: 10.5px;
+      color: #6F8378;
+      line-height: 1.65;
+    }
+
+    .board-foot b {
+      color: var(--dim);
+      font-weight: 600;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="frame">
+    <div class="demo-banner" id="demoBanner" hidden>
+      <b>Test-only demo</b> - this screen reads a synthetic database. The
+      settled HIT/MISS rows are fabricated to exercise the result display and
+      are never merged into the live record.
+    </div>
+
+    <!-- ============ DASHBOARD ============ -->
+    <section id="view-dashboard">
+      <div class="sportbar">
+        <button class="sport on">Football</button>
+        <button class="sport" id="toNba">NBA</button>
+      </div>
+      <div class="bar">
+        <div class="appname">Sports Analyzer</div>
+        <div class="daynav">
+          <button class="dayarrow" id="dayPrev" title="Previous day" aria-label="Previous day">&lsaquo;</button>
+          <button class="bar-date" id="dashDate" title="Back to today"></button>
+          <button class="dayarrow" id="dayNext" title="Next day" aria-label="Next day">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="note" id="dashNote" hidden></div>
+      <div class="chips datestrip" id="dateChips"></div>
+      <button class="boardlink" id="toBoard">
+        <span class="boardlink-main">Today's board</span>
+        <span class="boardlink-sub">The strongest line per game, with the evidence behind it</span>
+        <span class="boardlink-arrow">&rsaquo;</span>
+      </button>
+      <div class="chips" id="leagueChips"></div>
+      <div id="matchList"></div>
+      <div style="padding: 18px">
+        <button class="btn" id="toSeason">Full season</button>
+        <button class="btn" id="toAdmin">Admin</button>
+        <button class="btn" id="reloadDash">Refresh</button>
+      </div>
+    </section>
+
+    <!-- ============ SEASON ============ -->
+    <section id="view-season" hidden>
+      <div class="topnav">
+        <button class="back" id="seasonBack">&larr;</button>
+        <div class="fixture-title" id="seasonTitle">Season</div>
+      </div>
+      <div class="chips" id="seasonLeagueChips"></div>
+      <div class="chips" id="seasonSeasonChips"></div>
+      <div class="note" id="seasonNote" hidden></div>
+      <div id="seasonList"></div>
+    </section>
+
+    <!-- ============ PREDICTION BOARD ============ -->
+    <section id="view-board" hidden>
+      <div class="topnav">
+        <button class="back" id="boardBack">&larr;</button>
+        <div class="fixture-title">The board</div>
+      </div>
+      <div class="chips" id="boardSports" style="padding-top:12px"></div>
+      <div class="board-top">
+        <div>
+          <div class="board-kicker" id="boardKicker"></div>
+          <h1 class="board-title">Prediction board</h1>
+          <div class="board-sub" id="boardSub">The strongest measured market per game. Each card shows the home, away and combined line; open it for the full game page.</div>
+        </div>
+        <div class="daynav">
+          <button class="dayarrow" id="boardPrev" title="Previous day" aria-label="Previous day">&lsaquo;</button>
+          <button class="bar-date" id="boardDate" title="Back to today"></button>
+          <button class="dayarrow" id="boardNext" title="Next day" aria-label="Next day">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="board-filters" id="boardFilters">
+        <div class="bf-row">
+          <label class="bf-field bf-date">
+            <span>Date</span>
+            <input id="bfDate" type="date">
+          </label>
+          <label class="bf-field">
+            <span>League</span>
+            <select id="bfLeague"><option value="">All leagues</option></select>
+          </label>
+          <label class="bf-field">
+            <span>Market</span>
+            <select id="bfMarket"><option value="">All markets</option></select>
+          </label>
+          <button class="bf-clear" id="bfClear" type="button">Clear filters</button>
+        </div>
+        <div class="bf-note" id="bfNote" hidden></div>
+      </div>
+      <div id="boardIntro"></div>
+      <div id="boardList"></div>
+      <div class="board-foot" id="boardFoot"></div>
+    </section>
+
+    <!-- ============ MATCH CENTRE ============ -->
+    <section id="view-match" hidden>
+      <div class="topnav">
+        <button class="back" id="backBtn">&larr;</button>
+        <div class="fixture-title" id="fixtureTitle"></div>
+      </div>
+      <div class="subtitle" id="fixtureMeta"></div>
+      <div class="tabs">
+        <button class="tab" data-tab="form">Form</button>
+        <button class="tab" data-tab="h2h">H2H</button>
+        <button class="tab on" data-tab="markets">Markets</button>
+      </div>
+      <div class="chips" id="marketChips" style="padding-top:12px"></div>
+      <div class="line-editor" id="lineEditor" hidden>
+        <label for="lineInput">Line</label>
+        <input id="lineInput" type="number" step="0.5" inputmode="decimal">
+        <button class="btn sm" id="applyLine">Apply</button>
+        <button class="btn sm" id="autoLine">Fair line</button>
+      </div>
+      <div class="panel" id="panel"></div>
+    </section>
+
+    <!-- ============ NBA DASHBOARD ============ -->
+    <section id="view-nba" hidden>
+      <div class="sportbar">
+        <button class="sport" id="nbaToFootball">Football</button>
+        <button class="sport on">NBA</button>
+      </div>
+      <div class="bar">
+        <div class="appname">NBA</div>
+        <div class="daynav">
+          <button class="dayarrow" id="nbaPrev" title="Previous day" aria-label="Previous day">&lsaquo;</button>
+          <button class="bar-date" id="nbaDate" title="Back to today"></button>
+          <button class="dayarrow" id="nbaNext" title="Next day" aria-label="Next day">&rsaquo;</button>
+        </div>
+      </div>
+      <div class="note" id="nbaNote" hidden></div>
+      <div class="chips datestrip" id="nbaDateChips"></div>
+      <button class="boardlink" id="nbaToBoard">
+        <span class="boardlink-main">Today's board</span>
+        <span class="boardlink-sub">The strongest line per game, with the evidence behind it</span>
+        <span class="boardlink-arrow">&rsaquo;</span>
+      </button>
+      <div id="nbaList"></div>
+      <div style="padding: 18px">
+        <button class="btn" id="nbaReload">Refresh</button>
+      </div>
+    </section>
+
+    <!-- ============ NBA GAME ============ -->
+    <section id="view-nba-match" hidden>
+      <div class="topnav">
+        <button class="back" id="nbaBack">&larr;</button>
+        <div class="fixture-title" id="nbaTitle"></div>
+      </div>
+      <div class="subtitle" id="nbaMeta"></div>
+      <div class="panel" id="nbaPanel"></div>
+    </section>
+
+    <!-- ============ ADMIN ============ -->
+    <section id="view-admin" hidden>
+      <div class="topnav">
+        <button class="back" id="adminBack">&larr;</button>
+        <div class="fixture-title">Admin</div>
+        <button class="btn sm" id="adminSignOut" hidden>Sign out</button>
+      </div>
+      <div class="card" id="adminAuth" hidden>
+        <div class="fixture-title">Admin sign in</div>
+        <p class="note">This deployment protects write and diagnostics endpoints
+          with an admin token. The token is entered here and kept only in this
+          browser tab; it is never embedded in the page or stored on the server
+          as frontend code.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+          <input type="password" id="adminTokenInput" autocomplete="current-password"
+                 placeholder="Admin token" style="flex:1;min-width:220px" aria-label="Admin token">
+          <button class="btn" id="adminLogin">Unlock</button>
+        </div>
+        <div class="note" id="adminAuthError" hidden role="alert"></div>
+      </div>
+      <div class="tabs" id="adminTabs">
+        <button class="atab tab on" data-aview="fixtures">Fixtures</button>
+        <button class="atab tab" data-aview="today">Today</button>
+        <button class="atab tab" data-aview="publish">Publish</button>
+        <button class="atab tab" data-aview="manual">Stats</button>
+        <button class="atab tab" data-aview="profiles">Profiles</button>
+        <button class="atab tab" data-aview="data">Data</button>
+        <button class="atab tab" data-aview="nba">NBA</button>
+        <button class="atab tab" data-aview="overview">Overview</button>
+      </div>
+      <div class="panel" id="adminPanel"></div>
+    </section>
+
+  </div>
+
+  <script>
+    /* ==================================================================
+       CONFIG
+       If the page is served BY the backend we can use relative URLs.
+       Otherwise (Live Server, opened as a file) point at localhost:8001.
+    ================================================================== */
+    const API = (window.__API_BASE__ !== undefined)
+      ? window.__API_BASE__
+      : (location.protocol === 'file:' ? 'http://localhost:8001' : '');
+
+    /* ==================================================================
+       STATE
+    ================================================================== */
+    let allMatches = [];        // published matches for the chosen day
+    let activeLeague = 'All';
+    let markets = [];           // [{market, default_line}]
+    let selectedMatch = null;   // the published match object
+    let selectedMarket = null;  // market key currently shown
+    let lineOverride = null;    // null = let the engine derive a fair line
+    let activeTab = 'markets';
+    let currentAnalysis = null;
+    let lastImport = null;      // the most recent CSV refresh, shown in Admin -> Data
+    let lastDownload = null;    // the most recent provider download, shown in Admin -> Data
+    let manualFilter = { league: 'All', days: 0 };  // Admin -> Stats: which week to work on
+    let manualQueue = [];       // the list as shown, so Save can advance to the next match
+    let profileView = { league: 'All', search: '', as_of: '', teams: [], total: 0 };
+    let profileEdits = {};      // team -> {market: value} not yet saved
+    let fixtureState = { days: 14 };  // Admin -> Fixtures: how far ahead to show
+    let dashShown = null;       // the ISO date the dashboard is actually showing
+    let dashSeq = 0;            // bumps on every dashboard load; stale responses are dropped
+    let adminAuthRequired = false;  // set from /health when the server has ADMIN_TOKEN
+    let adminToken = '';
+    try { adminToken = sessionStorage.getItem('sa_admin_token') || ''; } catch (e) { /* file:// */ }
+
+    /* ==================================================================
+       TINY HELPERS
+    ================================================================== */
+    const $ = id => document.getElementById(id);
+
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+
+    const num = v => {
+      if (v === null || v === undefined || v === '') return null;
+      const n = Number(v);
+      return Number.isFinite(n) ? n : null;
+    };
+
+    const fmtNum = n => (n === null || n === undefined) ? '—' : (Math.round(n * 100) / 100).toString();
+
+    const titleCase = s => String(s ?? '')
+      .replace(/[_-]+/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+
+    // The date `n` days ago, as YYYY-MM-DD, for the "last 7 days" filters.
+    const daysBack = n => {
+      const d = new Date();
+      d.setDate(d.getDate() - n);
+      return d.toISOString().slice(0, 10);
+    };
+
+    const daysAhead = n => {
+      const d = new Date();
+      d.setDate(d.getDate() + n);
+      return d.toISOString().slice(0, 10);
+    };
+
+    const dayLabel = iso => {
+      const d = new Date(iso + 'T00:00:00');
+      if (Number.isNaN(d.getTime())) return iso;
+      return d.toLocaleDateString(undefined, { weekday: 'short', day: '2-digit', month: 'short' });
+    };
+
+    // Local-date helpers. `toISOString()` is UTC, so at 00:30 in a positive
+    // offset it names yesterday; these keep navigation on the user's calendar.
+    const isoLocal = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+    const addDaysISO = (iso, n) => {
+      const d = new Date(iso + 'T12:00:00');
+      d.setDate(d.getDate() + n);
+      return isoLocal(d);
+    };
+
+    // Day chips drop the month inside the current month and show it outside,
+    // so "Sun 8" can never be mistaken for a date in the wrong month.
+    const shortDay = (iso, refISO) => {
+      const sameMonth = refISO && iso.slice(0, 7) === refISO.slice(0, 7);
+      return new Date(iso + 'T12:00:00').toLocaleDateString('en-GB',
+        sameMonth
+          ? { weekday: 'short', day: 'numeric' }
+          : { weekday: 'short', day: 'numeric', month: 'short' });
+    };
+
+    function toast(msg, isError) {
+      const el = document.createElement('div');
+      el.className = 'toast' + (isError ? ' err' : '');
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3200);
+    }
+
+    const isProtectedPath = path => path.startsWith('/admin')
+      || path === '/nba/publish' || path.startsWith('/nba/publish/')
+      || path === '/nba/refresh' || path.startsWith('/nba/refresh/');
+
+    async function api(path, options) {
+      const opts = options || {};
+      const protectedPath = isProtectedPath(path);
+      const headers = { 'Accept': 'application/json', ...(opts.headers || {}) };
+      if (protectedPath && adminToken) headers['X-Admin-Token'] = adminToken;
+      const res = await fetch(API + path, { ...opts, headers });
+      let body = null;
+      try { body = await res.json(); } catch (e) { /* no body */ }
+      if (!res.ok) {
+        const detail = body && body.detail
+          ? (typeof body.detail === 'string' ? body.detail : JSON.stringify(body.detail))
+          : `HTTP ${res.status}`;
+        const err = new Error(detail);
+        err.status = res.status;
+        err.body = body;
+        // A stale or missing token must never leave a half-rendered admin
+        // workspace on screen. Clear it and show the sign-in card again.
+        if (res.status === 401 && protectedPath) {
+          adminToken = '';
+          try { sessionStorage.removeItem('sa_admin_token'); } catch (e) { /* file:// */ }
+          if (!$('view-admin').hidden) showAdminLogin('Your admin session expired. Enter the token again.');
+        }
+        throw err;
+      }
+      return body;
+    }
+
+    function showView(name) {
+      $('view-dashboard').hidden = name !== 'dashboard';
+      $('view-match').hidden = name !== 'match';
+      $('view-admin').hidden = name !== 'admin';
+      $('view-season').hidden = name !== 'season';
+      $('view-board').hidden = name !== 'board';
+      $('view-nba').hidden = name !== 'nba';
+      $('view-nba-match').hidden = name !== 'nba-match';
+      window.scrollTo(0, 0);
+    }
+
+    /* ==================================================================
+       DASHBOARD
+    ================================================================== */
+    function renderLeagueChips() {
+      const leagues = ['All', ...Array.from(new Set(allMatches.map(m => m.league).filter(Boolean)))];
+      $('leagueChips').innerHTML = leagues.map(l =>
+        `<button class="chip${l === activeLeague ? ' on' : ''}" data-league="${esc(l)}">${esc(l)}</button>`
+      ).join('');
+      $('leagueChips').querySelectorAll('.chip').forEach(btn => {
+        btn.onclick = () => {
+          activeLeague = btn.dataset.league;
+          renderLeagueChips();
+          renderMatchList();
+        };
+      });
+    }
+
+    function renderMatchList() {
+      const list = $('matchList');
+      const visible = activeLeague === 'All'
+        ? allMatches
+        : allMatches.filter(m => m.league === activeLeague);
+
+      if (!visible.length) {
+        const detail = activeLeague === 'All'
+          ? 'Nothing is published for this date. Try another date above.'
+          : `No ${esc(activeLeague)} matches for this date.`;
+        list.innerHTML = `<div class="state"><strong>No published matches</strong>
+          ${detail}</div>`;
+        return;
+      }
+
+      // Group by league, preserving the order the API returned.
+      const groups = [];
+      for (const m of visible) {
+        let g = groups.find(x => x.league === m.league);
+        if (!g) { g = { league: m.league, matches: [] }; groups.push(g); }
+        g.matches.push(m);
+      }
+
+      list.innerHTML = groups.map(g => {
+        const rows = g.matches.map(m =>
+          `<div class="match" data-id="${m.id}">
+             <div class="teams">${esc(m.home_team)}<br><span class="vs">vs</span> ${esc(m.away_team)}</div>
+             <div class="time">${esc(m.kickoff || '')}</div>
+           </div>`).join('');
+        return `<div class="section-label">${esc(g.league)}</div>${rows}`;
+      }).join('');
+
+      list.querySelectorAll('.match').forEach(el => {
+        el.onclick = () => openMatch(Number(el.dataset.id));
+      });
+    }
+
+    // The header is a button: pressing the date returns to today. The date is
+    // the only stateful part of the dashboard, so it must also be the way back.
+    function setDashHeader(iso) {
+      $('dashDate').textContent = new Date(iso + 'T12:00:00')
+        .toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
+
+    // A horizontal strip of the matchdays around the one on screen. Only days
+    // with a published fixture get a chip, plus today and the day being shown,
+    // so "previous / future" is one tap away even across a two-week break.
+    function renderDateChips(days, shown, today) {
+      const el = $('dateChips');
+      if (!el) return;
+      const known = new Map((days || []).map(d => [d.date, d.matches]));
+      known.set(today, known.get(today) || 0);
+      if (shown) known.set(shown, known.get(shown) || 0);
+
+      const dates = [...known.keys()].sort();
+      const at = dates.indexOf(shown);
+      const start = Math.max(0, at - 7);
+      const nearby = dates.slice(start, start + 15);
+      // Far from today (a long international break), keep a way home visible.
+      const strip = nearby.includes(today) ? nearby : [today, ...nearby];
+
+      el.innerHTML = strip.map(iso => {
+        const label = iso === today ? 'Today' : shortDay(iso, today);
+        return `<button class="chip sm${iso === shown ? ' on' : ''}"
+                        data-day="${esc(iso)}">${esc(label)}</button>`;
+      }).join('');
+
+      el.querySelectorAll('[data-day]').forEach(button => {
+        button.onclick = () => loadDashboard(button.dataset.day);
+      });
+    }
+
+    // The dashboard shows one day. With no explicit date it starts at today and,
+    // if today has nothing, jumps to the nearest published day — the next
+    // matchday first (fixtures ahead), then the most recent one. An explicit
+    // date never jumps: if you asked for the 22nd, you get the 22nd, empty or not.
+    function noteDashDay(today, shown, count, auto) {
+      const note = $('dashNote');
+      if (!note) return;
+      if (!auto || !count || shown === today) {
+        note.hidden = true;
+        note.textContent = '';
+        return;
+      }
+      const when = new Date(shown + 'T12:00:00').toLocaleDateString('en-GB',
+        { weekday: 'short', day: 'numeric', month: 'short' }).replace(/ /g, '\u00A0');
+      note.hidden = false;
+      note.textContent = shown > today
+        ? `Nothing is published for today. Showing the next matchday, ${when}.`
+        : `Nothing is published for today. Showing the most recent matchday, ${when}.`;
+    }
+
+    async function loadDashboard(iso) {
+      const today = isoLocal(new Date());
+      const requested = iso || today;
+      const auto = !iso;
+      const seq = ++dashSeq;
+
+      $('dashNote').hidden = true;
+      setDashHeader(requested);
+      $('matchList').innerHTML = Array.from({ length: 4 }).map(() => `
+        <div class="sk">
+          <div class="sk-line" style="width:42%"></div>
+          <div class="sk-line" style="width:70%;margin-bottom:0"></div>
+        </div>`).join('');
+
+      try {
+        const [matches, dayInfo] = await Promise.all([
+          api('/published/matches?date=' + requested),
+          api('/published/dates').catch(() => null)
+        ]);
+        if (seq !== dashSeq) return;   // a newer day was opened while this one loaded
+        allMatches = matches;
+        let shown = requested;
+
+        if (auto && !allMatches.length) {
+          const list = (dayInfo && dayInfo.dates) || [];
+          const next = list.find(d => d.date > today);
+          const chosen = next || list[list.length - 1] || null;
+          if (chosen && chosen.date !== today) {
+            allMatches = await api('/published/matches?date=' + chosen.date);
+            if (seq !== dashSeq) return;
+            shown = chosen.date;
+          }
+        }
+
+        dashShown = shown;
+        setDashHeader(shown);
+        renderDateChips((dayInfo && dayInfo.dates) || [], shown, today);
+        activeLeague = 'All';
+        renderLeagueChips();
+        renderMatchList();
+        noteDashDay(today, shown, allMatches.length, auto);
+      } catch (err) {
+        if (seq !== dashSeq) return;
+        $('matchList').innerHTML = `<div class="state"><strong>Couldn't load matches</strong>
+          ${esc(err.message)}<br><button class="btn" id="retry">Retry</button></div>`;
+        $('retry').onclick = () => loadDashboard(dashShown || undefined);
+      }
+    }
+
+    /* ==================================================================
+       SEASON
+       The whole calendar, not just what is published. It is read-only: a
+       fixture outside the 14-day window is listed with the date its
+       analysis opens, and never with a projection made from today's form.
+    ================================================================== */
+    const SEASON_LEAGUES = ['Premier League', 'La Liga', 'Bundesliga',
+                            'Serie A', 'Ligue 1', 'Eredivisie'];
+    let seasonLeague = 'Premier League';
+    let seasonLabel = null;
+    let seasonSeq = 0;
+    let seasonData = null;
+
+    const dateLabel = iso => new Date(iso + 'T12:00:00')
+      .toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    const shortLabel = iso => new Date(iso + 'T12:00:00')
+      .toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    const monthLabel = iso => new Date(iso + 'T12:00:00')
+      .toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+
+    async function openSeason() {
+      showView('season');
+      await loadSeason();
+    }
+
+    async function loadSeason() {
+      const seq = ++seasonSeq;
+      $('seasonTitle').textContent = seasonLeague;
+      $('seasonNote').hidden = true;
+      $('seasonList').innerHTML = Array.from({ length: 6 }).map(() => `
+        <div class="sk">
+          <div class="sk-line" style="width:38%"></div>
+          <div class="sk-line" style="width:64%;margin-bottom:0"></div>
+        </div>`).join('');
+
+      try {
+        const q = new URLSearchParams({ league: seasonLeague });
+        if (seasonLabel) q.set('season', seasonLabel);
+        const data = await api('/season?' + q.toString());
+        if (seq !== seasonSeq) return;
+        seasonData = data;
+        window.__seasonData = data;   // read by the browser smoke checks
+        seasonLabel = data.season;
+        renderSeasonChips(data);
+        renderSeasonList(data);
+      } catch (err) {
+        if (seq !== seasonSeq) return;
+        $('seasonList').innerHTML = `<div class="state"><strong>Couldn't load the season</strong>
+          ${esc(err.message)}<br><button class="btn" id="seasonRetry">Retry</button></div>`;
+        $('seasonRetry').onclick = () => loadSeason();
+      }
+    }
+
+    function renderSeasonChips(data) {
+      const leagues = (data.leagues && data.leagues.length) ? data.leagues : SEASON_LEAGUES;
+      $('seasonLeagueChips').innerHTML = leagues.map(l =>
+        `<button class="chip${l === seasonLeague ? ' on' : ''}" data-sl="${esc(l)}">${esc(l)}</button>`
+      ).join('');
+      $('seasonLeagueChips').querySelectorAll('[data-sl]').forEach(btn => {
+        btn.onclick = () => {
+          seasonLeague = btn.dataset.sl;
+          seasonLabel = null;      // follow the new league's current season
+          loadSeason();
+        };
+      });
+
+      const seasons = data.seasons || [];
+      $('seasonSeasonChips').innerHTML = seasons.map(s =>
+        `<button class="chip sm${s === seasonLabel ? ' on' : ''}" data-ss="${esc(s)}">${esc(s)}</button>`
+      ).join('');
+      $('seasonSeasonChips').querySelectorAll('[data-ss]').forEach(btn => {
+        btn.onclick = () => { seasonLabel = btn.dataset.ss; loadSeason(); };
+      });
+    }
+
+    function seasonStatus(f) {
+      if (f.state === 'played') {
+        return `${f.home_goals ?? ''}\u2013${f.away_goals ?? ''}`;
+      }
+      if (f.state === 'published') return 'Open \u203a';
+      if (f.state === 'ready') return 'In window';
+      if (f.state === 'unplayed') return 'No result yet';
+      return 'Opens ' + shortLabel(f.window_opens);
+    }
+
+    function renderSeasonList(data) {
+      const list = $('seasonList');
+      if (!data.days.length) {
+        list.innerHTML = `<div class="state"><strong>No fixtures</strong>
+          The calendar for ${esc(data.league)} ${esc(data.season)} is empty.
+          ${data.source === 'calendar' ? '' : 'Run a season refresh from Admin.'}</div>`;
+        return;
+      }
+
+      let html = '';
+      let month = '';
+      data.days.forEach((day, di) => {
+        if (day.date.slice(0, 7) !== month) {
+          month = day.date.slice(0, 7);
+          html += `<div class="section-label">${esc(monthLabel(day.date))}</div>`;
+        }
+        const md = day.fixtures[0] && day.fixtures[0].matchday;
+        const isToday = day.date === data.today;
+        html += `<div class="season-dayhead${isToday ? ' today' : ''}">
+          ${esc(dateLabel(day.date))}${md ? ' \u00b7 Matchday ' + md : ''}${isToday ? ' \u00b7 Today' : ''}
+        </div>`;
+        html += day.fixtures.map((f, fi) => `
+          <div class="match" data-d="${di}" data-f="${fi}">
+            <div class="teams">${esc(f.home_team || f.home)}<br><span class="vs">vs</span> ${esc(f.away_team || f.away)}</div>
+            <div class="time">${esc(seasonStatus(f))}</div>
+          </div>`).join('');
+      });
+      list.innerHTML = html;
+
+      list.querySelectorAll('.match').forEach(el => {
+        el.onclick = () => {
+          const day = seasonData.days[Number(el.dataset.d)];
+          const f = day.fixtures[Number(el.dataset.f)];
+          openSeasonFixture(f);
+        };
+      });
+
+      // Land on today, or the nearest fixture after it, rather than at the
+      // opening day of the season.
+      const marker = list.querySelector('.season-dayhead.today')
+        || Array.from(list.querySelectorAll('.match')).find(el => {
+          const f = seasonData.days[Number(el.dataset.d)].fixtures[Number(el.dataset.f)];
+          return f.state === 'published' || f.state === 'ready' || f.state === 'outside';
+        });
+      if (marker) marker.scrollIntoView({ block: 'center' });
+    }
+
+    async function openSeasonFixture(f) {
+      const home = f.home_team || f.home;
+      const away = f.away_team || f.away;
+      const base = { home_team: home, away_team: away, league: seasonData.league,
+                     season: seasonData.season, date: f.date, kickoff: f.kickoff,
+                     home_goals: f.home_goals, away_goals: f.away_goals };
+
+      if (f.state === 'played') {
+        if (!f.match_id) {
+          toast('The result is known, but the match has not been imported yet.');
+          return;
+        }
+        await openFixture({ ...base, id: f.match_id }, 'history', 'season');
+      } else if (f.state === 'published') {
+        await openFixture({ ...base, id: f.published_id }, 'published', 'season');
+      } else if (f.state === 'outside') {
+        toast(`Analysis opens ${dateLabel(f.window_opens)} — 14 days before kickoff.`);
+      } else if (f.state === 'ready') {
+        toast('This fixture is inside the window but has not been published yet.');
+      } else {
+        toast('No result was reported for this fixture.');
+      }
+    }
+
+    /* ==================================================================
+       PREDICTION BOARD
+       A pick is a projection, a line, and a probability measured on past
+       matches. The probability is the only thing that ranks it: a 60% in
+       corners and a 60% in goals mean the same thing, because each was
+       divided by that market's own measured error.
+    ================================================================== */
+    const BOARD_FILTER_DEFAULTS = Object.freeze({
+      market: '', league: '',
+    });
+    let boardSport = 'all';
+    let boardShown = isoLocal(new Date());
+    let boardSeq = 0;
+    let boardData = null;
+    let boardReturn = 'dashboard';
+    let boardFilters = { ...BOARD_FILTER_DEFAULTS };
+
+    const longDate = iso => new Date(iso + 'T12:00:00')
+      .toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+    const boardDayLabel = iso => new Date(iso + 'T12:00:00')
+      .toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+
+    const boardStorageKey = () => 'sa_board_filters_' + boardSport;
+
+    function restoreBoardFilters() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(boardStorageKey()) || 'null') || {};
+        // Older builds stored scope/status/source keys. Read only the controls
+        // that still exist, so a stale device preference cannot leak back in.
+        boardFilters = {
+          market: typeof saved.market === 'string' ? saved.market : '',
+          league: typeof saved.league === 'string' ? saved.league : '',
+        };
+      } catch (err) {
+        boardFilters = { ...BOARD_FILTER_DEFAULTS };
+      }
+    }
+
+    function persistBoardFilters() {
+      try {
+        localStorage.setItem(boardStorageKey(), JSON.stringify(boardFilters));
+      } catch (err) {
+        /* Storage can be unavailable; the filters still work for this visit. */
+      }
+    }
+
+    function boardFiltersActive() {
+      return ['market', 'league']
+        .some(key => boardFilters[key] !== BOARD_FILTER_DEFAULTS[key]);
+    }
+
+    function resetBoardFilters() {
+      boardFilters = { ...BOARD_FILTER_DEFAULTS };
+      persistBoardFilters();
+      loadBoard();
+    }
+
+    async function openBoard(dateIso, from, sport) {
+      boardShown = dateIso || isoLocal(new Date());
+      boardReturn = from || 'dashboard';
+      // Coming from a sport screen means that sport; otherwise start wide.
+      // The chips still change it without leaving the board.
+      boardSport = sport || 'all';
+      restoreBoardFilters();
+      showView('board');
+      await loadBoard();
+    }
+
+    function boardQuery(offset) {
+      const q = new URLSearchParams({
+        date: boardShown, sport: boardSport, limit: '10',
+        offset: String(offset), grouped: '1',
+      });
+      if (boardFilters.market) q.set('market', boardFilters.market);
+      if (boardFilters.league) q.set('league', boardFilters.league);
+      return q.toString();
+    }
+
+    async function loadBoard(append = false) {
+      const seq = ++boardSeq;
+      const offset = append && boardData ? (boardData.cards || []).length : 0;
+      $('boardKicker').textContent = longDate(boardShown);
+      $('boardDate').textContent = boardShown === isoLocal(new Date())
+        ? 'Today' : boardDayLabel(boardShown);
+      renderBoardSports();
+      if (!append) {
+        $('boardIntro').innerHTML = '';
+        $('boardList').innerHTML = Array.from({ length: 4 }).map(() => `
+          <div class="match-card">
+            <div class="sk-line" style="width:34%"></div>
+            <div class="sk-line" style="width:66%"></div>
+            <div class="sk-line" style="width:48%;margin-bottom:0"></div>
+          </div>`).join('');
+        $('boardFoot').innerHTML = '';
+        $('bfNote').hidden = true;
+      }
+
+      try {
+        const data = await api('/board?' + boardQuery(offset));
+        if (seq !== boardSeq) return;
+        renderBoardFilters(data);
+        if (append && boardData) {
+          boardData.cards = boardData.cards.concat(data.cards || []);
+          boardData.has_more = data.has_more;
+          boardData.total = data.total;
+          boardData.base_total = data.base_total;
+          boardData.stored_rows = data.stored_rows;
+          boardData.row_total = data.row_total;
+          boardData.settled_lines = data.settled_lines;
+          boardData.won_lines = data.won_lines;
+          boardData.lost_lines = data.lost_lines;
+          boardData.hit_rate = data.hit_rate;
+          boardData.record = data.record;
+          boardData.history = data.history;
+          boardData.fixtures = data.fixtures;
+          appendBoardCards(data.cards || []);
+          renderBoardSummary(boardData);
+          renderBoardFoot();
+        } else {
+          boardData = data;
+          renderBoard(data);
+        }
+      } catch (err) {
+        if (seq !== boardSeq) return;
+        $('boardList').innerHTML = `<div class="state"><strong>Couldn't load the board</strong>
+          ${esc(err.message)}<br><button class="btn" id="boardRetry">Retry</button></div>`;
+        $('boardRetry').onclick = () => loadBoard();
+      }
+    }
+
+    function renderBoardSports() {
+      const sports = [['all', 'All sports'], ['football', 'Football'], ['nba', 'NBA']];
+      $('boardSports').innerHTML = sports.map(([k, label]) =>
+        `<button class="chip${k === boardSport ? ' on' : ''}" data-bs="${k}">${esc(label)}</button>`
+      ).join('');
+      $('boardSports').querySelectorAll('[data-bs]').forEach(btn => {
+        btn.onclick = () => {
+          if (btn.dataset.bs === boardSport) return;
+          boardSport = btn.dataset.bs;
+          // Markets differ by sport, so each sport keeps its own saved view.
+          restoreBoardFilters();
+          loadBoard();
+        };
+      });
+    }
+
+    function renderBoardFilters(data) {
+      const markets = data.markets || [];
+      const marketSel = $('bfMarket');
+      const marketOpts = markets.slice();
+      if (boardFilters.market
+          && !marketOpts.some(m => m.market === boardFilters.market)) {
+        // Keep the saved market in the control even when this date has no
+        // stored rows. The list then shows an empty state instead of silently
+        // changing what the supporter asked to see.
+        marketOpts.push({
+          market: boardFilters.market,
+          label: titleCase(boardFilters.market),
+          count: 0,
+        });
+      }
+      marketSel.innerHTML = `<option value="">All markets</option>`
+        + marketOpts.map(m => {
+          const count = m.count ? ` \u00b7 ${m.count}` : '';
+          return `<option value="${esc(m.market)}">${esc(boardLabel(m.label))}${count}</option>`;
+        }).join('');
+      marketSel.value = boardFilters.market;
+      marketSel.disabled = !marketOpts.length;
+
+      const leagueSel = $('bfLeague');
+      const leagues = data.leagues || [];
+      const leagueOpts = leagues.slice();
+      if (boardFilters.league && !leagueOpts.includes(boardFilters.league)) {
+        leagueOpts.push(boardFilters.league);
+      }
+      leagueSel.innerHTML = `<option value="">All leagues</option>` + leagueOpts
+        .map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
+      leagueSel.value = boardFilters.league;
+      leagueSel.disabled = !leagueOpts.length;
+
+      $('bfDate').value = boardShown;
+      const note = $('bfNote');
+      if (data.source_note) {
+        note.hidden = false;
+        note.textContent = data.source_note;
+      } else {
+        note.hidden = true;
+        note.textContent = '';
+      }
+    }
+
+    function bindBoardFilterControls() {
+      $('bfDate').onchange = () => {
+        if (!$('bfDate').value) return;
+        boardShown = $('bfDate').value;
+        loadBoard();
+      };
+      $('bfMarket').onchange = () => {
+        boardFilters.market = $('bfMarket').value;
+        persistBoardFilters();
+        loadBoard();
+      };
+      $('bfLeague').onchange = () => {
+        boardFilters.league = $('bfLeague').value;
+        persistBoardFilters();
+        loadBoard();
+      };
+      $('bfClear').onclick = () => resetBoardFilters();
+    }
+
+    bindBoardFilterControls();
+
+    const boardSourceLabel = source =>
+      source === 'market' ? 'market line'
+        : source === 'team_baseline' ? 'own baseline'
+          : 'league line';
+
+    const BOARD_UNITS = {
+      points: 'pts', points_1h: 'pts', points_1q: 'pts',
+      rebounds: 'reb', two_pm: '2PM', three_pm: '3PM', assists: 'ast',
+      turnovers: 'TO', steals: 'stl', blocks: 'blk', fouls: 'fouls',
+      goals: 'goals', shots: 'shots', shots_on_target: 'SOT',
+      corners: 'corners', yellow_cards: 'cards',
+    };
+    const boardUnit = group => BOARD_UNITS[group] || '';
+    const boardLabel = value => {
+      const text = String(value || '');
+      return text ? text.charAt(0).toUpperCase() + text.slice(1) : text;
+    };
+
+    function boardWhen(value) {
+      if (!value) return '';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return value;
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+        + ' \u00b7 ' + d.toLocaleTimeString('en-GB', {
+          hour: '2-digit', minute: '2-digit',
+        });
+    }
+
+    function boardRowHtml(row, card, unit, isSelected) {
+      const scope = row.scope === 'combined'
+        ? 'Combined total' : row.scope_label;
+      const venue = row.scope === 'combined'
+        ? 'Combined' : row.scope === 'home' ? 'Home' : 'Away';
+      const probability = Math.round((row.probability || 0) * 100);
+      const start = card.start_time ? new Date(card.start_time) : null;
+      const started = start && !Number.isNaN(start.getTime())
+        && start.getTime() <= Date.now();
+      const status = row.status
+        ? `<span class="mc-status ${row.status.toLowerCase()}">${
+          row.status === 'HIT' ? '\u2713 HIT'
+            : row.status === 'MISS' ? '\u2715 MISS' : row.status
+        }</span>`
+        : `<span class="mc-status pending">${
+          started ? 'Awaiting result' : 'Not played'}</span>`;
+      const actual = row.actual === null || row.actual === undefined
+        ? '\u2014' : fmtNum(row.actual);
+      const unitHtml = unit ? `<span class="unit">${esc(unit)}</span>` : '';
+      const qualified = row.qualified ? ' qualified' : '';
+      const selected = isSelected ? ' selected' : '';
+      return `<div class="mc-row${row.scope === 'combined' ? ' combined' : ''}${selected}">
+        <div class="mc-row-top">
+          <div class="mc-team"><span class="mc-venue">${esc(venue)}</span>${esc(scope)}${
+            isSelected ? '<span class="mc-pick">Board pick</span>' : ''}</div>
+          ${status}
+        </div>
+        <div class="mc-statline">
+          <div>
+            <span class="mc-label">Line</span>
+            <span class="mc-value"><b>${row.side === 'over' ? 'Over' : 'Under'} ${fmtNum(row.line)}</b>${unitHtml}
+              <span class="prob${qualified}">${probability}%</span></span>
+            <span class="mc-source">${esc(boardSourceLabel(row.line_source))}</span>
+          </div>
+          <div>
+            <span class="mc-label">Model</span>
+            <span class="mc-value">${fmtNum(row.projection)}${unitHtml}</span>
+          </div>
+          <div>
+            <span class="mc-label">Actual</span>
+            <span class="mc-value">${actual}${actual === '\u2014' ? '' : unitHtml}</span>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function boardMatchCard(card, idx) {
+      const sport = card.sport === 'nba' ? 'NBA' : 'Football';
+      const when = boardWhen(card.start_time);
+      const league = card.league && card.league !== sport ? card.league : '';
+      const kicker = [sport, league, when].filter(Boolean).join(' \u00b7 ');
+      const unit = boardUnit(card.market_group);
+      const n = (card.measurement && card.measurement.n)
+        || Math.max(0, ...card.rows.map(
+          r => (r.measurement && r.measurement.n) || 0));
+      const settled = card.settled_lines || 0;
+      const record = settled
+        ? `${card.won_lines} hit${card.won_lines === 1 ? '' : 's'}${
+          card.lost_lines
+            ? ` \u00b7 ${card.lost_lines} miss${card.lost_lines === 1 ? '' : 'es'}`
+            : ''
+        }${card.pushed_lines ? ` \u00b7 ${card.pushed_lines} push` : ''}`
+        : '';
+      const note = card.sport === 'football'
+        ? 'Football predictions are combined totals. The football engine does not model separate home and away splits.'
+        : card.rows.length === 1
+          ? 'This period market is stored as a combined total; there is no separate home/away line.'
+          : '';
+      return `<div class="match-card" data-card="${idx}" title="Open game">
+        <div class="mc-top">
+          <div>
+            <div class="mc-kicker">${esc(kicker)}</div>
+            <div class="mc-game">${esc(card.home_team)}
+              <span style="color:var(--dim)">v</span>
+              ${esc(card.away_team)}</div>
+            <div class="mc-market">${esc(boardLabel(card.market_label))}</div>
+          </div>
+          <span class="mc-flag${card.qualified ? ' qualified' : ''}">${
+            card.qualified ? 'Board pick' : 'Below bar'}</span>
+        </div>
+        <div class="mc-rows">${card.rows.map(
+          r => boardRowHtml(r, card, unit, r.selected)).join('')}</div>
+        ${card.selected && card.selected.reason ? `<div class="mc-why">
+          <b>Why this pick</b><span>${esc(card.selected.reason)}</span></div>` : ''}
+        ${note ? `<div class="mc-note">${esc(note)}</div>` : ''}
+        <div class="mc-foot">
+          <span>Measured on ${n.toLocaleString('en-GB')} ${
+            card.sport === 'nba' ? 'games' : 'matches'}${
+            record ? ` \u00b7 <span class="mc-record">${record}</span>` : ''
+          }</span>
+          <span class="mc-open">Open game &rsaquo;</span>
+        </div>
+      </div>`;
+    }
+
+    function bindBoardCards() {
+      $('boardList').querySelectorAll('[data-card]').forEach(el => {
+        el.onclick = () => {
+          const card = boardData && boardData.cards[Number(el.dataset.card)];
+          if (card) openBoardCard(card);
+        };
+      });
+    }
+
+    function appendBoardCards(cards) {
+      const start = boardData.cards.length - cards.length;
+      $('boardList').insertAdjacentHTML(
+        'beforeend',
+        cards.map((card, i) => boardMatchCard(card, start + i)).join(''));
+      bindBoardCards();
+    }
+
+    function renderBoardSummary(data) {
+      const cards = data.cards || [];
+      const total = data.total || cards.length;
+      const rows = data.row_total || cards.reduce(
+        (sum, card) => sum + (card.rows || []).length, 0);
+      const allRows = cards.flatMap(card => card.rows || []);
+      const maxN = Math.max(0, ...allRows.map(
+        row => (row.measurement && row.measurement.n) || 0)).toLocaleString('en-GB');
+      const settled = data.settled_lines || 0;
+      const recordHtml = settled
+        ? `<div class="board-record"><b>${data.won_lines || 0}\u2013${data.lost_lines || 0}</b>${
+          data.hit_rate !== null && data.hit_rate !== undefined
+            ? ` &middot; ${Math.round(data.hit_rate * 100)}%` : ''
+        }<br>lines settled</div>`
+        : '';
+      const capHead = `${total} game${total === 1 ? '' : 's'} \u00b7 ${rows} lines`
+        + (cards.length < total ? ` \u00b7 showing ${cards.length}` : '');
+      // All-sports mode mixes football and basketball markets. Their measured
+      // samples are not interchangeable, so quote only the card counts there.
+      const acc = data.sport === 'all' ? null : (data.accuracy || [])[0];
+      const naiveNote = acc && acc.naive_mae !== null
+        && acc.naive_mae !== undefined
+        ? ` vs ${acc.naive_mae} ${
+          acc.scope === 'combined' ? 'league' : 'own baseline'}` : '';
+      const measuredLine = acc && acc.n
+        ? `${esc(boardLabel(acc.label))} \u00b7 ${
+            acc.n.toLocaleString('en-GB')} ${data.sport === 'football'
+              ? 'matches' : 'games'} \u00b7 MAE ${acc.mae}${naiveNote}`
+        : `measured on up to ${maxN} ${
+            data.sport === 'football' ? 'matches' : 'games'} per market`;
+      $('boardIntro').innerHTML = `<div class="board-summary">
+        <div class="big">${total}</div>
+        <div class="cap">${capHead}<br>${measuredLine}</div>
+        ${recordHtml}
+      </div>`;
+    }
+
+    function renderBoard(data) {
+      const cards = data.cards || [];
+      if (!cards.length) {
+        const fixtures = data.fixtures || 0;
+        const measured = data.measured || 0;
+        const filtered = boardFiltersActive();
+        const selected = (data.markets || [])
+          .find(m => m.market === boardFilters.market);
+        let html;
+        if (!measured) {
+          html = `<div class="state"><strong>Nothing measured yet</strong>
+              No market has an error distribution, so no probability can be
+              honest. Open <b>Admin &rsaquo; Overview &rsaquo; Rebuild the board</b>
+              once; after that the daily job keeps it current.</div>`;
+        } else if (selected && selected.count === 0) {
+          const where = boardFilters.league
+            ? `this date in ${esc(boardFilters.league)}`
+            : 'this date';
+          html = `<div class="state"><strong>No ${esc(boardLabel(selected.label))} lines stored for ${where}</strong>
+              The board only reads predictions that were written before the
+              game. It does not backfill a date after the result is known.
+              <button class="btn" id="boardClearEmpty">Clear filters</button></div>`;
+        } else if (!filtered && (data.stored_rows || 0) > 0) {
+          html = `<div class="state"><strong>No board picks cleared the bar</strong>
+              The model stored ${Number(data.stored_rows).toLocaleString('en-GB')}
+              matchup line${data.stored_rows === 1 ? '' : 's'} for this date, but
+              none met the Board's measured selection threshold. This is the
+              curated view, not the complete market list. Choose a market above
+              to inspect the stored lines for this date.</div>`;
+        } else if (filtered) {
+          html = `<div class="state"><strong>No cards match these filters</strong>
+              Nothing was stored for this combination of date, league and
+              market. The saved filters are still here, so you can clear one
+              without losing the others.
+              <button class="btn" id="boardClearEmpty">Clear filters</button></div>`;
+        } else if (fixtures) {
+          html = `<div class="state"><strong>${fixtures} fixture${fixtures === 1 ? '' : 's'},
+              no pre-match card stored</strong>
+              The board only stores a matchup before it starts. A game that was
+              already under way when the board was built is left alone rather
+              than given an after-the-fact prediction.</div>`;
+        } else {
+          html = `<div class="state"><strong>Nothing published for this day</strong>
+              The board only covers published fixtures, and publishing looks two
+              weeks ahead. Pick a nearer date, or publish from Admin.</div>`;
+        }
+        $('boardIntro').innerHTML = '';
+        $('boardList').innerHTML = html;
+        if ($('boardClearEmpty')) $('boardClearEmpty').onclick = resetBoardFilters;
+        renderBoardFoot();
+        return;
+      }
+
+      renderBoardSummary(data);
+      $('boardList').innerHTML = cards.map(boardMatchCard).join('');
+      bindBoardCards();
+      renderBoardFoot();
+    }
+
+    function renderBoardFoot() {
+      const more = boardData && boardData.has_more;
+      $('boardFoot').innerHTML = (more
+        ? `<button class="btn" id="boardMore" style="margin:0 0 12px">Load more games</button>`
+        : '') + footerText();
+      if (more) $('boardMore').onclick = () => loadBoard(true);
+    }
+
+    function footerText() {
+      return `<b>How to read a card.</b> <b>Line</b> is the reference being
+        tested; <b>Model</b> is the stored projection; <b>Actual</b> is the final
+        stat. <b>HIT/MISS</b> is calculated automatically from the stored line
+        and the recorded result. The percentage beside the line is the measured
+        share of similar past games, not a price, stake or guarantee.<br>
+        <b>The Board is a selection.</b> The default view shows one strongest
+        market family per fixture, and only when a line cleared the measured
+        bar. <b>Why this pick</b> records the sample, projection and reference
+        line behind that choice. A market filter shows the complete stored set
+        for that market; the game page lets you explore every market.<br>
+        <b>Which line?</b> A <b>market line</b> is one entered by the admin. A
+        <b>league line</b> is the league's own average for that market. An
+        <b>own baseline</b> is that team's usual score. Football predictions are
+        combined totals only; the football engine does not model home/away
+        splits. The board never recommends a stake.`;
+    }
+
+    async function openBoardCard(card) {
+      if (card.sport === 'football') {
+        try {
+          const matches = await api('/published/matches?date=' + card.date);
+          const match = matches.find(
+            m => String(m.id) === String(card.game_key));
+          if (!match) {
+            toast('That fixture is no longer published.');
+            return;
+          }
+          await openFixture(match, 'published', 'board');
+        } catch (err) {
+          toast(err.message, true);
+        }
+        return;
+      }
+      await nbaOpen(card.game_key, 'board');
+    }
+
+    /* ==================================================================
+       MATCH CENTRE
+    ================================================================== */
+    let selectedSource = 'published';
+    let matchReturnView = 'dashboard';
+
+    async function openFixture(m, source, backTo) {
+      if (!m || !m.id) return;
+      selectedMatch = m;
+      selectedSource = source || 'published';
+      matchReturnView = backTo || 'dashboard';
+
+      lineOverride = null;
+      selectedMarket = selectedMarket || (markets[0] && markets[0].market) || 'corners';
+
+      $('fixtureTitle').textContent = `${m.home_team} vs ${m.away_team}`;
+      const score = (m.home_goals !== null && m.home_goals !== undefined)
+        ? `${m.home_goals}\u2013${m.away_goals}` : null;
+      $('fixtureMeta').textContent =
+        [m.league, m.date, m.kickoff, score].filter(Boolean).join(' \u00b7 ');
+
+      showView('match');
+      setTab('markets');
+      renderMarketChips();
+      await loadTab('markets');
+    }
+
+    async function openMatch(id) {
+      const m = allMatches.find(x => x.id === id);
+      if (!m) return;
+      await openFixture(m, 'published', 'dashboard');
+    }
+
+    function setTab(tab) {
+      activeTab = tab;
+      document.querySelectorAll('#view-match .tab').forEach(t => {
+        t.classList.toggle('on', t.dataset.tab === tab);
+      });
+      // The line editor only makes sense on the Markets tab.
+      $('lineEditor').hidden = tab !== 'markets';
+      $('marketChips').hidden = tab === 'markets' ? false : false;
+    }
+
+    function renderMarketChips() {
+      $('marketChips').innerHTML = markets.map(m =>
+        `<button class="chip sm${m.market === selectedMarket ? ' on' : ''}"
+          data-market="${m.market}">${esc(titleCase(m.market))}</button>`
+      ).join('');
+      $('marketChips').querySelectorAll('.chip').forEach(btn => {
+        btn.onclick = async () => {
+          // Defence in depth: if there is no selected fixture there is nothing
+          // to analyse, so say so rather than throwing.
+          if (!selectedMatch) { loadDashboard(); return; }
+          selectedMarket = btn.dataset.market;
+          lineOverride = null;
+          renderMarketChips();
+          await loadTab('markets');
+        };
+      });
+    }
+
+    async function loadTab(tab) {
+      const panel = $('panel');
+      panel.innerHTML = `<div class="sk" style="border-top:0;padding-left:0;padding-right:0">
+        <div class="sk-line" style="width:38%"></div>
+        <div class="sk-line" style="width:55%;height:34px"></div>
+        <div class="sk-line" style="width:100%"></div>
+        <div class="sk-line" style="width:100%;margin-bottom:0"></div>
+      </div>`;
+
+      try {
+        if (tab === 'markets') {
+          const query = new URLSearchParams({ markets: selectedMarket });
+          if (lineOverride !== null) query.set('lines', `${selectedMarket}=${lineOverride}`);
+          const path = selectedSource === 'history'
+            ? `/matches/${selectedMatch.id}/analysis`
+            : `/published/matches/${selectedMatch.id}/analysis`;
+          const data = await api(`${path}?${query}`);
+          currentAnalysis = data.analysis[0];
+          $('lineInput').value = currentAnalysis.line ?? '';
+
+          // The measured historical frequency for this exact line, strictly
+          // before kickoff. Fetched separately so that if it fails we show no
+          // history rather than breaking the whole panel.
+          let base = null;
+          const ln = num(currentAnalysis.line);
+          if (ln !== null) {
+            const bq = new URLSearchParams({
+              line: ln,
+              before: data.cutoff || selectedMatch.date
+            });
+            if (selectedMatch.league) bq.set('league', selectedMatch.league);
+            try {
+              base = await api(`/markets/${selectedMarket}/base-rate?${bq}`);
+            } catch (e) { base = null; }
+          }
+          renderMarket(currentAnalysis, base);
+        } else {
+          const data = await api(`/published/matches/${selectedMatch.id}/evidence?stat=${selectedMarket}`);
+          if (tab === 'form') renderForm(data);
+          else renderH2H(data);
+        }
+      } catch (err) {
+        // The message alone hides where it broke; the stack is what makes it
+        // fixable, and it stays in the console rather than on screen.
+        console.error(`loadTab(${tab}) failed`, err);
+        panel.innerHTML = `<div class="state"><strong>Couldn't load ${esc(tab)}</strong>
+          ${esc(err.message)}<br><button class="btn" id="retryTab">Retry</button></div>`;
+        $('retryTab').onclick = () => loadTab(tab);
+      }
+    }
+
+    function renderMarket(a, base) {
+      const panel = $('panel');
+
+      if (!a || a.weighted_avg === null || a.weighted_avg === undefined) {
+        panel.innerHTML = `<div class="state"><strong>No usable data</strong>
+          ${esc(a && a.error ? a.error : 'The engine found no evidence for this market before kickoff.')}</div>`;
+        return;
+      }
+
+      const supClass = a.supported ? 'sup' : 'not';
+      const supText = a.supported ? 'SUPPORTED' : 'NOT SUPPORTED';
+      const lineLabel = a.line_source === 'fair'
+        ? `Fair line ${fmtNum(a.line)}`
+        : `Line ${fmtNum(a.line)}`;
+
+      // Where the line came from, in one line, because a fair line is a number
+      // the engine chose and the reader is entitled to see its working.
+      const ref = a.line_reference;
+      let lineNote = '';
+      if (a.line_source === 'fair' && ref) {
+        if (ref.basis === 'season_shrunk') {
+          lineNote = `<div class="note">Line from the league reference ${fmtNum(ref.average)}:
+            this season's average ${fmtNum(ref.season_average)} over ${ref.season_matches} match(es),
+            shrunk toward ${esc(String(ref.prior).replace(/_/g, ' '))} ${fmtNum(ref.prior_value)}.
+            Snapped to the nearest x.5 so no result can be a push.</div>`;
+        } else if (ref.basis === 'league_long_run') {
+          lineNote = `<div class="note">No matches from this season fall before this fixture, so the
+            line uses the league's own history: ${fmtNum(ref.average)} over ${ref.matches}
+            match(es). Snapped to the nearest x.5.</div>`;
+        } else {
+          lineNote = `<div class="note">No league history before this fixture yet, so the line falls
+            back to the conventional ${fmtNum(a.line)} for this market.</div>`;
+        }
+      }
+
+      // Bars are scaled against the largest of (values, line) so the line sits
+      // visibly inside the scale rather than the bars floating arbitrarily.
+      const sourceKeys = ['home_away', 'recent_form', 'h2h'];
+      const values = sourceKeys.map(k => num(a.sources[k].value)).filter(v => v !== null);
+      const maxVal = Math.max(...values, num(a.line) || 0, 0.0001);
+
+      // Which sources actually feed the headline number. Under the shrunk
+      // method only the teams' season form does; recent form and H2H are shown
+      // because they are worth seeing, but they must not look like votes when
+      // the backtest says they add variance rather than accuracy.
+      const used = new Set(a.method === 'blend' ? sourceKeys : ['home_away']);
+
+      const bars = sourceKeys.map(key => {
+        const s = a.sources[key];
+        const value = num(s.value);
+        if (value === null) {
+          return `<div class="source">
+            <div class="source-top"><span>${esc(s.label)}</span><span>—</span></div>
+            <div class="track"><div class="fill" style="width:0%"></div></div>
+            <div class="weight-tag">no data for this source</div>
+          </div>`;
+        }
+        const pct = Math.max(3, Math.min(100, (value / maxVal) * 100));
+        const fillClass = value > num(a.line) ? '' : 'not';
+        const meta = [];
+        if (s.sample) {
+          if (a.profile_used && key === 'home_away') {
+            // This "sample" is the engine's stated weight for a typed average,
+            // not a number of matches, so calling it matches would be a lie.
+            meta.push('typed average, no match count');
+          } else {
+            meta.push(`${s.sample} match${s.sample === 1 ? '' : 'es'}`);
+          }
+        }
+        if (used.has(key)) {
+          if (a.has_league_reference === false) {
+            // No league average exists for this market, so nothing is being
+            // shrunk toward it and a percentage here would be invented.
+            meta.push('the team data alone — no league average to shrink toward');
+          } else if (s.reliability !== null && s.reliability !== undefined) {
+            meta.push(`${Math.round(s.reliability * 100)}% own data, rest league average`);
+          }
+        } else {
+          meta.push('context only, not part of the number');
+        }
+        return `<div class="source">
+          <div class="source-top"><span>${esc(s.label)}</span><span>${fmtNum(value)}</span></div>
+          <div class="track"><div class="fill ${fillClass}" style="width:${pct}%"></div></div>
+          <div class="weight-tag">${esc(meta.join(' · '))}</div>
+        </div>`;
+      }).join('');
+
+      const lowConf = a.low_confidence
+        ? `<div class="warn">Low confidence: only ${a.evidence_points} distinct match(es) back this number. Treat as a hint, not a finding.</div>`
+        : '';
+
+      // History box: a MEASURED frequency with its sample size, never a
+      // calibrated probability. Saying "62% likely" without a calibration test
+      // behind it would be the fake confidence meter the spec forbids.
+      let history = '';
+      if (base && base.rate !== null && base.total > 0) {
+        const pct = Math.round(base.rate * 100);
+        history = `<div class="history">
+          <div class="history-top">
+            <span>Over ${fmtNum(base.line)} in history</span>
+            <span class="history-pct">${pct}%</span>
+          </div>
+          <div class="history-sub">${base.over} of ${base.total}
+            ${esc(base.league || '')} matches before this fixture finished over the line.
+            That is a measured frequency, not a prediction for this match.
+            ${base.pushes_excluded ? `${base.pushes_excluded} push(es) excluded.` : ''}</div>
+        </div>`;
+      } else if (base) {
+        history = `<div class="history">
+          <div class="history-sub">No completed ${esc(base.league || '')} matches exist
+            before this fixture, so there is no history to show.</div>
+        </div>`;
+      }
+
+      // A typed team average is not measured, so the card must say so where the
+      // number is read, not only in the admin screen where it was entered.
+      const profileNote = a.profile_used
+        ? `<div class="note warn">Partly typed, not measured. This figure
+           ${esc(a.profile_note)}. It has no sample size behind it, so it cannot be
+           backtested the way a counted average can - and nothing here counted it.</div>`
+        : '';
+
+      panel.innerHTML = `
+        <div class="stat-row">
+          <div class="stat-name">${esc(titleCase(a.market))} — combined</div>
+          <div class="line-val">${esc(lineLabel)}</div>
+        </div>
+        <div class="weighted">
+          <div class="num">${fmtNum(a.weighted_avg)}</div>
+          <div class="verdict ${supClass}">${supText}</div>
+        </div>
+        <div class="evidence">Based on ${a.evidence_points} distinct match(es) ·
+          evidence available from: ${a.sources_used.length ? esc(a.sources_used.map(titleCase).join(', ')) : 'none'}</div>
+        ${history}
+        ${lowConf}
+        ${profileNote}
+        ${bars}
+        ${a.method_note ? `<div class="note">How this number was built: ${esc(a.method_note)}.</div>` : ''}
+        ${lineNote}
+        ${a.note ? `<div class="note">${esc(a.note)}</div>` : ''}
+        <div class="note" style="margin-top:14px">Not betting advice. This is a record of what the
+          evidence said, with its sample size attached.</div>
+      `;
+    }
+
+    function renderForm(data) {
+      const panel = $('panel');
+      const rows = (list, team) => list.map(r => {
+        const opp = r.home_team === team ? r.away_team : r.home_team;
+        const venue = r.home_team === team ? 'H' : 'A';
+        const own = r.home_team === team ? r.home_value : r.away_value;
+        return `<tr>
+          <td>${esc(r.date)}</td>
+          <td>${venue} v ${esc(opp)}</td>
+          <td class="n">${fmtNum(r.home_value)}–${fmtNum(r.away_value)}</td>
+          <td class="n">${fmtNum(own)}</td>
+        </tr>`;
+      }).join('') || '<tr><td colspan="4" style="color:var(--dim)">No matches before kickoff.</td></tr>';
+
+      panel.innerHTML = `
+        <div class="card">
+          <div class="stat-name">${esc(titleCase(data.stat))} · season home/away</div>
+          <div class="mstat"><span>${esc(data.home_team)} (home)</span><span>${fmtNum(data.home_season.avg)} · ${data.home_season.matches} m</span></div>
+          <div class="mstat"><span>${esc(data.away_team)} (away)</span><span>${fmtNum(data.away_season.avg)} · ${data.away_season.matches} m</span></div>
+          <div class="mstat"><span>Recent combined</span><span>${fmtNum(data.home_recent.avg)} + ${fmtNum(data.away_recent.avg)}</span></div>
+        </div>
+
+        <div class="section-label">${esc(data.home_team)} — last ${data.home_recent_rows.length}</div>
+        <table><thead><tr><th>Date</th><th>Match</th><th class="n">Total</th><th class="n">Own</th></tr></thead>
+        <tbody>${rows(data.home_recent_rows, data.home_team)}</tbody></table>
+
+        <div class="section-label">${esc(data.away_team)} — last ${data.away_recent_rows.length}</div>
+        <table><thead><tr><th>Date</th><th>Match</th><th class="n">Total</th><th class="n">Own</th></tr></thead>
+        <tbody>${rows(data.away_recent_rows, data.away_team)}</tbody></table>
+      `;
+    }
+
+    function renderH2H(data) {
+      const panel = $('panel');
+      if (!data.h2h_rows.length) {
+        panel.innerHTML = `<div class="state"><strong>No previous meetings</strong>
+          These two sides have not met in the stored data.</div>`;
+        return;
+      }
+      const rows = data.h2h_rows.map(r => `<tr>
+        <td>${esc(r.date)}</td>
+        <td>${esc(r.home_team)} v ${esc(r.away_team)}</td>
+        <td class="n">${fmtNum(r.total)}</td>
+      </tr>`).join('');
+
+      panel.innerHTML = `
+        <div class="card">
+          <div class="stat-name">${esc(titleCase(data.stat))} head to head</div>
+          <div class="mstat"><span>Combined average</span><span>${fmtNum(data.h2h.avg)}</span></div>
+          <div class="mstat"><span>Meetings</span><span>${data.h2h.matches}</span></div>
+        </div>
+        <table><thead><tr><th>Date</th><th>Match</th><th class="n">Combined</th></tr></thead>
+        <tbody>${rows}</tbody></table>
+      `;
+    }
+
+    /* ==================================================================
+       ADMIN
+    ================================================================== */
+    function showAdminLogin(message) {
+      $('adminAuth').hidden = false;
+      $('adminTabs').hidden = true;
+      $('adminPanel').hidden = true;
+      $('adminSignOut').hidden = true;
+      const err = $('adminAuthError');
+      err.hidden = !message;
+      err.textContent = message || '';
+      setTimeout(() => { try { $('adminTokenInput').focus(); } catch (e) {} }, 0);
+    }
+
+    function lockAdmin() {
+      adminToken = '';
+      try { sessionStorage.removeItem('sa_admin_token'); } catch (e) { /* file:// */ }
+      $('adminTokenInput').value = '';
+      showAdminLogin('Signed out.');
+    }
+
+    async function unlockAdmin() {
+      const token = $('adminTokenInput').value.trim();
+      const btn = $('adminLogin');
+      const err = $('adminAuthError');
+      if (!token) {
+        err.hidden = false;
+        err.textContent = 'Enter the admin token.';
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = 'Checking...';
+      const previous = adminToken;
+      adminToken = token;
+      try {
+        await api('/admin/auth');
+        try { sessionStorage.setItem('sa_admin_token', token); } catch (e) { /* file:// */ }
+        $('adminAuth').hidden = true;
+        $('adminTabs').hidden = false;
+        $('adminPanel').hidden = false;
+        $('adminSignOut').hidden = false;
+        $('adminTokenInput').value = '';
+        err.hidden = true;
+        showAdminView('fixtures');
+        toast('Admin unlocked');
+      } catch (ex) {
+        adminToken = previous;
+        err.hidden = false;
+        err.textContent = ex.status === 401
+          ? 'That token was not accepted.'
+          : 'Could not verify the token: ' + ex.message;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Unlock';
+      }
+    }
+
+    function showAdminView(which) {
+      if (adminAuthRequired && !adminToken) {
+        showAdminLogin();
+        return;
+      }
+      $('adminAuth').hidden = true;
+      $('adminTabs').hidden = false;
+      $('adminPanel').hidden = false;
+      $('adminSignOut').hidden = !adminAuthRequired;
+      document.querySelectorAll('.atab').forEach(t => t.classList.toggle('on', t.dataset.aview === which));
+      if (which === 'fixtures') renderAdminFixtures();
+      if (which === 'today') renderAdminToday();
+      if (which === 'publish') renderAdminPublish();
+      if (which === 'manual') renderAdminManual();
+      if (which === 'profiles') renderAdminProfiles();
+      if (which === 'data') renderAdminData();
+      if (which === 'nba') renderAdminNba();
+      if (which === 'overview') renderAdminOverview();
+    }
+
+    /* ------------------------------------------------------------------
+       Admin -> Fixtures: the forward calendar and the mapping gate.
+
+       Three states a fixture can be in, and they are shown differently:
+         needs_attention  the provider name is not in the historical data
+         eligible         mapped, scheduled, not yet published
+         published        on the user dashboard (published_id is set)
+
+       Nothing here ever writes to the historical `matches` table.
+    ------------------------------------------------------------------ */
+    function fixtureBadges(f) {
+      const mapped = f.mapping_state === 'ok' && f.home_team && f.away_team;
+      const evidence = f.evidence || {};
+      const noHistory = mapped && (!evidence.home_matches || !evidence.away_matches);
+      const badges = [];
+      if (f.published_id) badges.push('<span class="fx-badge pub">Published</span>');
+      if (!mapped) badges.push('<span class="fx-badge hold">Needs mapping</span>');
+      if (noHistory) badges.push('<span class="fx-badge nohist">No history</span>');
+      if (f.status && f.status !== 'scheduled') {
+        badges.push(`<span class="fx-badge">${esc(f.status)}</span>`);
+      }
+      return badges.join(' ');
+    }
+
+    function fixtureRow(f) {
+      const mapped = f.mapping_state === 'ok' && f.home_team && f.away_team;
+      const evidence = f.evidence || {};
+      const canSelect = mapped && !f.published_id && f.status === 'scheduled';
+      const title = mapped
+        ? `${esc(f.home_team)} v ${esc(f.away_team)}`
+        : `${esc(f.home_provider)} v ${esc(f.away_provider)}`;
+      const detail = mapped
+        ? `History before kickoff: ${evidence.home_matches} · ${evidence.away_matches} matches`
+        : `Provider names are not in the historical dataset yet`;
+      return `
+        <div class="fx-row">
+          <div>${canSelect
+            ? `<input type="checkbox" class="fx-check" data-id="${f.id}">`
+            : ''}</div>
+          <div class="fx-body">
+            <div class="fx-meta">
+              <span>${esc(f.kickoff || '--:--')}</span>
+              <span>${esc(f.league)}</span>
+              ${fixtureBadges(f)}
+            </div>
+            <div class="fx-teams">${title}</div>
+            <div class="fx-ev">${detail}</div>
+          </div>
+        </div>`;
+    }
+
+    async function renderAdminFixtures() {
+      const panel = $('adminPanel');
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+      const today = new Date().toISOString().slice(0, 10);
+      const to = daysAhead(fixtureState.days);
+
+      let settings, data, aliasInfo;
+      try {
+        [settings, data, aliasInfo] = await Promise.all([
+          api('/admin/fixture-settings'),
+          api(`/admin/available-fixtures?from=${today}&to=${to}`),
+          api('/admin/team-aliases').catch(() => ({ aliases: [], unmapped: [] }))
+        ]);
+      } catch (err) {
+        panel.innerHTML = `<div class="state">${esc(err.message)}</div>`;
+        return;
+      }
+
+      const token = !!settings.token_configured;
+      const leagues = (settings.leagues || []).map(l => `
+        <label class="fx-league">
+          <span>${esc(l.league)}</span>
+          <input type="checkbox" class="fx-league-toggle"
+                 data-league="${esc(l.league)}" ${l.auto_publish ? 'checked' : ''}>
+        </label>`).join('');
+
+      const groups = {};
+      (data.fixtures || []).forEach(f => {
+        (groups[f.date] = groups[f.date] || []).push(f);
+      });
+      const days = Object.keys(groups).sort().map(day => `
+        <div class="section-label fx-day">${esc(dayLabel(day))}</div>
+        ${groups[day].map(fixtureRow).join('')}
+      `).join('');
+
+      const unmappedNames = new Set();
+      (data.fixtures || []).forEach(f => {
+        if (!f.home_team) unmappedNames.add(f.home_provider);
+        if (!f.away_team) unmappedNames.add(f.away_provider);
+      });
+      const unmappedInfo = new Map(
+        (aliasInfo.unmapped || []).map(u => [u.provider_name, u]));
+      const mapTargets = [...unmappedNames].map(name => {
+        const info = unmappedInfo.get(name);
+        return { name, suggestions: info ? info.suggestions || [] : [] };
+      });
+      const mappingCard = mapTargets.length ? `
+        <div class="card">
+          <div class="section-label">Needs mapping (${mapTargets.length})</div>
+          <div class="fx-status" style="margin-bottom: 8px">
+            Pick the exact name the database already uses. It is remembered for
+            every future fixture, so this is normally a one-time job.
+          </div>
+          ${mapTargets.map((t, i) => `
+            <div class="fx-map">
+              <div class="fx-status"><b>${esc(t.name)}</b></div>
+              <div class="field">
+                <input id="fxmap_${i}" list="fxmap_list_${i}" placeholder="e.g. Man United">
+                <datalist id="fxmap_list_${i}">
+                  ${t.suggestions.map(s => `<option value="${esc(s.team)}">`).join('')}
+                </datalist>
+              </div>
+              <button class="btn sm" data-map="${i}">Save mapping</button>
+            </div>`).join('')}
+        </div>` : '';
+
+      panel.innerHTML = `
+        <div class="card">
+          <div class="fx-head">
+            <div>
+              <div class="appname" style="font-size: 15px">Automatic fixtures</div>
+              <div class="fx-status">${token
+                ? `Provider connected · ${esc(settings.provider)}`
+                : 'No API key configured'}</div>
+            </div>
+            <button class="btn sm primary" id="fxFetch" ${token ? '' : 'disabled'}>
+              Fetch now</button>
+          </div>
+          ${token ? '' : `
+            <div class="fx-status fx-warn" style="margin-top: 8px">
+              Put <b>FOOTBALL_DATA_TOKEN=...</b> in the project's <b>.env</b>
+              file and restart. Free key:
+              <a href="https://www.football-data.org/client/register"
+                 target="_blank" rel="noopener">football-data.org</a>.
+            </div>`}
+          <div class="fx-status" style="margin-top: 8px">
+            Last fetch: ${settings.last_fetch
+              ? esc(new Date(settings.last_fetch).toLocaleString())
+              : 'never'} · Window: ${settings.lookahead_days} days ·
+            Times are UTC (Ghana = UTC)
+          </div>
+          <div class="fx-status" style="margin-top: 6px">
+            Auto-publish releases a fixture only when both teams are mapped, it is
+            scheduled, and it is not already on the dashboard. Anything else waits
+            here for you.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-label">Auto-publish by league</div>
+          ${leagues}
+        </div>
+
+        <div class="card">
+          <div class="fx-head">
+            <div>
+              <div class="section-label" style="margin: 0">
+                Next ${fixtureState.days} days</div>
+              <div class="fx-status">${esc(today)} → ${esc(to)}</div>
+            </div>
+            <div class="fx-status">${data.published} published ·
+              ${data.needs_attention} need mapping</div>
+          </div>
+          <div class="fx-actions">
+            <button class="btn sm primary" id="fxPublishSel" disabled>Publish selected</button>
+            <button class="btn sm" id="fxPublishAll">Publish all eligible</button>
+          </div>
+          ${days || '<div class="fx-empty">No fixtures in this window yet. Press Fetch now.</div>'}
+        </div>
+
+        ${mappingCard}
+      `;
+
+      const updateSelection = () => {
+        const count = panel.querySelectorAll('.fx-check:checked').length;
+        const button = $('fxPublishSel');
+        button.disabled = count === 0;
+        button.textContent = count
+          ? `Publish selected (${count})` : 'Publish selected';
+      };
+      panel.querySelectorAll('.fx-check').forEach(c => { c.onchange = updateSelection; });
+
+      $('fxFetch').onclick = async () => {
+        const button = $('fxFetch');
+        button.disabled = true;
+        button.textContent = 'Fetching…';
+        try {
+          const res = await api('/admin/fixtures/fetch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              lookahead_days: settings.lookahead_days,
+              publish: true
+            })
+          });
+          const report = res.report;
+          const failed = (report.competitions || []).filter(c => c.error);
+          toast(failed.length
+            ? `${failed.length} league(s) failed — see console`
+            : `${report.available} fixtures · ${report.published} published · ${report.needs_attention} need mapping`);
+          if (failed.length) console.warn('Fixture fetch warnings', failed, res.log);
+          renderAdminFixtures();
+        } catch (err) {
+          toast(err.message, true);
+          button.disabled = false;
+          button.textContent = 'Fetch now';
+        }
+      };
+
+      $('fxPublishSel').onclick = async () => {
+        const ids = [...panel.querySelectorAll('.fx-check:checked')]
+          .map(c => Number(c.dataset.id));
+        if (!ids.length) return;
+        try {
+          const res = await api('/admin/available-fixtures/publish', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ids })
+          });
+          toast(`${res.published} published`);
+          renderAdminFixtures();
+        } catch (err) { toast(err.message, true); }
+      };
+
+      $('fxPublishAll').onclick = async () => {
+        try {
+          const res = await api('/admin/available-fixtures/publish-all', {
+            method: 'POST'
+          });
+          toast(`${res.published} published · ${res.duplicates} already there`);
+          renderAdminFixtures();
+        } catch (err) { toast(err.message, true); }
+      };
+
+      panel.querySelectorAll('.fx-league-toggle').forEach(toggle => {
+        toggle.onchange = async () => {
+          try {
+            await api('/admin/fixture-settings', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                league: toggle.dataset.league,
+                auto_publish: toggle.checked
+              })
+            });
+            toast(`${toggle.dataset.league}: auto-publish ${toggle.checked ? 'on' : 'off'}`);
+          } catch (err) {
+            toast(err.message, true);
+            toggle.checked = !toggle.checked;
+          }
+        };
+      });
+
+      panel.querySelectorAll('[data-map]').forEach(button => {
+        button.onclick = async () => {
+          const index = Number(button.dataset.map);
+          const target = mapTargets[index];
+          const value = $(`fxmap_${index}`).value.trim();
+          if (!value) {
+            toast('Enter the database team name', true);
+            return;
+          }
+          try {
+            await api('/admin/team-aliases', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ provider_name: target.name, team: value })
+            });
+            toast('Mapping saved');
+            renderAdminFixtures();
+          } catch (err) { toast(err.message, true); }
+        };
+      });
+    }
+
+    async function renderAdminToday() {
+      const panel = $('adminPanel');
+      const date = new Date().toISOString().slice(0, 10);
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+      try {
+        const rows = await api('/admin/published/matches?date=' + date);
+        if (!rows.length) {
+          panel.innerHTML = `<div class="card"><div class="state" style="padding:20px">
+            Nothing published for ${date}. Use the Publish tab.</div></div>`;
+          return;
+        }
+        panel.innerHTML = `<div class="section-label">Published ${date}</div>` + rows.map(m => `
+          <div class="card">
+            <div class="mstat"><span>${esc(m.home_team)} v ${esc(m.away_team)}</span><span>${esc(m.kickoff || '')}</span></div>
+            <div style="font-size:12px;color:var(--dim);margin-bottom:8px">
+              ${esc(m.league)} · ${esc(m.season || '')} · status: ${esc(m.status)}</div>
+            <button class="btn sm" data-edit="${m.id}">Edit</button>
+            <button class="btn sm" data-hide="${m.id}">${m.status === 'hidden' ? 'Show' : 'Hide'}</button>
+            <button class="btn sm danger" data-del="${m.id}">Delete</button>
+          </div>`).join('');
+
+        panel.querySelectorAll('[data-hide]').forEach(b => b.onclick = async () => {
+          const id = Number(b.dataset.hide);
+          const row = rows.find(r => r.id === id);
+          await api(`/admin/published/matches/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: row.status === 'hidden' ? 'published' : 'hidden' })
+          });
+          toast('Updated');
+          renderAdminToday();
+        });
+        panel.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
+          if (!confirm('Delete this published match?')) return;
+          await api(`/admin/published/matches/${b.dataset.del}`, { method: 'DELETE' });
+          toast('Deleted');
+          renderAdminToday();
+        });
+        panel.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => {
+          const row = rows.find(r => r.id === Number(b.dataset.edit));
+          renderAdminPublish(row);
+        });
+      } catch (err) {
+        panel.innerHTML = `<div class="state">${esc(err.message)}</div>`;
+      }
+    }
+
+    async function renderAdminPublish(existing) {
+      const panel = $('adminPanel');
+      let leagues = [];
+      try {
+        const l = await api('/leagues');
+        leagues = l.leagues;
+      } catch (e) { /* optional */ }
+
+      const m = existing || {};
+      panel.innerHTML = `
+        <div class="card">
+          <div class="field"><label>League</label>
+            <input id="p_league" list="leagueOptions" value="${esc(m.league || '')}" placeholder="Premier League">
+            <datalist id="leagueOptions">${leagues.map(x => `<option value="${esc(x)}">`).join('')}</datalist>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Date</label>
+              <input id="p_date" type="date" value="${esc(m.date || new Date().toISOString().slice(0, 10))}"></div>
+            <div class="field"><label>Kickoff</label>
+              <input id="p_kickoff" value="${esc(m.kickoff || '19:30')}" placeholder="19:30"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Home team</label>
+              <input id="p_home" value="${esc(m.home_team || '')}" placeholder="Arsenal"></div>
+            <div class="field"><label>Away team</label>
+              <input id="p_away" value="${esc(m.away_team || '')}" placeholder="Chelsea"></div>
+          </div>
+          <div class="field"><label>Season (optional)</label>
+            <input id="p_season" value="${esc(m.season || '')}" placeholder="2026-27"></div>
+          <div class="field"><label>Markets (optional — blank = all)</label>
+            <input id="p_markets" value="${esc(m.markets || '')}" placeholder="goals,shots,corners"></div>
+          <button class="btn primary" id="p_submit">${existing ? 'Save changes' : 'Publish match'}</button>
+        </div>`;
+
+      $('p_submit').onclick = async () => {
+        const body = {
+          league: $('p_league').value.trim(),
+          date: $('p_date').value,
+          kickoff: $('p_kickoff').value.trim(),
+          home_team: $('p_home').value.trim(),
+          away_team: $('p_away').value.trim(),
+          season: $('p_season').value.trim() || null,
+          markets: $('p_markets').value.trim()
+            ? $('p_markets').value.split(',').map(s => s.trim()).filter(Boolean)
+            : null
+        };
+        if (!body.league || !body.home_team || !body.away_team || !body.date) {
+          toast('League, date and both teams are required', true);
+          return;
+        }
+        try {
+          if (existing) {
+            await api(`/admin/published/matches/${existing.id}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            });
+            toast('Saved');
+          } else {
+            const res = await api('/admin/published/matches', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            });
+            toast(`Published (season ${res.season})`);
+          }
+          showAdminView('today');
+        } catch (err) {
+          toast(err.message, true);
+        }
+      };
+    }
+
+    async function renderAdminManual() {
+      const panel = $('adminPanel');
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+
+      const q = new URLSearchParams({ limit: '100' });
+      if (manualFilter.league !== 'All') q.set('league', manualFilter.league);
+      if (manualFilter.days) q.set('since', daysBack(manualFilter.days));
+
+      let d;
+      try { d = await api('/admin/matches/missing-manual?' + q); }
+      catch (err) { panel.innerHTML = `<div class="state">${esc(err.message)}</div>`; return; }
+
+      const rangeLabel = manualFilter.days ? `last ${manualFilter.days} days` : 'any date';
+      const controls = `
+        <div class="card">
+          <div class="stat-name">Manual stats to enter</div>
+          <div class="mstat"><span>Missing in this view</span><span>${d.total.toLocaleString()}</span></div>
+          <div class="mstat"><span>Showing</span><span>${d.matches.length.toLocaleString()}${d.total > d.matches.length ? ` of ${d.total.toLocaleString()}` : ''}</span></div>
+          <div class="row2" style="align-items:center;margin-top:12px">
+            <select id="mf_days">
+              ${[[7, 'Last 7 days'], [14, 'Last 14 days'], [30, 'Last 30 days'], [0, 'Any date']]
+                .map(([v, t]) => `<option value="${v}" ${manualFilter.days === v ? 'selected' : ''}>${t}</option>`).join('')}
+            </select>
+            <select id="mf_league">
+              ${['All', ...d.leagues].map(l => `<option ${manualFilter.league === l ? 'selected' : ''}>${esc(l)}</option>`).join('')}
+            </select>
+          </div>
+          <div class="note">The eight extra markets — tackles, throw-ins, aerial duels, offsides,
+            interceptions, goal kicks, saves, substitutions — are not in any CSV, so they only ever
+            have what you type here. Stats attach to a <strong>match</strong>, not a team, so
+            refresh the CSVs first (Admin → Data) and the week's fixtures will appear below.</div>
+        </div>`;
+
+      if (!d.total) {
+        manualQueue = [];
+        panel.innerHTML = controls + `<div class="card"><div class="state" style="padding:20px">
+          No completed matches are missing manual stats ${manualFilter.days ? `in the ${rangeLabel}` : 'at all'}.
+        </div></div>`;
+      } else {
+        manualQueue = d.matches.map(r => ({
+          id: r.id, teams: `${r.home_team} v ${r.away_team}`,
+        }));
+        panel.innerHTML = controls + d.matches.map(r => `
+          <div class="match" data-manual="${r.id}"
+            data-teams="${esc(r.home_team)} v ${esc(r.away_team)}">
+            <div class="teams">${esc(r.home_team)} <span class="vs">v</span> ${esc(r.away_team)}</div>
+            <div class="time">${esc(r.date)} · ${esc(r.league)}</div>
+          </div>`).join('');
+      }
+
+      $('mf_days').onchange = (ev) => {
+        manualFilter.days = Number(ev.target.value);
+        renderAdminManual();
+      };
+      $('mf_league').onchange = (ev) => {
+        manualFilter.league = ev.target.value;
+        renderAdminManual();
+      };
+      panel.querySelectorAll('[data-manual]').forEach(el => {
+        el.onclick = () => renderManualForm(Number(el.dataset.manual), el.dataset.teams);
+      });
+    }
+
+    const MANUAL_FIELDS = [
+      ['home_tackles', 'away_tackles', 'Tackles'],
+      ['home_throw_ins', 'away_throw_ins', 'Throw-ins'],
+      ['home_aerial_duels', 'away_aerial_duels', 'Aerial duels won'],
+      ['home_offsides', 'away_offsides', 'Offsides'],
+      ['home_interceptions', 'away_interceptions', 'Interceptions'],
+      ['home_goal_kicks', 'away_goal_kicks', 'Goal kicks'],
+      ['home_saves', 'away_saves', 'Saves'],
+      ['home_substitutions', 'away_substitutions', 'Substitutions'],
+    ];
+
+    async function renderManualForm(matchId, teams) {
+      const panel = $('adminPanel');
+      let existing = {};
+      try { existing = await api(`/admin/matches/${matchId}/manual-stats`); } catch (e) { }
+      const pos = manualQueue.findIndex(q => q.id === matchId);
+      const next = pos === -1 ? null : manualQueue[pos + 1];
+      panel.innerHTML = `
+        <div class="card">
+          <div class="stat-name">Manual stats${pos >= 0
+            ? ` · ${pos + 1} of ${manualQueue.length}` : ''}</div>
+          <div style="font-size:13px;margin:6px 0 12px">${esc(teams)}
+            <span class="tag">${esc(String(matchId))}</span></div>
+          <div class="note" style="margin:0 0 14px">Enter the <strong>count for each side</strong>,
+            not a percentage. The engine adds the two teams to form the match total and compares
+            that to the line, so a percentage cannot be used. For aerial duels that means
+            <em>duels won</em> (12), not <em>% won</em> (67%) — the share can be worked out from
+            the count, but never the other way round. Leave a field blank if you do not have it.</div>
+          <div class="row2" style="font-size:11px;color:var(--dim)">
+            <div>Home</div><div>Stat</div><div>Away</div></div>
+          ${MANUAL_FIELDS.map(([h, a, label]) => `
+            <div class="row2" style="align-items:center;margin-bottom:8px">
+              <input data-f="${h}" type="number" min="0" step="1" value="${existing[h] ?? ''}">
+              <div style="flex:1.4;font-size:12px;color:var(--dim)">${label}</div>
+              <input data-f="${a}" type="number" min="0" step="1" value="${existing[a] ?? ''}">
+            </div>`).join('')}
+          <button class="btn primary" id="m_save">Save${next ? ' and next' : ''}</button>
+          ${next ? '<button class="btn" id="m_skip">Skip</button>' : ''}
+          <button class="btn" id="m_back">Back to list</button>
+        </div>`;
+
+      if (next) {
+        $('m_skip').onclick = () => renderManualForm(next.id, next.teams);
+      }
+      $('m_back').onclick = renderAdminManual;
+      $('m_save').onclick = async () => {
+        const body = {};
+        panel.querySelectorAll('[data-f]').forEach(inp => {
+          body[inp.dataset.f] = inp.value === '' ? null : Number(inp.value);
+        });
+        try {
+          await api(`/admin/matches/${matchId}/manual-stats`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          // Advance down the list instead of bouncing back to it: typing a week
+          // of matches is one long run of this form, and the list is already
+          // ordered newest first.
+          if (next) {
+            toast('Saved — next match');
+            renderManualForm(next.id, next.teams);
+          } else {
+            toast('Saved — analysis now uses these values');
+            renderAdminManual();
+          }
+        } catch (err) {
+          toast(err.message, true);
+        }
+      };
+    }
+
+    /* ------------------------------------------------------------------
+       ADMIN :: DATA
+       Answers the two questions you cannot answer by looking at a fixture:
+       is the dataset up to date, and which markets have anything behind them.
+    ------------------------------------------------------------------ */
+    async function renderAdminData() {
+      const panel = $('adminPanel');
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+
+      let d;
+      try { d = await api('/admin/data'); }
+      catch (err) { panel.innerHTML = `<div class="state">${esc(err.message)}</div>`; return; }
+
+      const stale = d.days_stale;
+      const staleTxt = stale === null ? '—'
+        : stale <= 0 ? 'current'
+          : `${stale} day${stale === 1 ? '' : 's'} behind`;
+
+      // A market with no data cannot say anything; the engine falls back to the
+      // league prior, which looks like an answer but is not one. Flag it.
+      const THIN = 30;
+
+      panel.innerHTML = `
+        <div class="card">
+          <div class="stat-name">Dataset freshness</div>
+          <div class="mstat"><span>Today</span><span>${esc(d.today)}</span></div>
+          <div class="mstat"><span>Latest match played</span><span>${esc(d.latest_completed_match || '—')}</span></div>
+          <div class="mstat"><span>Behind today</span><span>${esc(staleTxt)}</span></div>
+          <div class="note">Newly played matches come in by re-downloading the season
+            CSV over <code>data/raw/&lt;league&gt;/&lt;season&gt;.csv</code>, then
+            refreshing here. The <strong>file name is the season</strong>, so it must be
+            <code>2026-27.csv</code>; a file named anything else is refused rather than
+            imported as a second copy of the season. Existing matches keep their id and
+            their hand-entered stats — only the CSV columns are refreshed.</div>
+          <button class="btn primary" id="d_download" style="margin-top:12px">Download latest CSVs</button>
+          <button class="btn" id="d_import" style="margin-top:12px">Refresh from CSVs</button>
+          <div class="note">Download fetches the current season for every league on file
+            straight from football-data.co.uk and then refreshes. A response that is not a
+            season CSV is refused, so an outage can never overwrite a good file with an
+            error page. Refresh reads whatever is already in
+            <code>data/raw/</code> without downloading anything.</div>
+        </div>
+
+        ${lastDownload ? `
+        <div class="card">
+          <div class="stat-name">Last download</div>
+          <div class="mstat"><span>Season</span><span>${esc(lastDownload.season)}</span></div>
+          <div class="mstat"><span>Files downloaded</span><span>${lastDownload.downloaded}</span></div>
+          ${lastDownload.refused ? `<div class="note warn">${lastDownload.refused} file(s)
+            were refused because the response was not a season CSV. The existing files
+            were left alone.</div>` : ''}
+          ${lastDownload.failed ? `<div class="note warn">${lastDownload.failed} league(s)
+            could not be reached. Try again; the others were unaffected.</div>` : ''}
+          <details class="note"><summary>Download log</summary>
+            <pre class="log">${lastDownload.log.map(l => esc(l)).join('\n')}</pre></details>
+        </div>` : ''}
+
+        ${lastImport ? `
+        <div class="card">
+          <div class="stat-name">Last refresh</div>
+          <div class="mstat"><span>New matches</span><span>${lastImport.inserted.toLocaleString()}</span></div>
+          <div class="mstat"><span>Refreshed</span><span>${lastImport.updated.toLocaleString()}</span></div>
+          <div class="mstat"><span>Removed (no longer in the CSV)</span><span>${lastImport.removed.toLocaleString()}</span></div>
+          <div class="mstat"><span>Hand-entered matches kept</span><span>${lastImport.kept_manual.toLocaleString()}</span></div>
+          <div class="mstat"><span>Files read</span><span>${lastImport.files.length}</span></div>
+          ${lastImport.orphaned ? `<div class="note warn">${lastImport.orphaned} removed
+            match(es) had hand-entered stats, which are now orphaned — likely a
+            re-scheduled fixture. Re-add it under its new date.</div>` : ''}
+          ${lastImport.warnings.length ? `<div class="note warn">${lastImport.warnings
+            .map(w => esc(w)).join('<br>')}</div>` : ''}
+          <details class="note"><summary>Import log</summary>
+            <pre class="log">${lastImport.log.map(l => esc(l)).join('\n')}</pre></details>
+        </div>` : ''}
+
+        <div class="card">
+          <div class="stat-name">Markets with data</div>
+          ${d.market_coverage.map(m => `
+            <div class="mstat">
+              <span>${esc(m.label)}${m.input === 'manual'
+                    ? '<span class="tag">manual</span>' : ''}${
+                    m.matches_with_data < THIN
+                    ? '<span class="tag trim">thin</span>' : ''}</span>
+              <span>${m.matches_with_data.toLocaleString()}</span>
+            </div>`).join('')}
+          <div class="note">Counts are completed matches with both values present.
+            A market below ${THIN} matches cannot say much: the engine shrinks it hard
+            toward the league average, and the eight <span class="tag">manual</span>
+            markets have no CSV source at all, so they report <em>not enough data</em>
+            until counts are typed in on the Stats tab or per-team averages are filled
+            in on the Profiles tab.</div>
+        </div>
+
+        <div class="card">
+          <div class="stat-name">Hand-entered work</div>
+          <div class="mstat"><span>Manual stat records</span><span>${d.manual_stats.records.toLocaleString()}</span></div>
+          <div class="mstat"><span>Hand-added matches</span><span>${d.manual_stats.hand_added_matches.toLocaleString()}</span></div>
+          <div class="mstat"><span>Orphaned stat records</span><span>${d.manual_stats.orphaned.toLocaleString()}</span></div>
+          <div class="note">Orphaned records point at a match that no longer exists.
+            They are ignored by the engine but should be zero.</div>
+        </div>
+
+        <div class="card">
+          <div class="stat-name">Backup</div>
+          <div class="mstat"><span>Last export</span><span>${d.last_export
+              ? esc(String(d.last_export.exported_at).replace('T', ' ').slice(0, 16))
+              : 'never'}</span></div>
+          <div class="mstat"><span>Matches in export</span><span>${d.last_export
+              ? Number(d.last_export.matches).toLocaleString() : '—'}</span></div>
+          <div class="note">Writes the database to plain CSV under
+            <code>data/export/</code> - every match, every hand-entered stat, every
+            published fixture. Restoring that folder is what makes a rebuild from
+            the raw CSVs lossless.</div>
+          <button class="btn primary" id="d_export" style="margin-top:12px">Export now</button>
+        </div>
+
+        <div class="card">
+          <div class="stat-name">By league and season</div>
+          ${d.leagues.map(l => `
+            <div class="mstat">
+              <span>${esc(l.league)} <span class="tag">${esc(l.season)}</span></span>
+              <span>${l.matches.toLocaleString()} · ${esc(l.latest_date)}</span>
+            </div>`).join('')}
+        </div>`;
+
+      $('d_download').onclick = async (ev) => {
+        const btn = ev.currentTarget;
+        btn.disabled = true;
+        btn.textContent = 'Downloading…';
+        try {
+          const r = await api('/admin/download-csvs', { method: 'POST' });
+          lastDownload = { ...r.download, log: r.log };
+          if (r.import) {
+            lastImport = { ...r.import, warnings: r.warnings || [], log: r.import_log || [] };
+          }
+          toast(r.download.refused
+            ? `${r.download.refused} file(s) refused — existing files kept`
+            : r.import
+              ? `Downloaded ${r.download.downloaded} file(s), added ${r.import.inserted} match(es)`
+              : `Downloaded ${r.download.downloaded} file(s)`);
+          renderAdminData();
+        } catch (err) {
+          toast(err.message, true);
+          btn.disabled = false;
+          btn.textContent = 'Download latest CSVs';
+        }
+      };
+
+      $('d_import').onclick = async (ev) => {
+        const btn = ev.currentTarget;
+        btn.disabled = true;
+        btn.textContent = 'Importing…';
+        try {
+          const r = await api('/admin/import-csvs', { method: 'POST' });
+          lastImport = { ...r.summary, warnings: r.warnings, log: r.log };
+          const changed = r.summary.inserted || r.summary.updated;
+          toast(changed
+            ? `Refreshed ${r.summary.updated} match(es), added ${r.summary.inserted}`
+            : 'Nothing new — the CSVs already match the database');
+          renderAdminData();
+        } catch (err) {
+          toast(err.message, true);
+          btn.disabled = false;
+          btn.textContent = 'Refresh from CSVs';
+        }
+      };
+
+      $('d_export').onclick = async (ev) => {
+        const btn = ev.currentTarget;
+        btn.disabled = true;
+        btn.textContent = 'Exporting…';
+        try {
+          const summary = await api('/admin/export', { method: 'POST' });
+          toast(`Exported ${summary.matches} matches to ${summary.files} files`);
+          renderAdminData();
+        } catch (err) {
+          toast(err.message, true);
+          btn.disabled = false;
+          btn.textContent = 'Export now';
+        }
+      };
+    }
+
+    /* Profiles: per-team averages for the eight markets no CSV publishes.
+       Typing two counts per fixture is accurate but brutal; a stats site's
+       "per game" column for a team is the same quantity the engine would derive
+       from that team's matches, so it can stand in for the derivation. It is not
+       measured, so the engine only ever uses it where nothing was counted. */
+    function currentSeasonLabel() {
+      const now = new Date();
+      const start = now.getMonth() >= 6 ? now.getFullYear() : now.getFullYear() - 1;
+      return `${start}-${String(start + 1).slice(2)}`;
+    }
+
+    async function renderAdminProfiles() {
+      const panel = $('adminPanel');
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+
+      let leagues = [];
+      try { leagues = (await api('/leagues')).leagues; } catch (e) { /* optional */ }
+      if (!profileView.league || profileView.league === 'All') {
+        // Premier League first if it exists, purely so the usual league is one
+        // fewer click; the list is alphabetical and would otherwise open on
+        // Bundesliga.
+        const preferred = leagues.find(l => l === 'Premier League');
+        profileView.league = preferred || leagues[0] || 'Premier League';
+      }
+      if (!profileView.season) profileView.season = currentSeasonLabel();
+      if (!profileView.as_of) profileView.as_of = new Date().toISOString().slice(0, 10);
+
+      const qs = new URLSearchParams({
+        league: profileView.league, season: profileView.season
+      });
+      if (profileView.search) qs.set('search', profileView.search);
+
+      let data;
+      try { data = await api('/admin/team-profiles?' + qs.toString()); }
+      catch (err) { panel.innerHTML = `<div class="state">${esc(err.message)}</div>`; return; }
+
+      profileView.teams = data.teams;
+      const markets = data.markets;
+
+      const head = markets.map(m => `<th>${esc(titleCase(m))}</th>`).join('');
+      const body = data.teams.map(t => {
+        const edit = profileEdits[t.team] || {};
+        const cells = markets.map(m => {
+          const stored = t.profile && t.profile.values[m] != null ? t.profile.values[m] : '';
+          const value = edit[m] !== undefined ? edit[m] : stored;
+          return `<td><input class="pcell" type="number" step="0.1" min="0" max="100"
+            data-team="${esc(t.team)}" data-market="${esc(m)}"
+            value="${esc(String(value))}" placeholder="—"></td>`;
+        }).join('');
+        const set = !!t.profile;
+        return `<tr class="${set ? 'pset' : ''}">
+          <td class="pteam">${esc(t.team)}</td>${cells}
+          <td>${set ? `<button class="btn sm" data-clear="${t.profile.id}">Clear</button>` : ''}</td>
+        </tr>`;
+      }).join('');
+
+      panel.innerHTML = `
+        <div class="card">
+          <div class="stat-name">Team profiles</div>
+          <div class="note">These eight markets are published by no free CSV, so typing
+            two counts per fixture is the only other way to fill them. A stats site's
+            <strong>per game</strong> figure for a team is the same quantity the engine
+            would otherwise derive from that team's matches, so it can stand in for the
+            derivation. It is <strong>not measured</strong>: it is never counted as
+            evidence, and it never overrides a real count. Enter the number
+            <strong>for one team, per game</strong> — not the match total, or it arrives
+            doubled.</div>
+          <div class="row2">
+            <div class="field"><label>League</label>
+              <select id="pr_league">${leagues.map(l =>
+                `<option ${l === profileView.league ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>
+            </div>
+            <div class="field"><label>Season</label>
+              <input id="pr_season" value="${esc(profileView.season)}"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>These averages were read on</label>
+              <input id="pr_as_of" type="date" value="${esc(profileView.as_of)}"></div>
+            <div class="field"><label>Find a team</label>
+              <input id="pr_search" value="${esc(profileView.search)}" placeholder="e.g. Arsenal"></div>
+          </div>
+          <div class="note">The date is load-bearing: an analysis for a fixture
+            <em>before</em> it will not use these figures, so a typed average can never
+            quietly rewrite the past.</div>
+        </div>
+
+        <div class="card">
+          <div class="stat-name">${data.with_profile} of ${data.total} teams filled in</div>
+          ${data.total === 0
+            ? `<div class="state">No teams found for ${esc(profileView.league)}
+                 ${esc(profileView.season)}. Check the season label.</div>`
+            : `<div class="tscroll"><table class="ptable">
+                 <thead><tr><th>Team</th>${head}<th></th></tr></thead>
+                 <tbody>${body}</tbody></table></div>
+               <button class="btn primary" id="pr_save" style="margin-top:12px">Save all filled rows</button>
+               <div class="note">Rows with at least one number are saved; blank cells are
+                 left as they are. Clearing a team removes its profile entirely.</div>`}
+        </div>`;
+
+      $('pr_league').onchange = e => {
+        profileView.league = e.target.value; profileEdits = {}; renderAdminProfiles();
+      };
+      $('pr_as_of').onchange = e => { profileView.as_of = e.target.value; };
+      $('pr_search').onchange = e => { profileView.search = e.target.value; renderAdminProfiles(); };
+      $('pr_season').onchange = e => {
+        profileView.season = e.target.value; profileEdits = {}; renderAdminProfiles();
+      };
+
+      panel.querySelectorAll('[data-clear]').forEach(b => b.onclick = async () => {
+        if (!confirm('Clear this team\'s typed averages?')) return;
+        await api('/admin/team-profiles/' + b.dataset.clear, { method: 'DELETE' });
+        toast('Cleared');
+        renderAdminProfiles();
+      });
+
+      const saveBtn = $('pr_save');
+      if (saveBtn) saveBtn.onclick = async (ev) => {
+        const as_of = $('pr_as_of').value;
+        if (!as_of) { toast('Set the date the averages were read on', true); return; }
+
+        // Read straight from the DOM rather than from state, so a number typed
+        // and not blurred cannot be lost, and send only rows that have one.
+        const byTeam = {};
+        panel.querySelectorAll('.pcell').forEach(inp => {
+          const v = inp.value.trim();
+          if (!v) return;
+          (byTeam[inp.dataset.team] = byTeam[inp.dataset.team] || {})[inp.dataset.market] = Number(v);
+        });
+        const teams = Object.keys(byTeam);
+        if (!teams.length) { toast('Nothing to save'); return; }
+
+        const btn = ev.currentTarget;
+        btn.disabled = true;
+        btn.textContent = `Saving ${teams.length}…`;
+        let saved = 0;
+        const rejected = [];
+        for (const team of teams) {
+          try {
+            await api('/admin/team-profiles', {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                league: profileView.league, season: profileView.season,
+                team, as_of, ...byTeam[team]
+              })
+            });
+            saved++;
+          } catch (err) { rejected.push(team); }
+        }
+        profileEdits = {};
+        toast(rejected.length
+          ? `${saved} saved, ${rejected.length} rejected (${rejected.slice(0, 3).join(', ')})`
+          : `Saved ${saved} team(s)`, rejected.length > 0);
+        renderAdminProfiles();
+      };
+    }
+
+    async function renderAdminOverview() {
+      const panel = $('adminPanel');
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+      try {
+        const [d, p] = await Promise.all([
+          api('/admin/dashboard'),
+          api('/admin/predictions/status').catch(() => null),
+        ]);
+        const rec = (p && p.record) || {};
+        const last = p && p.last_build ? new Date(p.last_build) : null;
+        const lastText = last && !Number.isNaN(last.getTime())
+          ? last.toLocaleString('en-GB', {
+            day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
+          })
+          : 'never';
+        const settled = rec.graded
+          ? `${rec.won}&ndash;${rec.lost}${rec.hit_rate !== null
+            ? ` (${Math.round(rec.hit_rate * 100)}%)` : ''}`
+          : 'nothing settled yet';
+        panel.innerHTML = `
+          <div class="card">
+            <div class="stat-name">Published today</div>
+            <div class="mstat"><span>Total</span><span>${d.published_today}</span></div>
+            ${d.published_by_league.map(l => `<div class="mstat"><span>${esc(l.league)}</span><span>${l.count}</span></div>`).join('')}
+          </div>
+          <div class="card">
+            <div class="stat-name">Data</div>
+            <div class="mstat"><span>Historical completed</span><span>${d.historical_completed}</span></div>
+            <div class="mstat"><span>Scheduled fixtures</span><span>${d.historical_scheduled}</span></div>
+            <div class="mstat"><span>Manual stat records</span><span>${d.manual_stat_records}</span></div>
+            <div class="mstat"><span>Distinct home teams</span><span>${d.teams}</span></div>
+            <div class="mstat"><span>Latest completed match</span><span>${esc(d.latest_completed_match || '—')}</span></div>
+          </div>
+          <div class="card">
+            <div class="stat-name">Prediction board</div>
+            <div class="mstat"><span>Markets measured</span><span>${p ? p.markets_ready : '—'}</span></div>
+            <div class="mstat"><span>Picks in the window</span><span>${p ? p.upcoming_picks : '—'}</span></div>
+            <div class="mstat"><span>Matchup lines in the window</span><span>${p ? p.upcoming_lines : '—'}</span></div>
+            <div class="mstat"><span>Lines settled</span><span>${p ? p.settled_lines : '—'}</span></div>
+            <div class="mstat"><span>Settled record</span><span>${settled}</span></div>
+            <div class="mstat"><span>Last measured / built</span><span>${lastText}</span></div>
+            <button class="btn" id="rebuildBoard"${p && p.running ? ' disabled' : ''}>
+              ${p && p.running ? 'Rebuilding…' : 'Rebuild the board'}</button>
+            <div class="subtitle" style="margin-top:8px">Re-measures every market
+              from the match history, then fills any missing picks. The daily job
+              does this on its own; use it after a CSV refresh. A pick whose game
+              has started is never rewritten.</div>
+          </div>`;
+        const btn = $('rebuildBoard');
+        if (btn && !btn.disabled) {
+          btn.onclick = async () => {
+            btn.disabled = true;
+            btn.textContent = 'Starting…';
+            try {
+              const r = await api('/admin/predictions/rebuild', { method: 'POST' });
+              toast(r.started
+                ? 'Rebuilding in the background — several minutes.'
+                : r.reason, !r.started);
+              setTimeout(renderAdminOverview, 1200);
+            } catch (err) {
+              toast(err.message, true);
+              btn.disabled = false;
+              btn.textContent = 'Rebuild the board';
+            }
+          };
+        }
+      } catch (err) {
+        panel.innerHTML = `<div class="state">${esc(err.message)}</div>`;
+      }
+    }
+
+    /* ------------------------------------------------------------------
+       Admin -> NBA.
+
+       The NBA updates itself: the game scheduler pulls results and the
+       forward schedule, and a second scheduler keeps rosters and the
+       availability snapshot current. This tab exists so that work is
+       visible — what ran, when, how many rows, and what failed.
+
+       Availability is displayed, never priced: the feed has no history, so
+       it cannot be measured yet. The note under the roster says so.
+    ------------------------------------------------------------------ */
+    function fmtWhen(value) {
+      if (!value) return '—';
+      const d = new Date(value);
+      return Number.isNaN(d.getTime())
+        ? esc(value)
+        : d.toLocaleString('en-GB', {
+          day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
+        });
+    }
+
+    async function loadNbaRoster() {
+      const id = $('nbaRosterTeam') && $('nbaRosterTeam').value;
+      const box = $('nbaRosterBox');
+      if (!id || !box) return;
+      box.innerHTML = '<div class="sk"><div class="sk-line" style="width:50%"></div></div>';
+      try {
+        const d = await api(`/nba/teams/${id}/roster`);
+        const a = d.availability || {};
+        const inj = (a.players || []).map(p => `
+          <div class="mstat"><span>${esc(p.player_name)}</span>
+            <span>${esc(p.status || '')}${p.minutes ? ` · ${p.minutes} min` : ''}</span></div>`).join('')
+          || '<div class="subtitle">No availability entries in the latest snapshot.</div>';
+        const rows = (d.roster || []).map(p => `
+          <tr>
+            <td>${esc(p.full_name)}</td>
+            <td>${esc(p.position || '—')}</td>
+            <td>${p.age == null ? '—' : p.age}</td>
+            <td>${p.gp == null ? '—' : p.gp}</td>
+            <td>${p.minutes == null ? '—' : p.minutes.toFixed(1)}</td>
+            <td>${p.pts == null ? '—' : p.pts.toFixed(1)}</td>
+            <td>${p.reb == null ? '—' : p.reb.toFixed(1)}</td>
+            <td>${p.ast == null ? '—' : p.ast.toFixed(1)}</td>
+            <td>${p.ts_pct == null ? '—' : (p.ts_pct * 100).toFixed(1) + '%'}</td>
+          </tr>`).join('');
+        box.innerHTML = `
+          <div class="mstat"><span>Estimated minutes unavailable</span>
+            <span>${a.minutes_unavailable == null ? '—' : a.minutes_unavailable}</span></div>
+          <div class="subtitle" style="margin:6px 0 10px">Descriptive only.
+            The injury feed has no history yet, so it is never an input to a
+            projection.</div>
+          ${inj}
+          <table class="nba-stat-table" style="margin-top:12px">
+            <thead><tr><th>Player</th><th>Pos</th><th>Age</th><th>GP</th>
+              <th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>TS</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+          <div class="subtitle" style="margin-top:8px">Production is each
+            player's most recent season, wherever it was earned. Roles are
+            minutes-based, not a confirmed lineup.</div>`;
+      } catch (err) {
+        box.innerHTML = `<div class="state">${esc(err.message)}</div>`;
+      }
+    }
+
+    async function renderAdminNba() {
+      const panel = $('adminPanel');
+      panel.innerHTML = '<div class="sk"><div class="sk-line" style="width:60%"></div></div>';
+      try {
+        const [status, teams] = await Promise.all([
+          api('/admin/nba/people/status'),
+          api('/nba/teams'),
+        ]);
+        const c = status.counts || {};
+        const jobs = (status.jobs || []).map(j => `
+          <tr>
+            <td>${esc(j.job)}</td>
+            <td>${esc(j.status)}</td>
+            <td>${fmtWhen(j.started_at)}</td>
+            <td>${j.rows == null ? '—' : j.rows}</td>
+            <td>${esc(j.error || '—')}</td>
+          </tr>`).join('');
+        panel.innerHTML = `
+          <div class="card">
+            <div class="stat-name">NBA sync</div>
+            <div class="mstat"><span>Official players</span><span>${c.players == null ? '—' : c.players}</span></div>
+            <div class="mstat"><span>Active roster spots</span><span>${c.rosters == null ? '—' : c.rosters}</span></div>
+            <div class="mstat"><span>Teams with a roster</span><span>${c.rostered_teams == null ? '—' : c.rostered_teams}/30</span></div>
+            <div class="mstat"><span>Player-season rows</span><span>${c.player_stat_rows == null ? '—' : c.player_stat_rows}</span></div>
+            <div class="mstat"><span>Availability entries</span><span>${c.injuries_latest == null ? '—' : c.injuries_latest}</span></div>
+            <div class="mstat"><span>Last schedule pull</span><span>${fmtWhen(status.last_schedule_fetch)}</span></div>
+            <div class="mstat"><span>Last results pull</span><span>${fmtWhen(status.last_history_fetch)}</span></div>
+            <button class="btn" id="nbaPeopleRefresh">Refresh rosters &amp; availability</button>
+            <div class="subtitle" style="margin-top:8px">Rosters and player
+              production come from the official NBA feed; availability from the
+              ESPN injury feed. Results and the schedule sync automatically
+              every six hours; availability every three hours. Every pull is
+              timestamped, and a failed pull is recorded rather than hidden.
+              The buttons are a manual override, not the daily workflow.</div>
+          </div>
+          <div class="card">
+            <div class="stat-name">Recent sync jobs</div>
+            <table class="nba-stat-table jobs-table">
+              <thead><tr><th>Job</th><th>Status</th><th>Started</th>
+                <th>Rows</th><th>Error</th></tr></thead>
+              <tbody>${jobs || '<tr><td colspan="5">No sync recorded yet.</td></tr>'}</tbody>
+            </table>
+          </div>
+          <div class="card">
+            <div class="stat-name">Roster &amp; availability</div>
+            <div class="row2" style="align-items:center">
+              <select id="nbaRosterTeam">
+                ${(teams.teams || []).map(t => `<option value="${t.team_id}">${esc(t.city)} ${esc(t.name)}</option>`).join('')}
+              </select>
+            </div>
+            <div id="nbaRosterBox" style="margin-top:10px"></div>
+          </div>`;
+        const sel = $('nbaRosterTeam');
+        if (sel) sel.onchange = loadNbaRoster;
+        const btn = $('nbaPeopleRefresh');
+        if (btn) {
+          btn.onclick = async () => {
+            btn.disabled = true;
+            btn.textContent = 'Refreshing…';
+            try {
+              const r = await api('/admin/nba/people/refresh', { method: 'POST' });
+              toast(r.started
+                ? 'Refreshing rosters and availability in the background.'
+                : r.detail, !r.started);
+              setTimeout(renderAdminNba, 1500);
+            } catch (err) {
+              toast(err.message, true);
+              btn.disabled = false;
+              btn.textContent = 'Refresh rosters & availability';
+            }
+          };
+        }
+        await loadNbaRoster();
+      } catch (err) {
+        panel.innerHTML = `<div class="state">${esc(err.message)}</div>`;
+      }
+    }
+
+    /* ==================================================================
+       NBA
+       Same evidence-first shape as football, different model: possessions,
+       ratings and pace. Every number the panel prints comes from
+       /nba/analysis, and every number there carries its sample.
+    ================================================================== */
+    let nbaShown = null;
+    let nbaSeq = 0;
+    let nbaGameId = null;
+    let nbaReturnView = 'nba';
+    let nbaMarketFilter = 'points';
+    let nbaCurrentAnalysis = null;
+
+    // The game page is the complete statistical picture. These groups keep it
+    // navigable without putting every market on the Board. They are presentation
+    // labels only; the model still generates and stores every available market.
+    const NBA_MARKET_GROUPS = [
+      { key: 'points', label: 'Points',
+        test: m => m.key === 'game_total' || m.key.endsWith('_team_total')
+          || m.key === 'first_half_total' || m.key === 'first_quarter_total' },
+      { key: 'rebounds', label: 'Rebounds', test: m => m.key.includes('rebounds') },
+      { key: 'assists', label: 'Assists', test: m => m.key.includes('assists') },
+      { key: 'turnovers', label: 'Turnovers', test: m => m.key.includes('turnovers') },
+      { key: 'steals', label: 'Steals', test: m => m.key.includes('steals') },
+      { key: 'blocks', label: 'Blocks', test: m => m.key.includes('blocks') },
+      { key: 'two_pm', label: '2-pointers', test: m => m.key.includes('two_pm') },
+      { key: 'three_pm', label: '3-pointers', test: m => m.key.includes('three_pm') },
+      { key: 'fouls', label: 'Fouls', test: m => m.key.includes('fouls') },
+    ];
+
+    const nbaKickoff = iso => {
+      if (!iso) return '';
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return '';
+      return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    };
+
+    const nbaOne = v => (v === null || v === undefined)
+      ? '—' : (Math.round(v * 10) / 10).toFixed(1);
+
+    const nbaSigned = v => (v === null || v === undefined)
+      ? '—' : (v >= 0 ? '+' : '') + nbaOne(v);
+
+    function nbaSetHeader(iso) {
+      $('nbaDate').textContent = new Date(iso + 'T12:00:00')
+        .toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
+
+    function nbaRenderChips(days, shown, today) {
+      const el = $('nbaDateChips');
+      const known = new Map((days || []).map(d => [d.date, d.games]));
+      known.set(today, known.get(today) || 0);
+      if (shown) known.set(shown, known.get(shown) || 0);
+      const dates = [...known.keys()].sort();
+      const at = dates.indexOf(shown);
+      const start = Math.max(0, at - 7);
+      const nearby = dates.slice(start, start + 15);
+      const strip = nearby.includes(today) ? nearby : [today, ...nearby];
+      el.innerHTML = strip.map(iso => `<button class="chip sm${iso === shown ? ' on' : ''}"
+        data-day="${esc(iso)}">${esc(iso === today ? 'Today' : shortDay(iso, today))}</button>`).join('');
+      el.querySelectorAll('.chip').forEach(btn => {
+        btn.onclick = () => nbaLoad(btn.dataset.day);
+      });
+    }
+
+    async function nbaLoad(iso) {
+      const seq = ++nbaSeq;
+      try {
+        const data = await api('/nba/published' + (iso ? `?date=${encodeURIComponent(iso)}` : ''));
+        if (seq !== nbaSeq) return;   // a newer request has already won
+        nbaShown = data.date;
+        nbaSetHeader(data.date);
+        const note = $('nbaNote');
+        // Only the automatic landing may fall back to another day. An explicit
+        // date says what it says, even when it is empty.
+        if (!iso && data.date !== data.today) {
+          note.hidden = false;
+          note.textContent = data.date > data.today
+            ? 'Showing the next NBA matchday.'
+            : 'No NBA games are ahead; showing the most recent matchday.';
+        } else {
+          note.hidden = true;
+        }
+        nbaRenderChips(data.dates, data.date, data.today);
+        nbaRenderList(data.games);
+      } catch (err) {
+        if (seq !== nbaSeq) return;
+        $('nbaList').innerHTML = `<div class="state">${esc(err.message)}</div>`;
+      }
+    }
+
+    function nbaRenderList(games) {
+      const list = $('nbaList');
+      if (!games || !games.length) {
+        list.innerHTML = `<div class="state"><strong>No published games</strong>
+          Nothing is on this date. Use the arrows or the chips above.</div>`;
+        return;
+      }
+      list.innerHTML = games.map(g => `<div class="match" data-game="${esc(g.game_id)}">
+          <div class="teams">${esc(g.away_team)}<br><span class="vs">at</span> ${esc(g.home_team)}</div>
+          <div class="time">${esc(nbaKickoff(g.game_datetime_utc))}</div>
+        </div>`).join('');
+      list.querySelectorAll('.match').forEach(el => {
+        el.onclick = () => nbaOpen(el.dataset.game);
+      });
+    }
+
+    async function nbaOpen(gameId, backTo, keepFilter) {
+      nbaGameId = gameId;
+      nbaReturnView = backTo || nbaReturnView || 'nba';
+      if (!keepFilter) nbaMarketFilter = 'points';
+      nbaCurrentAnalysis = null;
+      showView('nba-match');
+      $('nbaTitle').textContent = '';
+      $('nbaMeta').textContent = '';
+      $('nbaPanel').innerHTML = '<div class="state">Loading the model…</div>';
+      try {
+        const a = await api('/nba/analysis/' + encodeURIComponent(gameId));
+        nbaRenderAnalysis(a);
+      } catch (err) {
+        $('nbaPanel').innerHTML = `<div class="state">${esc(err.message)}</div>`;
+      }
+    }
+
+    function nbaMarketRow(m) {
+      if (m.available === false) {
+        return `<div class="nba-market">
+          <div class="nba-market-top">
+            <span class="lbl">${esc(m.label)}</span>
+            <span class="nba-tag">not enough line scores</span>
+          </div>
+          <div class="weight-tag">${esc(m.reason || '')}</div>
+        </div>`;
+      }
+      const base = m.baseline || {};
+      const rate = base.total
+        ? `${Math.round(base.rate * 100)}% <span style="color:var(--dim)">(${base.over}/${base.total})</span>`
+        : '—';
+      const verdict = m.supported
+        ? '<span style="color:var(--supported);font-weight:600">above line</span>'
+        : '<span style="color:var(--notsupported);font-weight:600">below line</span>';
+      const source = m.line_source === 'market' ? 'Market line'
+        : m.line_source === 'team_baseline' ? 'Team baseline' : 'League line';
+      return `<div class="nba-market">
+        <div class="nba-market-top">
+          <span class="lbl">${esc(m.label)}</span>
+          <span class="val">${nbaOne(m.projection)}</span>
+        </div>
+        <div class="source-top" style="margin-top:4px">
+          <span>${source} ${nbaOne(m.line)} · model ${nbaSigned(m.difference)} → ${verdict}</span>
+          <span>${rate}</span>
+        </div>
+        <div class="weight-tag">${esc(base.label || '')} · finished over ${nbaOne(m.line)}</div>
+      </div>`;
+    }
+
+    function nbaMarketMatches(m) {
+      if (nbaMarketFilter === 'all') return true;
+      const group = NBA_MARKET_GROUPS.find(item => item.key === nbaMarketFilter);
+      return group ? group.test(m) : true;
+    }
+
+    function nbaFilterLabel() {
+      if (nbaMarketFilter === 'all') return 'All markets';
+      const group = NBA_MARKET_GROUPS.find(item => item.key === nbaMarketFilter);
+      return group ? group.label : 'Markets';
+    }
+
+    function nbaRenderMarketChips() {
+      const el = $('nbaMarketChips');
+      if (!el || !nbaCurrentAnalysis) return;
+      const markets = nbaCurrentAnalysis.markets || [];
+      const counts = NBA_MARKET_GROUPS.map(group => ({
+        ...group, count: markets.filter(group.test).length,
+      }));
+      const all = { key: 'all', label: 'All', count: markets.length };
+      el.innerHTML = [all, ...counts.filter(group => group.count)]
+        .map(group => `<button class="chip sm${group.key === nbaMarketFilter ? ' on' : ''}"
+          data-nba-market="${esc(group.key)}">${esc(group.label)}
+          <span style="color:var(--dim)">${group.count}</span></button>`).join('');
+      el.querySelectorAll('[data-nba-market]').forEach(btn => {
+        btn.onclick = () => {
+          nbaMarketFilter = btn.dataset.nbaMarket;
+          nbaRenderMarketChips();
+          nbaRenderMarketList();
+        };
+      });
+    }
+
+    function nbaRenderMarketList() {
+      const el = $('nbaMarketList');
+      if (!el || !nbaCurrentAnalysis) return;
+      const all = nbaCurrentAnalysis.markets || [];
+      const markets = all.filter(nbaMarketMatches);
+      if (!markets.length) {
+        el.innerHTML = `<div class="state">No ${esc(nbaFilterLabel().toLowerCase())}
+          markets are available for this game.</div>`;
+        return;
+      }
+      el.innerHTML = `<div class="weight-tag" style="margin:2px 0 4px">
+          Showing ${markets.length} of ${all.length} stored markets</div>`
+        + markets.map(nbaMarketRow).join('');
+    }
+
+    function nbaRenderAnalysis(a) {
+      nbaCurrentAnalysis = a;
+      const g = a.game;
+      const p = a.projection;
+      const h = g.home;
+      const aw = g.away;
+      $('nbaTitle').textContent = `${aw.tricode} at ${h.tricode}`;
+      $('nbaMeta').textContent = `${g.season} · ` + new Date(g.game_date + 'T12:00:00')
+        .toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+
+      const ratingRow = (label, key) => `<tr>
+        <td>${label}</td>
+        <td>${nbaOne(a.ratings.away[key])}</td>
+        <td>${nbaOne(a.ratings.home[key])}</td>
+      </tr>`;
+
+      // Choose ONE basis for the pair. Mixing "this season" for one team and
+      // "prior seasons" for the other would make the two columns incomparable.
+      const useSeason = h.season.games > 0 && aw.season.games > 0;
+      const basisLabel = useSeason ? 'This season' : 'Prior seasons';
+      const pick = box => (useSeason ? box.season : box.prior);
+      const statRow = (label, key, isPct) => {
+        const fmt = v => (v === null || v === undefined) ? '—'
+          : (isPct ? (v * 100).toFixed(1) + '%' : nbaOne(v));
+        return `<tr><td>${label}</td>
+          <td>${fmt(pick(aw)[key])}</td>
+          <td>${fmt(pick(h)[key])}</td></tr>`;
+      };
+
+      const lines = {};
+      for (const m of a.markets) lines[m.key] = m;
+
+      const evidence = [
+        a.evidence.note ? `<div class="note" style="margin:8px 0">${esc(a.evidence.note)}</div>` : '',
+        a.evidence.low_confidence
+          ? `<div class="warn">Low confidence: only ${a.evidence.prior_games} game(s) back this number.</div>`
+          : '',
+      ].join('');
+
+      $('nbaPanel').innerHTML = `
+        <div class="section-label">Game total</div>
+        <div class="nba-hero">
+          <span class="big">${nbaOne(p.total)}</span>
+          <span class="unit">projected points</span>
+        </div>
+        <div class="weight-tag">
+          ${nbaOne(a.range.low_68)}–${nbaOne(a.range.high_68)} is the game-to-game spread of NBA totals ·
+          ${nbaOne(p.possessions)} possessions · home edge ${nbaOne(p.home_edge)}
+        </div>
+        ${evidence}
+
+        <div class="section-label" style="margin-top:16px">Markets</div>
+        <div class="chips" id="nbaMarketChips"></div>
+        <div id="nbaMarketList"></div>
+
+        <div class="section-label" style="margin-top:16px">Rating matchup</div>
+        <table class="nba-stat-table">
+          <thead><tr><th>Per 100 possessions</th><th>${esc(aw.tricode)}</th><th>${esc(h.tricode)}</th></tr></thead>
+          <tbody>
+            ${ratingRow('Offence', 'off_rating')}
+            ${ratingRow('Defence', 'def_rating')}
+            ${ratingRow('Pace (per 48)', 'pace')}
+          </tbody>
+        </table>
+        <div class="weight-tag">
+          ${esc(aw.tricode)}: ${a.ratings.away.season_games} game(s) this season, ${a.ratings.away.prior_games} before ·
+          ${esc(h.tricode)}: ${a.ratings.home.season_games} game(s), ${a.ratings.home.prior_games} before
+        </div>
+
+        <div class="section-label" style="margin-top:16px">${basisLabel} counting stats</div>
+        <table class="nba-stat-table">
+          <thead><tr><th></th><th>${esc(aw.tricode)}</th><th>${esc(h.tricode)}</th></tr></thead>
+          <tbody>
+            ${statRow('Points', 'points')}
+            ${statRow('Rebounds', 'rebounds')}
+            ${statRow('Assists', 'assists')}
+            ${statRow('Turnovers', 'turnovers')}
+            ${statRow('Steals', 'steals')}
+            ${statRow('Blocks', 'blocks')}
+            ${statRow('Fouls', 'fouls')}
+            ${statRow('FG%', 'fg_pct', true)}
+            ${statRow('3P%', 'fg3_pct', true)}
+            ${statRow('FT%', 'ft_pct', true)}
+          </tbody>
+        </table>
+
+        <div class="section-label" style="margin-top:16px">Market lines</div>
+        <div class="weight-tag">Optional. A saved line is compared with the model and labelled
+          “Market line”; without one the league-reference line is shown.</div>
+        <div class="nba-lines">
+          <div><label>Game</label>
+            <input id="nbaLineTotal" type="number" step="0.5" inputmode="decimal"
+                   value="${lines.game_total && lines.game_total.line_source === 'market' ? lines.game_total.line : ''}"
+                   placeholder="${nbaOne(lines.game_total ? lines.game_total.line : '')}"></div>
+          <div><label>${esc(aw.tricode)}</label>
+            <input id="nbaLineAway" type="number" step="0.5" inputmode="decimal"
+                   value="${lines.away_team_total && lines.away_team_total.line_source === 'market' ? lines.away_team_total.line : ''}"
+                   placeholder="${nbaOne(lines.away_team_total ? lines.away_team_total.line : '')}"></div>
+          <div><label>${esc(h.tricode)}</label>
+            <input id="nbaLineHome" type="number" step="0.5" inputmode="decimal"
+                   value="${lines.home_team_total && lines.home_team_total.line_source === 'market' ? lines.home_team_total.line : ''}"
+                   placeholder="${nbaOne(lines.home_team_total ? lines.home_team_total.line : '')}"></div>
+        </div>
+        <button class="btn sm" id="nbaSaveLines">Save lines</button>
+        <button class="btn sm" id="nbaClearLines">Clear lines</button>
+
+        <div class="weight-tag" style="margin-top:14px">${esc(a.range.label)}. ${esc(p.basis)}.</div>
+      `;
+
+      nbaRenderMarketChips();
+      nbaRenderMarketList();
+
+      $('nbaSaveLines').onclick = async () => {
+        const val = id => {
+          const raw = $(id).value.trim();
+          return raw === '' ? null : Number(raw);
+        };
+        try {
+          await api('/nba/publish/' + encodeURIComponent(nbaGameId), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              game_total: val('nbaLineTotal'),
+              away_team_total: val('nbaLineAway'),
+              home_team_total: val('nbaLineHome')
+            })
+          });
+          toast('Lines saved');
+          nbaOpen(nbaGameId, nbaReturnView, true);
+        } catch (err) {
+          toast(err.message, true);
+        }
+      };
+
+      $('nbaClearLines').onclick = async () => {
+        try {
+          await api('/nba/publish/' + encodeURIComponent(nbaGameId), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ clear: true })
+          });
+          toast('Lines cleared');
+          nbaOpen(nbaGameId, nbaReturnView, true);
+        } catch (err) {
+          toast(err.message, true);
+        }
+      };
+    }
+
+    /* ==================================================================
+       WIRING
+    ================================================================== */
+    // Leaving the match clears the fixture AND the market chips. The chips are
+    // only rebuilt by openMatch, so leaving them behind meant a click on a
+    // leftover chip ran an analysis for a fixture that was no longer selected -
+    // which threw "Cannot read properties of null" instead of doing anything
+    // sensible. Clearing them makes the stale click impossible rather than
+    // merely survivable, and the guard in the chip handler covers the rest.
+    $('backBtn').onclick = () => {
+      selectedMatch = null;
+      $('marketChips').innerHTML = '';
+      $('panel').innerHTML = '';
+      showView(matchReturnView);
+    };
+    $('adminBack').onclick = () => { showView('dashboard'); loadDashboard(); };
+    $('toSeason').onclick = () => openSeason();
+    $('seasonBack').onclick = () => { showView('dashboard'); loadDashboard(); };
+    $('toBoard').onclick = () => openBoard(undefined, 'dashboard', 'all');
+    $('nbaToBoard').onclick = () => openBoard(undefined, 'nba', 'nba');
+    $('boardBack').onclick = () => showView(boardReturn);
+    $('boardDate').onclick = () => { boardShown = isoLocal(new Date()); loadBoard(); };
+    $('boardPrev').onclick = () => { boardShown = addDaysISO(boardShown, -1); loadBoard(); };
+    $('boardNext').onclick = () => { boardShown = addDaysISO(boardShown, 1); loadBoard(); };
+    $('toAdmin').onclick = () => { showView('admin'); showAdminView('fixtures'); };
+    $('adminLogin').onclick = unlockAdmin;
+    $('adminTokenInput').addEventListener('keydown', ev => {
+      if (ev.key === 'Enter') unlockAdmin();
+    });
+    $('adminSignOut').onclick = lockAdmin;
+    // Wrapped: an unbound handler would receive the click event as the date.
+    $('reloadDash').onclick = () => loadDashboard(dashShown || undefined);
+    // Step from the date on screen, not from the last completed request, so
+    // two quick taps move two days instead of asking for the same one twice.
+    $('dayPrev').onclick = () => {
+      dashShown = addDaysISO(dashShown || isoLocal(new Date()), -1);
+      loadDashboard(dashShown);
+    };
+    $('dayNext').onclick = () => {
+      dashShown = addDaysISO(dashShown || isoLocal(new Date()), 1);
+      loadDashboard(dashShown);
+    };
+    $('dashDate').onclick = () => loadDashboard();
+
+    // NBA wiring
+    $('toNba').onclick = () => { showView('nba'); nbaLoad(nbaShown || undefined); };
+    $('nbaToFootball').onclick = () => {
+      showView('dashboard');
+      loadDashboard(dashShown || undefined);
+    };
+    $('nbaBack').onclick = () => {
+      showView(nbaReturnView);
+      if (nbaReturnView === 'nba') nbaLoad(nbaShown || undefined);
+    };
+    $('nbaReload').onclick = () => nbaLoad(nbaShown || undefined);
+    $('nbaDate').onclick = () => nbaLoad();
+    $('nbaPrev').onclick = () => {
+      nbaShown = addDaysISO(nbaShown || isoLocal(new Date()), -1);
+      nbaLoad(nbaShown);
+    };
+    $('nbaNext').onclick = () => {
+      nbaShown = addDaysISO(nbaShown || isoLocal(new Date()), 1);
+      nbaLoad(nbaShown);
+    };
+
+    document.querySelectorAll('#view-match .tab').forEach(t => {
+      t.onclick = () => { setTab(t.dataset.tab); loadTab(t.dataset.tab); };
+    });
+    document.querySelectorAll('.atab').forEach(t => {
+      t.onclick = () => showAdminView(t.dataset.aview);
+    });
+
+    $('applyLine').onclick = async () => {
+      const v = num($('lineInput').value);
+      lineOverride = v;
+      await loadTab('markets');
+    };
+    $('autoLine').onclick = async () => {
+      lineOverride = null;
+      await loadTab('markets');
+    };
+
+    if (new URLSearchParams(location.search).get('demo') === '1') {
+      $('demoBanner').hidden = false;
+    }
+
+    async function boot() {
+      try {
+        const h = await api('/health');
+        adminAuthRequired = !!h.admin_auth_required;
+      } catch (e) { /* public dashboard still works */ }
+      try {
+        const s = await api('/stats');
+        markets = s.markets;
+        selectedMarket = markets.find(m => m.market === 'corners') ? 'corners' : markets[0].market;
+      } catch (err) {
+        markets = ['goals', 'shots', 'corners', 'fouls', 'yellow_cards']
+          .map(m => ({ market: m, default_line: null }));
+        selectedMarket = 'corners';
+        toast('Could not reach the API: ' + err.message, true);
+      }
+      await loadDashboard();
+    }
+
+    boot();
+  </script>
+</body>
+
+</html>

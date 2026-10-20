@@ -1,0 +1,71 @@
+﻿id,date,home_team,away_team,league,season,status,referee,home_goals,away_goals,home_ht_goals,away_ht_goals,ht_result,home_shots,away_shots,home_shots_on_target,away_shots_on_target,home_fouls,away_fouls,home_corners,away_corners,home_yellow_cards,away_yellow_cards,home_red_cards,away_red_cards,home_tackles,away_tackles,home_throw_ins,away_throw_ins,home_aerial_duels,away_aerial_duels,home_offsides,away_offsides,home_interceptions,away_interceptions,home_goal_kicks,away_goal_kicks,home_saves,away_saves,home_substitutions,away_substitutions,odds_home_win,odds_draw,odds_away_win,odds_over_2_5,odds_under_2_5,handicap_line,odds_handicap_home,odds_handicap_away,source
+13617,2026-08-21,Arsenal,Coventry,Premier League,2026-27,completed,T Bramall,3,0,2,0,H,20,4,6,1,10,13,8,2,1,1,0,0,,,,,,,,,,,,,,,,,1.19,6.77,14.19,1.55,2.38,-2.0,1.99,1.76,csv
+13618,2026-08-22,Hull,Man United,Premier League,2026-27,completed,D England,2,0,2,0,H,8,21,4,5,10,9,1,6,2,1,0,0,,,,,,,,,,,,,,,,,8.37,4.93,1.36,1.64,2.2,1.5,1.76,1.98,csv
+13619,2026-08-22,Everton,Crystal Palace,Premier League,2026-27,completed,P Tierney,2,0,1,0,H,16,11,5,4,5,15,4,0,0,1,0,0,,,,,,,,,,,,,,,,,2.23,3.4,3.24,1.93,1.83,-0.25,1.83,1.91,csv
+13620,2026-08-22,Ipswich,Sunderland,Premier League,2026-27,completed,F Hallam,2,1,1,1,D,10,11,3,4,12,14,3,5,0,3,0,0,,,,,,,,,,,,,,,,,2.69,3.29,2.6,1.93,1.81,0.0,1.9,1.84,csv
+13621,2026-08-22,Nott'm Forest,Leeds,Premier League,2026-27,completed,R Jones,0,1,0,0,D,12,11,2,3,15,14,3,2,2,1,0,0,,,,,,,,,,,,,,,,,2.27,3.35,3.1,1.91,1.83,-0.25,1.91,1.84,csv
+13622,2026-08-22,Brentford,Tottenham,Premier League,2026-27,completed,M Oliver,3,0,2,0,H,26,9,8,4,17,14,7,3,1,1,0,0,,,,,,,,,,,,,,,,,2.48,3.58,2.69,1.69,2.14,0.0,1.76,1.99,csv
+13623,2026-08-23,Brighton,Aston Villa,Premier League,2026-27,completed,P Bankes,4,0,4,0,H,21,6,6,0,12,11,5,2,2,3,0,1,,,,,,,,,,,,,,,,,2.19,3.54,3.08,1.66,2.15,-0.25,1.88,1.87,csv
+13624,2026-08-23,Man City,Bournemouth,Premier League,2026-27,completed,J Gillett,2,1,0,1,A,13,5,6,4,11,11,8,3,1,2,0,0,,,,,,,,,,,,,,,,,1.45,4.72,5.93,1.41,2.78,-1.25,1.93,1.81,csv
+13625,2026-08-23,Newcastle,Liverpool,Premier League,2026-27,completed,S Attwell,2,2,1,0,H,13,27,4,7,16,15,2,6,5,3,0,0,,,,,,,,,,,,,,,,,3.57,3.85,1.92,1.51,2.53,0.5,1.89,1.84,csv
+13626,2026-08-24,Fulham,Chelsea,Premier League,2026-27,completed,J Brooks,2,3,1,2,A,14,18,6,6,12,7,6,4,2,3,0,0,,,,,,,,,,,,,,,,,3.66,3.76,1.89,1.61,2.22,0.5,1.87,1.84,csv
+13627,2026-08-28,Crystal Palace,Man City,Premier League,2026-27,completed,A Madley,1,4,0,1,A,9,18,1,9,8,11,2,6,1,2,0,0,,,,,,,,,,,,,,,,,4.83,3.95,1.67,1.68,2.12,0.75,1.93,1.82,csv
+13628,2026-08-29,Liverpool,Nott'm Forest,Premier League,2026-27,completed,S Barrott,2,2,0,1,A,13,12,4,3,13,10,3,5,4,2,0,0,,,,,,,,,,,,,,,,,1.57,4.39,5.53,1.63,2.24,-1.0,1.79,1.96,csv
+13629,2026-08-29,Bournemouth,Everton,Premier League,2026-27,completed,C Kavanagh,1,1,1,0,H,17,13,5,7,11,14,10,7,3,2,0,0,,,,,,,,,,,,,,,,,2.1,3.5,3.41,1.88,1.87,-0.5,2.01,1.74,csv
+13630,2026-08-29,Coventry,Hull,Premier League,2026-27,completed,J Smith,0,1,0,0,D,11,6,3,2,11,8,6,2,1,4,0,0,,,,,,,,,,,,,,,,,1.87,3.53,4.19,1.84,1.9,-0.5,1.82,1.91,csv
+13631,2026-08-29,Tottenham,Newcastle,Premier League,2026-27,completed,P Bankes,0,2,0,0,D,17,11,6,2,15,9,9,7,1,2,0,0,,,,,,,,,,,,,,,,,2.25,3.65,2.88,1.64,2.19,-0.25,1.93,1.81,csv
+13632,2026-08-30,Chelsea,Brighton,Premier League,2026-27,completed,M Oliver,4,3,3,1,H,17,15,6,6,6,12,4,7,1,3,0,0,,,,,,,,,,,,,,,,,1.82,3.85,3.93,1.64,2.22,-0.5,1.78,1.95,csv
+13633,2026-08-30,Leeds,Brentford,Premier League,2026-27,completed,T Harrington,1,1,0,1,A,12,22,2,5,5,13,5,6,0,4,0,0,,,,,,,,,,,,,,,,,2.58,3.36,2.67,1.86,1.88,0.0,1.82,1.92,csv
+13634,2026-08-30,Sunderland,Fulham,Premier League,2026-27,completed,M Salisbury,1,0,0,0,D,12,11,4,0,10,15,3,4,0,2,0,0,,,,,,,,,,,,,,,,,2.39,3.24,2.96,2.01,1.74,-0.25,2.01,1.75,csv
+13635,2026-08-30,Man United,Ipswich,Premier League,2026-27,completed,C Pawson,5,2,1,1,D,33,9,11,5,7,12,8,4,1,3,0,0,,,,,,,,,,,,,,,,,1.4,4.82,6.94,1.57,2.29,-1.25,1.86,1.89,csv
+13636,2026-08-31,Aston Villa,Arsenal,Premier League,2026-27,completed,J Gillett,0,1,0,0,D,7,7,0,2,17,6,2,4,3,1,0,0,,,,,,,,,,,,,,,,,5.99,4.11,1.52,1.75,2.0,1.0,1.87,1.86,csv
+13637,2026-09-04,Ipswich,Liverpool,Premier League,2026-27,completed,D England,0,2,0,2,A,14,10,5,7,6,13,4,3,1,3,0,0,,,,,,,,,,,,,,,,,5.48,4.8,1.5,1.37,2.99,1.25,1.77,1.99,csv
+13638,2026-09-05,Newcastle,Bournemouth,Premier League,2026-27,completed,R Jones,2,2,1,2,A,8,17,2,5,19,17,4,3,2,3,0,0,,,,,,,,,,,,,,,,,2.1,3.64,3.19,1.55,2.37,-0.25,1.8,1.95,csv
+13639,2026-09-05,Brentford,Sunderland,Premier League,2026-27,completed,T Bramall,1,1,0,0,D,12,14,2,5,19,9,4,3,3,2,0,0,,,,,,,,,,,,,,,,,1.62,3.9,5.29,1.82,1.93,-0.75,1.78,1.98,csv
+13640,2026-09-05,Brighton,Leeds,Premier League,2026-27,completed,S Attwell,1,1,0,1,A,20,10,5,5,13,16,7,6,3,3,0,0,,,,,,,,,,,,,,,,,1.98,3.52,3.68,1.85,1.89,-0.5,1.9,1.83,csv
+13641,2026-09-05,Fulham,Crystal Palace,Premier League,2026-27,completed,S Barrott,2,3,2,1,H,25,10,6,5,6,7,7,1,0,0,0,0,,,,,,,,,,,,,,,,,2.32,3.37,3.03,1.89,1.86,-0.25,1.93,1.81,csv
+13642,2026-09-05,Man City,Coventry,Premier League,2026-27,completed,P Tierney,1,0,1,0,H,15,12,4,3,7,17,4,5,1,2,0,0,,,,,,,,,,,,,,,,,1.17,7.64,13.85,1.34,3.17,-2.25,1.97,1.77,csv
+13643,2026-09-05,Nott'm Forest,Tottenham,Premier League,2026-27,completed,C Pawson,0,0,0,0,D,12,11,2,0,22,14,2,10,2,2,0,0,,,,,,,,,,,,,,,,,2.4,3.36,2.86,1.91,1.83,-0.25,2.0,1.75,csv
+13644,2026-09-05,Hull,Aston Villa,Premier League,2026-27,completed,M Oliver,0,0,0,0,D,11,13,4,1,10,5,3,4,2,0,0,0,,,,,,,,,,,,,,,,,4.04,3.62,1.86,1.83,1.91,0.5,1.91,1.82,csv
+13645,2026-09-06,Everton,Man United,Premier League,2026-27,completed,J Brooks,2,2,0,0,D,18,14,6,3,7,11,4,3,3,3,0,0,,,,,,,,,,,,,,,,,3.21,3.54,2.12,1.67,2.12,0.25,1.93,1.81,csv
+13646,2026-09-06,Arsenal,Chelsea,Premier League,2026-27,completed,C Kavanagh,2,1,1,1,D,16,13,9,5,13,16,5,3,2,4,0,0,,,,,,,,,,,,,,,,,1.69,3.8,4.82,1.73,2.03,-0.75,1.84,1.9,csv
+13647,2026-09-12,Aston Villa,Nott'm Forest,Premier League,2026-27,completed,A Madley,1,2,0,0,D,7,22,5,7,11,16,6,1,2,5,0,0,,,,,,,,,,,,,,,,,2.22,3.39,3.17,1.89,1.83,-0.25,1.9,1.84,csv
+13648,2026-09-12,Bournemouth,Brentford,Premier League,2026-27,completed,J Gillett,2,2,1,1,D,20,8,10,2,10,13,2,1,5,1,0,0,,,,,,,,,,,,,,,,,2.45,3.58,2.68,1.67,2.2,0.0,1.78,1.96,csv
+13649,2026-09-12,Chelsea,Hull,Premier League,2026-27,completed,F Hallam,2,2,1,2,A,12,14,7,5,7,12,10,4,1,5,0,0,,,,,,,,,,,,,,,,,1.21,6.5,11.92,1.39,2.83,-2.0,1.99,1.77,csv
+13650,2026-09-12,Crystal Palace,Ipswich,Premier League,2026-27,completed,C Kavanagh,2,3,1,2,A,11,12,4,6,6,16,6,3,1,3,1,0,,,,,,,,,,,,,,,,,1.84,3.74,3.98,1.76,1.99,-0.5,1.8,1.93,csv
+13651,2026-09-12,Liverpool,Fulham,Premier League,2026-27,completed,T Bramall,0,0,0,0,D,14,10,3,4,11,8,5,8,0,1,0,0,,,,,,,,,,,,,,,,,1.44,4.85,6.37,1.5,2.59,-1.25,1.88,1.87,csv
+13652,2026-09-12,Tottenham,Everton,Premier League,2026-27,completed,D England,0,0,0,0,D,14,12,2,3,14,8,5,6,0,2,0,0,,,,,,,,,,,,,,,,,2.02,3.53,3.55,1.9,1.84,-0.5,1.96,1.78,csv
+13653,2026-09-12,Sunderland,Arsenal,Premier League,2026-27,completed,J Brooks,0,2,0,0,D,12,11,3,5,18,11,4,2,6,2,1,0,,,,,,,,,,,,,,,,,7.36,4.12,1.46,2.02,1.74,1.0,1.96,1.78,csv
+13654,2026-09-13,Coventry,Brighton,Premier League,2026-27,completed,T Harrington,0,5,0,1,A,14,22,6,7,9,15,5,3,0,0,1,0,,,,,,,,,,,,,,,,,3.91,3.73,1.85,1.72,2.03,0.5,1.91,1.81,csv
+13655,2026-09-13,Man United,Man City,Premier League,2026-27,completed,M Oliver,0,1,0,0,D,16,6,3,2,17,10,6,7,1,2,0,1,,,,,,,,,,,,,,,,,3.08,3.78,2.1,1.5,2.49,0.25,1.93,1.81,csv
+13656,2026-09-14,Leeds,Newcastle,Premier League,2026-27,completed,M Salisbury,4,1,3,0,H,15,7,6,5,8,13,5,5,1,2,0,0,,,,,,,,,,,,,,,,,2.38,3.45,2.81,1.75,2.0,-0.25,2.02,1.73,csv
+13657,2026-09-18,Brentford,Chelsea,Premier League,2026-27,completed,A Madley,3,0,0,0,D,13,12,6,2,10,7,4,12,2,0,0,0,,,,,,,,,,,,,,,,,2.62,3.7,2.48,1.48,2.59,0.0,1.91,1.84,csv
+13658,2026-09-19,Tottenham,Aston Villa,Premier League,2026-27,completed,S Barrott,2,3,0,1,A,20,15,7,6,9,13,11,1,1,2,0,0,,,,,,,,,,,,,,,,,1.99,3.59,3.62,1.78,1.98,-0.5,1.93,1.8,csv
+13659,2026-09-19,Brighton,Arsenal,Premier League,2026-27,completed,D England,3,0,2,0,H,17,11,5,2,13,11,5,6,4,1,0,0,,,,,,,,,,,,,,,,,4.77,3.89,1.68,1.71,2.06,0.75,1.92,1.83,csv
+13660,2026-09-19,Everton,Ipswich,Premier League,2026-27,completed,S Attwell,1,0,1,0,H,21,13,2,4,6,12,4,4,2,1,0,1,,,,,,,,,,,,,,,,,1.76,3.79,4.36,1.7,2.08,-0.75,1.93,1.81,csv
+13661,2026-09-19,Newcastle,Hull,Premier League,2026-27,completed,T Harrington,2,1,2,0,H,12,22,5,4,4,10,4,7,1,4,0,0,,,,,,,,,,,,,,,,,1.58,4.26,5.1,1.59,2.27,-1.0,1.93,1.81,csv
+13662,2026-09-19,Nott'm Forest,Coventry,Premier League,2026-27,completed,J Gillett,0,1,0,0,D,24,10,3,3,12,10,6,2,2,0,0,0,,,,,,,,,,,,,,,,,1.58,4.02,5.54,1.75,2.01,-1.0,1.95,1.8,csv
+13663,2026-09-20,Bournemouth,Liverpool,Premier League,2026-27,completed,M Oliver,0,1,0,0,D,9,12,2,3,11,13,3,3,1,2,0,0,,,,,,,,,,,,,,,,,3.05,3.78,2.13,1.52,2.53,0.25,1.89,1.85,csv
+13664,2026-09-20,Leeds,Crystal Palace,Premier League,2026-27,completed,A Herczeg,0,0,0,0,D,13,12,2,4,10,12,4,3,2,3,0,0,,,,,,,,,,,,,,,,,1.74,3.79,4.49,1.73,2.03,-0.75,1.89,1.86,csv
+13665,2026-09-20,Man City,Sunderland,Premier League,2026-27,completed,R Jones,5,3,3,2,H,16,17,6,9,14,14,6,5,0,1,0,0,,,,,,,,,,,,,,,,,1.29,5.56,9.39,1.56,2.32,-1.5,1.8,1.92,csv
+13666,2026-09-20,Fulham,Man United,Premier League,2026-27,completed,P Bankes,1,1,0,0,D,12,29,6,6,9,5,3,13,3,0,0,0,,,,,,,,,,,,,,,,,3.36,3.71,2.0,1.55,2.35,0.5,1.77,1.96,csv
+15613,2026-10-10,Arsenal,Leeds,Premier League,2026-27,completed,P Tierney,2,1,0,0,D,13,11,6,5,12,20,2,4,1,4,0,0,,,,,,,,,,,,,,,,,1.38,4.78,7.89,1.79,1.96,-1.25,1.86,1.89,csv
+15614,2026-10-10,Aston Villa,Brentford,Premier League,2026-27,completed,C Pawson,2,2,1,1,D,20,14,7,4,7,24,2,2,2,5,0,0,,,,,,,,,,,,,,,,,2.62,3.5,2.54,1.67,2.11,0.0,1.9,1.85,csv
+15615,2026-10-10,Chelsea,Bournemouth,Premier League,2026-27,completed,S Barrott,5,1,2,0,H,10,9,6,4,7,15,1,7,0,4,0,0,,,,,,,,,,,,,,,,,1.66,4.21,4.53,1.47,2.58,-0.75,1.79,1.95,csv
+15616,2026-10-10,Ipswich,Fulham,Premier League,2026-27,completed,L Smith,2,1,0,0,D,11,13,5,5,8,10,2,5,2,4,0,0,,,,,,,,,,,,,,,,,2.75,3.48,2.42,1.71,2.05,0.0,1.99,1.76,csv
+15617,2026-10-10,Sunderland,Brighton,Premier League,2026-27,completed,T Bramall,0,2,0,0,D,12,13,3,4,8,12,7,5,0,1,0,1,,,,,,,,,,,,,,,,,2.94,3.47,2.3,1.77,1.99,0.25,1.81,1.93,csv
+15618,2026-10-10,Man United,Tottenham,Premier League,2026-27,completed,S Attwell,1,1,0,0,D,12,12,4,3,13,16,4,4,4,3,0,1,,,,,,,,,,,,,,,,,1.69,4.16,4.37,1.49,2.52,-0.75,1.82,1.92,csv
+15619,2026-10-11,Crystal Palace,Nott'm Forest,Premier League,2026-27,completed,P Bankes,3,1,2,1,H,13,24,7,6,11,10,5,8,2,2,0,0,,,,,,,,,,,,,,,,,2.59,3.33,2.64,1.86,1.87,0.0,1.86,1.89,csv
+15620,2026-10-11,Hull,Everton,Premier League,2026-27,completed,M Salisbury,2,2,0,0,D,9,15,5,7,15,4,7,6,2,0,0,0,,,,,,,,,,,,,,,,,3.58,3.4,2.04,1.96,1.78,0.5,1.76,1.98,csv
+15621,2026-10-11,Liverpool,Man City,Premier League,2026-27,completed,C Kavanagh,0,3,0,0,D,13,15,6,4,19,14,5,6,4,2,1,0,,,,,,,,,,,,,,,,,2.62,3.64,2.44,1.54,2.37,0.0,1.93,1.8,csv
+15622,2026-10-12,Coventry,Newcastle,Premier League,2026-27,completed,J Brooks,4,1,1,0,H,9,19,6,6,3,10,2,6,1,1,0,0,,,,,,,,,,,,,,,,,3.25,3.58,2.08,1.63,2.19,0.5,1.71,2.03,csv
+15670,2026-10-17,Everton,Chelsea,Premier League,2026-27,completed,P Tierney,0,2,0,0,D,6,18,5,7,8,15,5,7,3,4,0,0,,,,,,,,,,,,,,,,,3.13,3.62,2.12,1.64,2.17,0.25,1.93,1.81,csv
+15671,2026-10-17,Brentford,Liverpool,Premier League,2026-27,completed,J Brooks,1,2,1,0,H,10,21,2,5,7,13,3,9,4,3,2,0,,,,,,,,,,,,,,,,,2.34,3.62,2.76,1.55,2.35,0.0,1.72,2.03,csv
+15672,2026-10-17,Fulham,Hull,Premier League,2026-27,completed,C Kavanagh,1,0,1,0,H,18,5,6,0,13,11,10,2,2,2,1,0,,,,,,,,,,,,,,,,,1.7,3.89,4.51,1.71,2.06,-0.75,1.88,1.87,csv
+15673,2026-10-17,Man City,Ipswich,Premier League,2026-27,completed,F Hallam,3,2,2,1,H,19,8,6,3,8,16,2,3,1,2,0,0,,,,,,,,,,,,,,,,,1.24,6.47,10.08,1.36,2.96,-1.75,1.8,1.95,csv
+15674,2026-10-17,Newcastle,Aston Villa,Premier League,2026-27,completed,J Gillett,0,1,0,1,A,16,15,1,3,14,11,4,5,6,2,0,0,,,,,,,,,,,,,,,,,2.22,3.63,2.93,1.58,2.28,-0.25,1.92,1.82,csv
+15675,2026-10-18,Bournemouth,Sunderland,Premier League,2026-27,completed,C Pawson,2,0,1,0,H,29,3,6,0,16,7,5,3,3,2,0,1,,,,,,,,,,,,,,,,,2.04,3.51,3.44,1.77,1.96,-0.5,2.0,1.74,csv
+15676,2026-10-18,Brighton,Crystal Palace,Premier League,2026-27,completed,R Jones,5,0,3,0,H,17,5,9,1,13,11,8,5,2,1,0,0,,,,,,,,,,,,,,,,,1.53,4.42,5.35,1.54,2.37,-1.0,1.83,1.91,csv
+15677,2026-10-18,Leeds,Man United,Premier League,2026-27,completed,D England,1,1,0,1,A,12,13,5,3,16,5,2,3,2,2,0,0,,,,,,,,,,,,,,,,,2.32,3.55,2.82,1.62,2.21,-0.25,2.0,1.76,csv
+15678,2026-10-18,Nott'm Forest,Arsenal,Premier League,2026-27,completed,M Oliver,0,1,0,0,D,14,9,2,1,14,8,8,6,1,1,0,0,,,,,,,,,,,,,,,,,5.59,3.82,1.6,1.86,1.86,0.75,2.02,1.74,csv
+15679,2026-10-19,Tottenham,Coventry,Premier League,2026-27,completed,A Madley,3,1,1,0,H,16,12,5,1,15,14,4,4,1,3,0,0,,,,,,,,,,,,,,,,,1.46,4.55,6.23,1.55,2.34,-1.25,1.96,1.78,csv

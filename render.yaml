@@ -1,0 +1,34 @@
+# Render Blueprint: one always-on Docker web service with a persistent disk.
+#
+# This is intentionally NOT a free Render service: free web services sleep,
+# have an ephemeral filesystem, and cannot mount a disk. This app needs one
+# process, a writable SQLite file and the in-process schedulers to stay alive.
+#
+# The Starter plan and the 1 GB disk are paid resources. Review the current
+# price in the Render dashboard before applying this Blueprint.
+services:
+  - type: web
+    name: sports-analyzer
+    runtime: docker
+    plan: starter
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    disk:
+      name: sports-analyzer-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: SPORTS_ANALYZER_DB
+        value: /data/sports_analyzer.db
+      - key: SPORTS_ANALYZER_SCHEDULER
+        value: "1"
+      - key: ALLOWED_ORIGINS
+        value: ""
+      - key: ADMIN_TOKEN
+        generateValue: true
+      - key: FOOTBALL_DATA_TOKEN
+        sync: false

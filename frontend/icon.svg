@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Sports Analyzer icon: three evidence bars, the tallest marked supported.
+       Colours mirror the app palette so the home-screen icon matches the UI. -->
+  <rect width="512" height="512" rx="96" fill="#0D1210"/>
+  <g>
+    <rect x="96"  y="288" width="72" height="128" rx="10" fill="#263129"/>
+    <rect x="196" y="208" width="72" height="208" rx="10" fill="#4FAE7C"/>
+    <rect x="296" y="128" width="72" height="288" rx="10" fill="#D4B13A"/>
+  </g>
+  <rect x="96" y="96" width="272" height="10" rx="5" fill="#8FA398" opacity="0.5"/>
+</svg>

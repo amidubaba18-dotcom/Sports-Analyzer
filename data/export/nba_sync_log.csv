@@ -1,0 +1,13 @@
+﻿id,job,status,started_at,finished_at,rows,detail,error
+1,rosters,ok,2026-10-20T06:59:20Z,2026-10-20T06:59:53Z,518,"2026-27, 30 teams",
+2,injuries,ok,2026-10-20T06:59:53Z,2026-10-20T06:59:58Z,90,captured 2026-10-20T06:59:53Z,
+3,player_stats,ok,2026-10-20T07:00:13Z,2026-10-20T07:00:17Z,1723,"2023-24, 2024-25, 2025-26, 2026-27",
+4,injuries,ok,2026-10-20T07:01:36Z,2026-10-20T07:01:40Z,90,captured 2026-10-20T07:01:36Z,
+5,rosters,ok,2026-10-20T07:12:25Z,2026-10-20T07:12:59Z,518,"2026-27, 30 teams",
+6,player_stats,ok,2026-10-20T07:12:59Z,2026-10-20T07:13:02Z,1723,"2023-24, 2024-25, 2025-26, 2026-27",
+7,injuries,ok,2026-10-20T07:13:02Z,2026-10-20T07:13:05Z,90,captured 2026-10-20T07:13:02Z,
+8,injuries,ok,2026-10-20T07:33:53Z,2026-10-20T07:33:57Z,90,captured 2026-10-20T07:33:53Z,
+9,injuries,ok,2026-10-20T10:35:31Z,2026-10-20T10:35:35Z,90,captured 2026-10-20T10:35:31Z,
+10,rosters,error,2026-10-20T11:50:51Z,2026-10-20T11:53:28Z,500,"2026-27, 30 teams","1610612737: roster 1610612737 failed after 3 attempts: HTTPSConnectionPool(host='stats.nba.com', port=443): Max retries exceeded with url: /stats/commonteamroster?LeagueID=00&Season=2026-27&TeamID=1610612737 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1081)')))"
+11,player_stats,ok,2026-10-20T11:53:28Z,2026-10-20T11:53:31Z,1723,"2023-24, 2024-25, 2025-26, 2026-27",
+12,injuries,ok,2026-10-20T11:53:31Z,2026-10-20T11:53:35Z,90,captured 2026-10-20T11:53:31Z,
