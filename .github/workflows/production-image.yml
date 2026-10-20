@@ -1,0 +1,88 @@
+name: Production image
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  docker:
+    name: Build and smoke-test the production image
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build --tag sports-analyzer:ci .
+
+      - name: Run production smoke tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker volume create sa-ci-data
+          docker run -d --name sa-ci -p 8001:8001 \
+            -e APP_ENV=production \
+            -e ADMIN_TOKEN=ci-only-admin-token-0123456789 \
+            -e SPORTS_ANALYZER_SCHEDULER=0 \
+            -e SPORTS_ANALYZER_DB=/data/sports_analyzer.db \
+            -v sa-ci-data:/data \
+            sports-analyzer:ci
+          cleanup() {
+            docker rm -f sa-ci >/dev/null 2>&1 || true
+            docker volume rm sa-ci-data >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8001/health > /tmp/health.json; then
+              break
+            fi
+            sleep 2
+          done
+          cat /tmp/health.json
+          grep -q '"admin_auth_required":true' /tmp/health.json
+
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/admin/auth)" = "401"
+          test "$(curl -s -o /dev/null -w '%{http_code}' \
+            -H 'X-Admin-Token: ci-only-admin-token-0123456789' \
+            http://127.0.0.1:8001/admin/auth)" = "200"
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/docs)" = "404"
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/openapi.json)" = "404"
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8001/nba/published)" = "200"
+          curl -fsS http://127.0.0.1:8001/app/ | grep -q 'Sports Analyzer'
+
+          docker exec sa-ci python -c \
+            "import nba_api, pandas, numpy, fastapi; print('runtime dependencies ok')"
+
+          before="$(cat /tmp/health.json)"
+          docker restart sa-ci
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8001/health > /tmp/health.json; then
+              break
+            fi
+            sleep 2
+          done
+          after="$(cat /tmp/health.json)"
+          test "$before" = "$after"
+          echo "persistent volume: $after"
+
+          docker logs sa-ci 2>&1 | tail -40
+
+      - name: Verify production fails closed without ADMIN_TOKEN
+        shell: bash
+        run: |
+          set -euo pipefail
+          if timeout 30 docker run --rm \
+            -e APP_ENV=production \
+            -e ADMIN_TOKEN= \
+            -e SPORTS_ANALYZER_SCHEDULER=0 \
+            sports-analyzer:ci; then
+            echo "ERROR: production started without ADMIN_TOKEN" >&2
+            exit 1
+          fi
+          echo "production refused to start without ADMIN_TOKEN"
